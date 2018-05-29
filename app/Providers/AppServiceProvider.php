@@ -25,6 +25,19 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        // 模型绑定失败报错404
+        \API::error(function (\Illuminate\Database\Eloquent\ModelNotFoundException $exception) {
+            abort(404, '数据资源不存在');
+        });
+
+        // 操作无权限报错403
+        \API::error(function (\Illuminate\Auth\Access\AuthorizationException $exception) {
+            abort(403, $exception->getMessage());
+        });
+
+        // 未登录时用user时报错
+        \API::error(function (\Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException $exception) {
+            abort(401, '用户未登录');
+        });
     }
 }
