@@ -18,5 +18,17 @@ $api = app('Dingo\Api\Routing\Router');
 $api->version('v1', [
     'namespace' => 'App\Http\Controllers\Api',
     ], function ($api) {
+    //不需要登录的路由
+    $api->group([
 
+    ], function ($api) {
+
+    });
+
+    // 需要登录的路由
+    $api->group([
+        'middleware' => 'refresh.token'
+    ], function ($api) {
+
+    });
 });
