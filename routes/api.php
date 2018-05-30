@@ -18,6 +18,14 @@ $api = app('Dingo\Api\Routing\Router');
 $api->version('v1', [
     'namespace' => 'App\Http\Controllers\Api',
     ], function ($api) {
+    // 登录验证相关路由
+    $api->group([
+        'prefix' => 'auth'
+    ], function ($api) {
+        $api->post('login', 'AuthorizationsController@login');
+        $api->post('logout', 'AuthorizationsController@logout');
+    });
+
     //不需要登录的路由
     $api->group([
 
