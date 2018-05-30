@@ -4,8 +4,9 @@ namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
 
@@ -36,5 +37,25 @@ class User extends Authenticatable
         } else {
             return false;
         }
+    }
+
+    /**
+     * sub 内容
+     * @author klinson <klinson@163.com>
+     * @return mixed 默认返回当前主键的值
+     */
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    /**
+     * PAYLOAD 附加其他内容配置
+     * @author klinson <klinson@163.com>
+     * @return array
+     */
+    public function getJWTCustomClaims()
+    {
+        return [];
     }
 }
