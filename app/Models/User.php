@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Traits\IntTimestampsHelper;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class User extends Authenticatable implements JWTSubject
 {
-    use Notifiable;
+    use Notifiable, IntTimestampsHelper;
 
     /**
      * The attributes that are mass assignable.
@@ -27,17 +28,6 @@ class User extends Authenticatable implements JWTSubject
     protected $hidden = [
         'password', 'remember_token',
     ];
-
-    public function isSuperAdmin()
-    {
-        // 判断用户身份是否是超级管理员
-        // TODO: 待补充条件判断
-        if (0) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 
     /**
      * sub 内容
