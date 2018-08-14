@@ -97,9 +97,38 @@ class UsersController extends Controller
         return Admin::grid(User::class, function (Grid $grid) {
 
             $grid->id('ID')->sortable();
+            $grid->column('username', '用户名');
+            $grid->column('name', '姓名');
+            $grid->column('nickname', '昵称');
+            $grid->column('sex', '性别')->display(function ($data) {
+                return $data ? '男' : '女';
+            });
+            $grid->column('email', '邮箱');
+            $grid->column('mobile', '联系方式');
 
-            $grid->created_at();
-            $grid->updated_at();
+            $grid->column('has_enabled', '状态?')->display(function ($data) {
+                return $data ? '启用' : '禁用';
+            });
+            $grid->column('created_at', '注册时间')->display(function ($data) {
+                return date('Y-m-d H:i:s', $data);
+            });
+
+
+            $grid->filter(function ($filter) {
+                $filter->where(function ($query) {
+                    $query->where('username', 'like', "%{$this->input}%")
+                        ->orWhere('name', 'like', "%{$this->input}%")
+                        ->orWhere('nickname', 'like', "%{$this->input}%")
+                        ->orWhere('email', 'like', "%{$this->input}%")
+                        ->orWhere('mobile', 'like', "%{$this->input}%");
+                }, '用户名/姓名/昵称/邮箱/联系方式');
+
+                $filter->equal('sex', '性别')->radio([
+                    ''   => '所有',
+                    0    => '女',
+                    1    => '男',
+                ]);
+            });
         });
     }
 
@@ -114,8 +143,7 @@ class UsersController extends Controller
 
             $form->display('id', 'ID');
 
-            $form->display('created_at', 'Created At');
-            $form->display('updated_at', 'Updated At');
+
         });
     }
 }
