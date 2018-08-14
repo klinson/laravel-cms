@@ -4,6 +4,7 @@ namespace App\Admin\Controllers;
 
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use App\Rules\CnMobile;
 use Encore\Admin\Controllers\ModelForm;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -67,7 +68,7 @@ class UsersController extends Controller
             $content->header('Edit');
             $content->description('description');
 
-            $content->body($this->form()->edit($id));
+            $content->body($this->form($id)->edit($id));
         });
     }
 
@@ -137,13 +138,45 @@ class UsersController extends Controller
      *
      * @return Form
      */
-    protected function form()
+    protected function form($id = 0)
     {
-        return Admin::form(User::class, function (Form $form) {
+        return Admin::form(User::class, function (Form $form) use ($id) {
 
             $form->display('id', 'ID');
+            if ($id) {
+                $form->display('username', '用户名');
+            } else {
+                $form->text('username', '用户名')->rules('required|unique:users,username,0,id,deleted_at,NULL');
+//                $form->text('username', '用户名')->rules(function ($form) {
+//                    // 如果不是编辑状态，则添加字段唯一验证
+//                    if (!$id = $form->model()->id) {
+//                        return 'required|unique:users,username,0,id,deleted_at,NULL';
+//                    } else {
+//                        return 'required|unique:users,username,'.$id.',id,deleted_at,NULL';
+//                    }
+//                });
+            }
+
+            $form->text('name', '姓名')->rules('required');
+            $form->text('nickname', '昵称')->default('');
+
+            $form->select('sex', '性别')->options([
+                '女', '男',
+            ])->default(1)->rules('required');
+
+            $form->text('email', '邮箱')->rules('nullable|email');
+            $form->text('mobile', '联系方式')->rules(['nullable', new CnMobile()]);
+
+            $form->password('password', '密码');
+
+            $form->switch('has_enabled', '状态')->default(1);
 
 
+            $form->saving(function (Form $form) {
+
+//                dd($form);
+
+            });
         });
     }
 }
