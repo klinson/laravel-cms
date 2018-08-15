@@ -143,6 +143,13 @@ class AdminTablesSeeder extends Seeder
                 'icon'      => 'fa-list',
                 'uri'       => 'categories',
             ],
+            [
+                'parent_id' => 9,
+                'order'     => 0,
+                'title'     => '文章管理',
+                'icon'      => 'fa-file-o',
+                'uri'       => 'articles',
+            ],
         ]);
 
         // add role to menu.
