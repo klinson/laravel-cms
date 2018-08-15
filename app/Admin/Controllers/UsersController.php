@@ -47,10 +47,17 @@ class UsersController extends Controller
 
             $content->body(Admin::show(User::findOrFail($id), function (Show $show) {
 
-                $show->id();
+                $fields = [
+                    'id' => 'ID',
+                    'username' => '用户名',
+                    'nickname' => '昵称',
+                    'name' => '姓名',
+                ];
+                $show->fields($fields);
 
-                $show->created_at();
-                $show->updated_at();
+                $show->field('sex', '性别')->using(['女', '男']);
+                $show->field('created_at', '注册时间');
+
             }));
         });
     }
