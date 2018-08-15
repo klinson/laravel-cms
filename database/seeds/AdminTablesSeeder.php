@@ -129,6 +129,20 @@ class AdminTablesSeeder extends Seeder
                 'icon'      => 'fa-history',
                 'uri'       => 'auth/logs',
             ],
+            [
+                'parent_id' => 0,
+                'order'     => 0,
+                'title'     => '内容管理',
+                'icon'      => 'fa-copy',
+                'uri'       => '',
+            ],
+            [
+                'parent_id' => 9,
+                'order'     => 0,
+                'title'     => '分类管理',
+                'icon'      => 'fa-list',
+                'uri'       => 'categories',
+            ],
         ]);
 
         // add role to menu.
