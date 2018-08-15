@@ -141,9 +141,9 @@ class UsersController extends Controller
     protected function form($id = 0)
     {
         return Admin::form(User::class, function (Form $form) use ($id) {
-
-            $form->display('id', 'ID');
+            $form->model()->makeVisible('password');
             if ($id) {
+                $form->display('id', 'ID');
                 $form->display('username', '用户名');
             } else {
                 $form->text('username', '用户名')->rules('required|unique:users,username,0,id,deleted_at,NULL');
@@ -157,25 +157,34 @@ class UsersController extends Controller
 //                });
             }
 
-            $form->text('name', '姓名')->rules('required');
-            $form->text('nickname', '昵称')->default('');
+            $form->tab('基本信息', function (Form $form) {
+                $form->text('name', '姓名')->rules('required');
+                $form->text('nickname', '昵称')->default('');
 
-            $form->select('sex', '性别')->options([
-                '女', '男',
-            ])->default(1)->rules('required');
+                $form->select('sex', '性别')->options([
+                    '女', '男',
+                ])->default(1)->rules('required');
 
-            $form->text('email', '邮箱')->rules('nullable|email');
-            $form->text('mobile', '联系方式')->rules(['nullable', new CnMobile()]);
+                $form->text('email', '邮箱')->rules('nullable|email');
+                $form->text('mobile', '联系方式')->rules(['nullable', new CnMobile()]);
 
-            $form->password('password', '密码');
-
-            $form->switch('has_enabled', '状态')->default(1);
-
+                $form->switch('has_enabled', '状态')->default(1);
+            })->tab('修改密码', function (Form $form) {
+                $form->password('password', '密码')->rules(function ($form) {
+                    if ($form->model()->id) {
+                        return 'confirmed';
+                    } else {
+                        return 'required|confirmed';
+                    }
+                });
+                $form->password('password_confirmation', '确认密码');
+                $form->ignore(['password_confirmation']);
+            });
 
             $form->saving(function (Form $form) {
-
-//                dd($form);
-
+                if ($form->input('password')) {
+                    $form->input('password', bcrypt($form->password));
+                }
             });
         });
     }
