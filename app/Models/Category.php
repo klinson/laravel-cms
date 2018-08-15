@@ -16,7 +16,7 @@ class Category extends Model
         parent::__construct($attributes);
 
         $this->setParentColumn('parent_id');
-        $this->setOrderColumn('order');
+        $this->setOrderColumn('sort');
         $this->setTitleColumn('title');
     }
 }

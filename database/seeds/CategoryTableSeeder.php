@@ -16,52 +16,46 @@ class CategoryTableSeeder extends Seeder
         Category::insert([
             [
                 'parent_id' => 0,
-                'order'     => 1,
-                'title'     => '春果',
+                'sort'     => 1,
+                'title'     => '技术教程',
                 'icon'      => 'fa-bar-chart',
+                'is_page'   => 0,
             ],
             [
                 'parent_id' => 0,
-                'order'     => 1,
-                'title'     => '夏果',
+                'sort'     => 1,
+                'title'     => '技术资讯',
                 'icon'      => 'fa-users',
+                'is_page'   => 0,
             ],
             [
                 'parent_id' => 0,
-                'order'     => 2,
-                'title'     => '秋果',
+                'sort'     => 2,
+                'title'     => '关于我们',
                 'icon'      => 'fa-tasks',
+                'is_page'   => 1,
             ],
             [
-                'parent_id' => 0,
-                'order'     => 3,
-                'title'     => '冬果',
+                'parent_id' => 1,
+                'sort'     => 3,
+                'title'     => 'PHP',
                 'icon'      => 'fa-users',
+                'is_page'   => 0,
             ],
             [
                 'parent_id' => 1,
-                'order'     => 0,
-                'title'     => '苹果',
+                'sort'     => 0,
+                'title'     => 'Python',
                 'icon'      => 'fa-user',
+                'is_page'   => 0,
             ],
             [
                 'parent_id' => 1,
-                'order'     => 5,
-                'title'     => '雪梨',
+                'sort'     => 5,
+                'title'     => 'go',
                 'icon'      => 'fa-ban',
-            ],
-            [
-                'parent_id' => 2,
-                'order'     => 6,
-                'title'     => '蟠桃',
-                'icon'      => 'fa-bars',
-            ],
-            [
-                'parent_id' => 3,
-                'order'     => 7,
-                'title'     => '龙眼',
-                'icon'      => 'fa-history',
-            ],
+                'is_page'   => 0,
+            ]
         ]);
     }
 }
