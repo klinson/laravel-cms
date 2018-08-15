@@ -19,9 +19,9 @@ class CreateUsersTable extends Migration
             $table->string('name', 50)->comment('姓名');
             $table->string('nickname', 100)->nullable()->comment('昵称');
             $table->tinyInteger('sex')->default(1)->comment('性别: 1-男, 0-女');
-            $table->string('email')->default('')->comment('邮箱');
-            $table->string('password');
-            $table->string('mobile', 20)->default('')->comment('手机');
+            $table->string('email')->nullable()->comment('邮箱');
+            $table->string('password')->nullable();
+            $table->string('mobile', 20)->nullable()->comment('手机');
             $table->tinyInteger('has_enabled')->default(1)->comment('是否启用');
 
             $table->rememberToken();
