@@ -2,7 +2,6 @@
 
 namespace App\Admin\Controllers;
 
-use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\Dashboard;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Column;
@@ -11,12 +10,12 @@ use Encore\Admin\Layout\Row;
 
 class HomeController extends Controller
 {
+    protected $pageHeader = 'Dashboard';
+
     public function index()
     {
         return Admin::content(function (Content $content) {
-
-            $content->header('Dashboard');
-            $content->description('Description...');
+            $this->_setPageDefault($content);
 
             $content->row(Dashboard::title());
 

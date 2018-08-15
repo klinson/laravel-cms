@@ -3,7 +3,6 @@
 namespace App\Admin\Controllers;
 
 use App\Models\User;
-use App\Http\Controllers\Controller;
 use App\Rules\CnMobile;
 use Encore\Admin\Controllers\ModelForm;
 use Encore\Admin\Form;
@@ -15,6 +14,7 @@ use Encore\Admin\Show;
 class UsersController extends Controller
 {
     use ModelForm;
+    protected $pageHeader = '用户管理';
 
     /**
      * Index interface.
@@ -24,9 +24,7 @@ class UsersController extends Controller
     public function index()
     {
         return Admin::content(function (Content $content) {
-
-            $content->header('用户管理');
-            $content->description('用户管理');
+            $this->_setPageDefault($content);
 
             $content->body($this->grid());
         });
@@ -41,9 +39,7 @@ class UsersController extends Controller
     public function show($id)
     {
         return Admin::content(function (Content $content) use ($id) {
-
-            $content->header('Detail');
-            $content->description('description');
+            $this->_setPageDefault($content);
 
             $content->body(Admin::show(User::findOrFail($id), function (Show $show) {
 
@@ -74,9 +70,7 @@ class UsersController extends Controller
     public function edit($id)
     {
         return Admin::content(function (Content $content) use ($id) {
-
-            $content->header('Edit');
-            $content->description('description');
+            $this->_setPageDefault($content);
 
             $content->body($this->form($id)->edit($id));
         });
@@ -90,9 +84,7 @@ class UsersController extends Controller
     public function create()
     {
         return Admin::content(function (Content $content) {
-
-            $content->header('Create');
-            $content->description('description');
+            $this->_setPageDefault($content);
 
             $content->body($this->form());
         });

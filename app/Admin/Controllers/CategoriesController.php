@@ -3,7 +3,6 @@
 namespace App\Admin\Controllers;
 
 use App\Models\Category;
-use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -18,6 +17,7 @@ use Encore\Admin\Widgets\Box;
 class CategoriesController extends Controller
 {
     use ModelForm;
+    protected $pageHeader = '分类管理';
 
     /**
      * Index interface.
@@ -121,12 +121,6 @@ class CategoriesController extends Controller
             $form->icon('icon', trans('admin.icon'))->default('fa-bars')->rules('required')->help($this->iconHelp());
 
         });
-    }
-
-    protected function _setPageDefault(Content $content, $header = '分类管理', $description = '')
-    {
-        $content->header($header);
-        $content->description($description);
     }
 
     protected function treeView()
