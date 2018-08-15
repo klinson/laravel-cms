@@ -52,10 +52,13 @@ class UsersController extends Controller
                     'username' => '用户名',
                     'nickname' => '昵称',
                     'name' => '姓名',
+                    'email' => '邮箱',
+                    'mobile' => '联系方式',
                 ];
                 $show->fields($fields);
 
                 $show->field('sex', '性别')->using(['女', '男']);
+                $show->field('has_enabled', '状态')->using(['禁用', '启用']);
                 $show->field('created_at', '注册时间');
 
             }));
