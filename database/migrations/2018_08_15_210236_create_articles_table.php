@@ -19,7 +19,7 @@ class CreateArticlesTable extends Migration
             $table->text('content')->nullable()->comment('内容');
             $table->string('thumbnail')->nullable()->comment('封面缩略图');
             $table->string('author', 50)->nullable()->comment('作者署名信息');
-            $table->unsignedInteger('publish_time')->default(0)->comment('发布时间');
+            $table->timestamp('publish_time')->nullable()->comment('发布时间');
             $table->string('description')->nullable()->comment('描述');
             $table->unsignedInteger('sort')->default(0)->comment('排序');
             $table->tinyInteger('is_top')->default(0)->comment('是否置顶');

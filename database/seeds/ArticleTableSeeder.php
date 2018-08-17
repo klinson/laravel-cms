@@ -18,35 +18,30 @@ class ArticleTableSeeder extends Seeder
                 'content' => '<h1>关于我们</h1>',
                 'thumbnail' => 'http://jwc.dgut.edu.cn/dglgjwc/tpxw/2017-11/14/e87ca099a50140c88859fec297fd18bf/images/e1978942eb44412bac37d2c98228fcb2.png',
                 'author' => 'klinson',
-                'publish_time' => '1534338797',
             ],
             [
                 'title' => 'PHP哦',
                 'content' => '<h1>PHP哦</h1>',
                 'thumbnail' => 'http://jwc.dgut.edu.cn/dglgjwc/tpxw/2017-11/14/e87ca099a50140c88859fec297fd18bf/images/e1978942eb44412bac37d2c98228fcb2.png',
                 'author' => 'klinson',
-                'publish_time' => '1534338797',
             ],
             [
                 'title' => 'Python哦',
                 'content' => '<h1>Python哦</h1>',
                 'thumbnail' => 'http://jwc.dgut.edu.cn/dglgjwc/tpxw/2017-11/14/e87ca099a50140c88859fec297fd18bf/images/e1978942eb44412bac37d2c98228fcb2.png',
                 'author' => 'klinson',
-                'publish_time' => '1534338797',
             ],
             [
                 'title' => '资讯1',
                 'content' => '<h1>资讯1</h1>',
                 'thumbnail' => 'http://jwc.dgut.edu.cn/dglgjwc/tpxw/2017-11/14/e87ca099a50140c88859fec297fd18bf/images/e1978942eb44412bac37d2c98228fcb2.png',
                 'author' => 'klinson',
-                'publish_time' => '1534338797',
             ],
             [
                 'title' => '资讯2',
                 'content' => '<h1>资讯2</h1>',
                 'thumbnail' => 'http://jwc.dgut.edu.cn/dglgjwc/tpxw/2017-11/14/e87ca099a50140c88859fec297fd18bf/images/e1978942eb44412bac37d2c98228fcb2.png',
                 'author' => 'klinson',
-                'publish_time' => '1534338797',
             ]
         ]);
 
