@@ -19,4 +19,9 @@ class Category extends Model
         $this->setOrderColumn('sort');
         $this->setTitleColumn('title');
     }
+
+    public static function selectCategoryOptions()
+    {
+        return self::where('is_page', 0)->get(['id', 'title'])->pluck('title', 'id');
+    }
 }

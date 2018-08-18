@@ -3,6 +3,7 @@
 namespace App\Admin\Controllers;
 
 use App\Models\Article;
+use App\Models\Category;
 use Encore\Admin\Controllers\ModelForm;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -93,11 +94,16 @@ class ArticlesController extends Controller
             $grid->column('id', 'ID')->sortable();
             $grid->column('sort', '排序')->sortable()->editable('text');
             $grid->column('title', '文章标题');
+            $grid->categories('所属分类')->pluck('title')->label();
             $grid->column('thumbnail', '缩略图')->display(function ($value) {
-                if (substr($value, 0, 4) === 'http') {
-                    return "<img style='width: 100px' src='".$value."'>";
+                if (empty($value)) {
+                    return '无';
+                } else {
+                    if (substr($value, 0, 4) === 'http') {
+                        return "<img style='width: 100px' src='".$value."'>";
+                    }
+                    return "<img style='width: 100px' src='".\Storage::url($value)."'>";
                 }
-                return "<img style='width: 100px' src='".\Storage::url($value)."'>";
             });
 
             $states = [
@@ -116,6 +122,19 @@ class ArticlesController extends Controller
             $grid->column('created_at', '创建时间')->display(function ($data) {
                 return date('Y-m-d H:i:s', $data);
             })->sortable();
+
+            $grid->filter(function ($filter) {
+                $filter->like('title', '文章标题');
+//                $filter->in('categories', '所属分类')->multipleSelect(Category::selectCategoryOptions());
+
+                $filter->between('publish_time', '发布时间')->datetime();
+
+                $filter->equal('is_top', '置顶')->radio([
+                    ''   => '所有',
+                    0    => '未置顶',
+                    1    => '已置顶',
+                ]);
+            });
         });
     }
 
@@ -128,25 +147,20 @@ class ArticlesController extends Controller
     {
         return Admin::form(Article::class, function (Form $form) {
 
-            $form->display('id', 'ID');
-
             $form->tab('基本信息', function (Form $form) {
                 $form->text('title', '标题')->rules('required');
+                $form->multipleSelect('categories', '所属分类')->options(Category::selectCategoryOptions());
                 $form->editor('content', '内容')->rules('required');
                 $form->textarea('description', '描述');
                 $form->image('thumbnail', '封面');
             })->tab('发布信息', function (Form $form) {
                 $form->text('author', '作者');
-                $form->datetime('publish_time', '发布时间')->format('YYYY-MM-DD HH:mm:ss');
+                $form->datetime('publish_time', '发布时间')->format('YYYY-MM-DD HH:mm:ss')->default(date('Y-m-d H:i:s'));
             })->tab('设置', function (Form $form) {
                 $form->number('sort', '排序')->default(0);
                 $form->switch('is_top', '是否置顶')->default(0);
                 $form->switch('has_enabled', '状态')->default(1);
                 $form->number('pv', '阅读量')->default(0);
-            });
-
-            $form->saving(function (Form $form) {
-
             });
         });
     }
