@@ -66,6 +66,24 @@ class AdminTablesSeeder extends Seeder
                 'http_method' => '',
                 'http_path'   => "/auth/roles\r\n/auth/permissions\r\n/auth/menu\r\n/auth/logs",
             ],
+            [
+                'name'      => 'Media manager',
+                'slug'      => 'ext.media-manager',
+                'http_method' => '',
+                'http_path' => '/media*',
+            ],
+            [
+                'name'      => 'Backup',
+                'slug'      => 'ext.backup',
+                'http_method' => '',
+                'http_path' => '/backup*',
+            ],
+            [
+                'name'      => 'Admin Config',
+                'slug'      => 'ext.config',
+                'http_method' => '',
+                'http_path' => '/config*',
+            ],
         ]);
 
         Role::first()->permissions()->save(Permission::first());
@@ -124,7 +142,7 @@ class AdminTablesSeeder extends Seeder
             ],
             [
                 'parent_id' => 3,
-                'order'     => 7,
+                'order'     => 10,
                 'title'     => '系统操作日志',
                 'icon'      => 'fa-history',
                 'uri'       => 'auth/logs',
@@ -150,6 +168,28 @@ class AdminTablesSeeder extends Seeder
                 'icon'      => 'fa-file-o',
                 'uri'       => 'articles',
             ],
+            [
+                'parent_id' => 0,
+                'order'     => 1,
+                'title'     => '资源管理',
+                'icon'      => 'fa-file',
+                'uri'       => 'media',
+            ],
+            [
+                'parent_id' => 3,
+                'order'     => 7,
+                'title'     => '配置管理',
+                'icon'      => 'fa-toggle-on',
+                'uri'       => 'config',
+            ],
+            [
+                'parent_id' => 3,
+                'order'     => 8,
+                'title'     => '备份管理',
+                'icon'      => 'fa-copy',
+                'uri'       => 'backup',
+            ],
+
         ]);
 
         // add role to menu.

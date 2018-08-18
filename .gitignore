@@ -1,7 +1,9 @@
 /node_modules
 /public/hot
 /public/storage
+/public/uploads
 /storage/*.key
+/storage/app
 /vendor
 /.idea
 /.vagrant
