@@ -19,6 +19,7 @@
  */
 
 use Encore\Admin\Form;
+use Encore\Admin\Grid\Column;
 
 Form::forget('map');
 
@@ -28,3 +29,6 @@ Form::extend('editor', \App\Admin\Extensions\Form\WangEditor::class);
 //Form::extend('editor', \App\Admin\Extensions\Form\CKEditor::class);
 //Form::extend('code', \App\Admin\Extensions\Form\CodeEditor::class);
 //Form::extend('markdown', \App\Admin\Extensions\Form\MarkdownEditor::class);
+
+//Column::extend('qrcode', \App\Admin\Extensions\Column\Qrcode::class);
+//Column::extend('urlWrapper', \App\Admin\Extensions\Column\UrlWrapper::class);
