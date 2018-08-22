@@ -131,7 +131,7 @@ class ArticlesController extends Controller
                     $query->whereHas('categories', function ($query) {
                         $query->whereIn('id', $this->input);
                     });
-                }, '地址或手机号')->multipleSelect(Category::selectCategoryOptions());
+                }, '所属分类')->multipleSelect(Category::selectCategoryOptions());
 
                 $filter->between('publish_time', '发布时间')->datetime();
 
