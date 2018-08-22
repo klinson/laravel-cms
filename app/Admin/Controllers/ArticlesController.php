@@ -127,12 +127,24 @@ class ArticlesController extends Controller
                 $filter->like('title', '文章标题');
 //                $filter->in('categories', '所属分类')->multipleSelect(Category::selectCategoryOptions());
 
+                $filter->where(function ($query) {
+                    $query->whereHas('categories', function ($query) {
+                        $query->whereIn('id', $this->input);
+                    });
+                }, '地址或手机号')->multipleSelect(Category::selectCategoryOptions());
+
                 $filter->between('publish_time', '发布时间')->datetime();
 
                 $filter->equal('is_top', '置顶')->radio([
                     ''   => '所有',
                     0    => '未置顶',
                     1    => '已置顶',
+                ]);
+
+                $filter->equal('has_enabled', '状态')->radio([
+                    ''   => '所有',
+                    0    => '禁用',
+                    1    => '正常',
                 ]);
             });
         });
