@@ -61,12 +61,38 @@
         @include($_theme_info['view_root_path'].'.layouts._message')
         @yield('content')
     </div>
-
-    @include($_theme_info['view_root_path'].'.layouts._footer')
+    <footer id="colorlib-footer">
+        @include($_theme_info['view_root_path'].'.layouts._footer')
+    </footer>
 </div>
 
+<div class="gototop js-top">
+    <a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
+</div>
+
+<!-- jQuery -->
+<script src="{{ asset($_theme_info['style_root_path'].'/js/jquery.min.js') }}"></script>
+<!-- jQuery Easing -->
+<script src="{{ asset($_theme_info['style_root_path'].'/js/jquery.easing.1.3.js') }}"></script>
+<!-- Bootstrap -->
+<script src="{{ asset($_theme_info['style_root_path'].'/js/bootstrap.min.js') }}"></script>
+<!-- Waypoints -->
+<script src="{{ asset($_theme_info['style_root_path'].'/js/jquery.waypoints.min.js') }}"></script>
+<!-- Stellar Parallax -->
+<script src="{{ asset($_theme_info['style_root_path'].'/js/jquery.stellar.min.js') }}"></script>
+<!-- YTPlayer -->
+<script src="{{ asset($_theme_info['style_root_path'].'/js/jquery.mb.YTPlayer.min.js') }}"></script>
+<!-- Owl carousel -->
+<script src="{{ asset($_theme_info['style_root_path'].'/js/owl.carousel.min.js') }}"></script>
+<!-- Magnific Popup -->
+<script src="{{ asset($_theme_info['style_root_path'].'/js/jquery.magnific-popup.min.js') }}"></script>
+<script src="{{ asset($_theme_info['style_root_path'].'/js/magnific-popup-options.js') }}"></script>
+<!-- Counters -->
+<script src="{{ asset($_theme_info['style_root_path'].'/js/jquery.countTo.js') }}"></script>
+<!-- Main -->
+<script src="{{ asset($_theme_info['style_root_path'].'/js/main.js') }}"></script>
+
 <!-- Scripts -->
-<script src="{{ asset('js/app.js') }}"></script>
 @yield('scripts')
 </body>
 </html>
