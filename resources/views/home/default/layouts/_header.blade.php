@@ -3,11 +3,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-2">
-                    <div id="colorlib-logo"><a href="index.html">Unapp</a></div>
+                    <div id="colorlib-logo"><a href="/">{{ $_theme_info['system_name'] ?? 'klinson' }}</a></div>
                 </div>
                 <div class="col-md-10 text-right menu-1">
                     <ul>
-                        <li class="active"><a href="index.html">Home</a></li>
+                        <li class="active"><a href="/">首页</a></li>
                         <li class="has-dropdown">
                             <a href="work.html">Works</a>
                             <ul class="dropdown">
@@ -19,7 +19,7 @@
                         <li><a href="blog.html">Blog</a></li>
                         <li><a href="about.html">About</a></li>
                         <li><a href="shop.html">Shop</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="contact.html">联系我们</a></li>
                     </ul>
                 </div>
             </div>
