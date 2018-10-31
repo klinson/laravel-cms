@@ -1,5 +1,5 @@
-<html>
-<body>
-<h1>Hello</h1>
-</body>
-</html>
+@extends($_theme_info['view_root_path'].'.layouts.app')
+
+@section('content')
+    <p>这是主体内容。</p>
+@endsection

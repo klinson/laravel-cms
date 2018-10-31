@@ -9,11 +9,13 @@ class Controller extends BaseController
 {
     // 前端模板主题
     protected $theme = 'default';
+    protected $themeInfo = [];
 
     public function __construct()
     {
         // 初始化主题
         $this->theme = config('theme.default');
+        $this->themeInfo = config('theme.themes.'.$this->theme);
     }
 
     /**
@@ -35,7 +37,9 @@ class Controller extends BaseController
             $view = $class ? ($class.'.') : '';
             $view .= $method ?: '';
         }
-        $view = 'home.' . ($this->theme ? ($this->theme.'.') : '') . $view;
-        return view($view, $data, $mergeData);
+
+        $view = $this->themeInfo['view_root_path'] . '.' . $view;
+
+        return view($view, $data, $mergeData)->with('_theme_info', $this->themeInfo);
     }
 }
