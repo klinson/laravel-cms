@@ -54,13 +54,14 @@
 </head>
 
 <body>
-<div id="app">
+<div class="colorlib-loader"></div>
+<div id="page">
     @include($_theme_info['view_root_path'].'.layouts._header')
 
-    <div class="container">
-        @include($_theme_info['view_root_path'].'.layouts._message')
-        @yield('content')
-    </div>
+    @include($_theme_info['view_root_path'].'.layouts._message')
+
+    @yield('content')
+
     <footer id="colorlib-footer">
         @include($_theme_info['view_root_path'].'.layouts._footer')
     </footer>
