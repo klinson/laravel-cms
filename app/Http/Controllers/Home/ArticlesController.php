@@ -24,8 +24,8 @@ class ArticlesController extends Controller
         return $this->view()->with(compact(['category', 'articles']));
     }
 
-    public function show(Article $article)
+    public function show(Category $category, Article $article)
     {
-        return $this->view();
+        return $this->view()->with(compact(['article', 'category']));
     }
 }
