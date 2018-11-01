@@ -8,7 +8,7 @@
             <div class="container">
                 <div class="col-md-12 col-md-offset-0">
                     <div class="animate-box">
-                        <h2>Contact Us</h2>
+                        <h2>联系我们</h2>
                         <p class="breadcrumbs">
                             <span><a href="{{ route('index') }}">首页</a></span>
                             <span>联系我们</span>
