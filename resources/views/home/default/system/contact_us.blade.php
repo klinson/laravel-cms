@@ -50,37 +50,57 @@
                     <h2>留言</h2>
                     <form action="{{ route('system.contactUs.store') }}" method="post">
                         <div class="row form-group">
-                            <div class="col-md-12">
+                            <div class="col-md-12 {{$errors->has('name')?'has-error':''}}">
                                 {{--<label for="name">姓名</label>--}}
-                                <input type="text" id="name" class="form-control" placeholder="请输入您的姓名" required>
+                                <input type="text" id="name" name="name" class="form-control" placeholder="请输入您的姓名" value="{{ old('name') }}" required>
                             </div>
+                            @if($errors->has('name'))
+                                <div class="col-md-12">
+                                    <p class="text-danger text-left"><strong>{{$errors->first('name')}}</strong></p>
+                                </div>
+                            @endif
                         </div>
 
                         <div class="row form-group">
-                            <div class="col-md-12">
+                            <div class="col-md-12 {{$errors->has('email')?'has-error':''}}">
                                 {{--<label for="email">邮箱</label>--}}
-                                <input type="text" id="email" class="form-control" placeholder="请输入您常用的邮箱地址" required>
+                                <input type="text" id="email" name="email" class="form-control" placeholder="请输入您常用的邮箱地址" value="{{ old('email') }}" required>
                             </div>
+                            @if($errors->has('email'))
+                                <div class="col-md-12">
+                                    <p class="text-danger text-left"><strong>{{$errors->first('email')}}</strong></p>
+                                </div>
+                            @endif
                         </div>
 
                         <div class="row form-group">
-                            <div class="col-md-12">
+                            <div class="col-md-12 {{$errors->has('subject')?'has-error':''}}">
                                 {{--<label for="subject">主题</label>--}}
-                                <input type="text" id="subject" class="form-control" placeholder="请输入概要主题" required>
+                                <input type="text" id="subject" name="subject" class="form-control" placeholder="请输入概要主题" required value="{{ old('subject') }}">
                             </div>
+                            @if($errors->has('subject'))
+                                <div class="col-md-12">
+                                    <p class="text-danger text-left"><strong>{{$errors->first('subject')}}</strong></p>
+                                </div>
+                            @endif
                         </div>
 
                         <div class="row form-group">
-                            <div class="col-md-12">
+                            <div class="col-md-12 {{$errors->has('content')?'has-error':''}}">
                                 {{--<label for="message">内容</label>--}}
-                                <textarea name="content" id="content" cols="30" rows="7" class="form-control" placeholder="请输入详细内容" required></textarea>
+                                <textarea name="content" id="content" cols="30" rows="7" class="form-control" placeholder="请输入详细内容" required>{{ old('content') }}</textarea>
                             </div>
+                            @if($errors->has('content'))
+                                <div class="col-md-12">
+                                    <p class="text-danger text-left"><strong>{{$errors->first('content')}}</strong></p>
+                                </div>
+                            @endif
                         </div>
                         <div class="row form-group">
-                            <div class="col-sm-6">
-                                <input type="text" id="captcha" class="form-control {{$errors->has('captcha')?'parsley-error':''}}" name="captcha" placeholder="请输入验证码" required>
+                            <div class="col-sm-6 {{$errors->has('captcha')?'has-error':''}}">
+                                <input type="text" id="captcha" class="form-control" name="captcha" placeholder="请输入验证码" required value="{{ old('captcha') }}">
                             </div>
-                            <div class="col-sm-3">
+                            <div class="col-sm-3 {{$errors->has('captcha')?'has-error':''}}">
                                 <img src="{{captcha_src()}}" style="cursor: pointer" onclick="this.src='{{captcha_src()}}'+Math.random()">
                             </div>
                             <div class="col-sm-3">
@@ -88,6 +108,11 @@
                                     <input type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;提交留言&nbsp;&nbsp;&nbsp;&nbsp;" class="btn btn-primary">
                                 </div>
                             </div>
+                            @if($errors->has('captcha'))
+                                <div class="col-md-12">
+                                    <p class="text-danger text-left"><strong>{{$errors->first('captcha')}}</strong></p>
+                                </div>
+                            @endif
                         </div>
                         {{ csrf_field() }}
                     </form>
