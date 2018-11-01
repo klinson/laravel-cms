@@ -15,4 +15,6 @@ Route::namespace('Home')->group(function (){
     Route::get('/', 'IndexController@index')->name('index');
     Route::get('categories/{category}', 'ArticlesController@categories')->where('category', '[0-9]+')->name('articles.categories');
     Route::get('categories/{category}/articles/{article}', 'ArticlesController@show')->where('category', '[0-9]+')->where('category', '[0-9]+')->name('articles.show');
+    Route::get('/aboutUs', 'SystemController@aboutUs')->name('system.aboutUs');
+    Route::post('/aboutUs', 'SystemController@storeAboutUs')->name('system.aboutUs.store');
 });
