@@ -46,8 +46,8 @@ function tree_to_list($tree, $id = 'id', $child = 'child')
             }
         }
     }
-    foreach ($array as $item) {
-        unset($item[$child]);
+    foreach ($array as $key => $item) {
+        unset($array[$key][$child]);
     }
     return $array;
 }
