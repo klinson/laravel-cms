@@ -23,7 +23,7 @@
                             @endempty
                         @endforeach
 
-                        <li class="{{ request()->route()->getName() === 'system.aboutUs' ? 'active' : ''}}"><a href="{{ route('system.aboutUs') }}">联系我们</a></li>
+                        <li class="{{ request()->route()->getName() === 'system.contactUs' ? 'active' : ''}}"><a href="{{ route('system.contactUs') }}">联系我们</a></li>
                     </ul>
                 </div>
             </div>
