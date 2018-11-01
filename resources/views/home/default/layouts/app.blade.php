@@ -58,6 +58,8 @@
 <div id="page">
     @include($_theme_info['view_root_path'].'.layouts._header')
 
+    @yield('header')
+
     @include($_theme_info['view_root_path'].'.layouts._message')
 
     @yield('content')

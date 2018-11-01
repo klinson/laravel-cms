@@ -13,4 +13,6 @@
 
 Route::namespace('Home')->group(function (){
     Route::get('/', 'IndexController@index');
+    Route::get('categories', 'ArticlesController@categories');
+    Route::get('articles', 'ArticlesController@show');
 });
