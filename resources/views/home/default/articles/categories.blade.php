@@ -35,16 +35,21 @@
                             <div class="half animate-box">
                                 <div class="row no-gutters">
                                     <div class="col-md-12 no-gutters">
-                                        <a href="#" class="work-img" style="{{ get_admin_file_url($article->thumbnail) }}"></a>
+                                        <a href="{{ route('articles.show', ['article' => $article->id]) }}" class="work-img" style="background-image: url({{ get_admin_file_url($article->thumbnail) }})"></a>
                                     </div>
                                 </div>
                             </div>
                             <div class="half animate-box">
                                 <div class="row no-gutters">
                                     <div class="col-md-12 no-gutters">
-                                        <div class="display-t desc">
+                                        <div class="display-t desc col-md-12">
                                             <div class="display-tc">
                                                 <h2><a href="{{ route('articles.show', ['article' => $article->id]) }}">{{ $article->title }}</a></h2>
+                                                <h5>
+                                                    <span>{{ $article->author }}</span>
+                                                    <span>发布于</span>
+                                                    <span>{{ $article->publish_time }}</span>
+                                                </h5>
                                                 <p>{{ $article->description }}</p>
                                             </div>
                                         </div>
