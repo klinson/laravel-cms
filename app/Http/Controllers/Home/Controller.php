@@ -18,6 +18,7 @@ class Controller extends BaseController
         // 初始化主题
         $this->theme = config('theme.default');
         $this->themeInfo = config('theme.themes.'.$this->theme);
+        $this->themeInfo['style_root_path'] = '/'.$this->themeInfo['style_root_path'];
 
         if (request()->isMethod('get')) {
             $this->categories = Category::getTree();

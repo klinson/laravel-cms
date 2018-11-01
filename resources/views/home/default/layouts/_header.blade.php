@@ -7,7 +7,7 @@
                 </div>
                 <div class="col-md-10 text-right menu-1">
                     <ul>
-                        <li class="active"><a href="/">首页</a></li>
+                        <li class="active"><a href="{{ route('index') }}">首页</a></li>
                         @foreach ($_categories as $category)
                             @empty($category['children'])
                                 <li><a href="{{ route('articles.categories', ['category' => $category['id']])}}">{{ $category['title'] }}</a></li>
