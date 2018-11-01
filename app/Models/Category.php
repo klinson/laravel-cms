@@ -31,4 +31,9 @@ class Category extends Model
         $tree = list_to_tree($list, 0, 'id', 'parent_id', 'children');
         return $tree;
     }
+
+    public function articles()
+    {
+        return $this->belongsToMany(Article::class, 'category_has_articles');
+    }
 }

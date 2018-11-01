@@ -51,3 +51,44 @@ function tree_to_list($tree, $id = 'id', $child = 'child')
     }
     return $array;
 }
+
+/**
+ * 后台自动上传的文件获取url
+ * @param $path
+ * @param string $server
+ * @return mixed
+ */
+function get_admin_file_url($path, $server = '')
+{
+    if (is_null($path) || $path === '') {
+        return '';
+    }
+    if (url()->isValidUrl($path)) {
+        $src = $path;
+    } elseif ($server) {
+        $src = $server.$path;
+    } else {
+        $src = \Illuminate\Support\Facades\Storage::disk(config('admin.upload.disk'))->url($path);
+    }
+    return $src;
+}
+
+/**
+ * 自动判断数组还是单个，获取url
+ * @param $paths
+ * @param string $server
+ * @author klinson <klinson@163.com>
+ * @return array|mixed
+ */
+function get_admin_file_urls($paths, $server = '')
+{
+    if (is_array($paths)) {
+        $return = [];
+        foreach ($paths as $path) {
+            $return[] = get_admin_file_url($path, $server);
+        }
+        return $return;
+    } else {
+        return get_admin_file_url($paths, $server);
+    }
+}

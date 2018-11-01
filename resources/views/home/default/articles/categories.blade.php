@@ -8,8 +8,14 @@
                 <div class="container">
                     <div class="col-md-12 col-md-offset-0">
                         <div class="animate-box">
-                            <h2>Portfolio</h2>
-                            <p class="breadcrumbs"><span><a href="index.html">Home</a></span> <span>Work</span></p>
+                            <h2>{{ $category->title }}</h2>
+                            <p class="breadcrumbs">
+                                <span><a href="{{ route('index') }}">首页</a></span>
+                                @if (! empty($category->parent))
+                                    <span><a href="{{ route('articles.categories', ['category' => $category->parent->id]) }}">{{ $category->parent->title }}</a></span>
+                                @endif
+                                <span>{{ $category->title }}</span>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -22,112 +28,42 @@
     <div class="colorlib-work">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
-                    <div class="work-flex">
-                        <div class="half animate-box">
-                            <div class="row no-gutters">
-                                <div class="col-md-12 col-md-push-12 no-gutters">
-                                    <a href="#" class="work-img" style="background-image: url({{ $_theme_info['style_root_path'] }}/images/work-1.jpg);"></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="half animate-box">
-                            <div class="row no-gutters">
-                                <div class="col-md-12 col-md-pull-12 no-gutters">
-                                    <div class="display-t desc">
-                                        <div class="display-tc">
-                                            <h2><a href="#">A beige chair at a basket</a></h2>
-                                            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col-md-12">
-                    <div class="work-flex">
-                        <div class="half animate-box">
-                            <div class="row no-gutters">
-                                <div class="col-md-12 no-gutters">
-                                    <a href="#" class="work-img" style="background-image: url({{ $_theme_info['style_root_path'] }}/images/work-2.jpg);"></a>
+                @forelse ($articles as $article)
+                    <div class="col-md-12">
+                        <div class="work-flex">
+                            <div class="half animate-box">
+                                <div class="row no-gutters">
+                                    <div class="col-md-12 no-gutters">
+                                        <a href="#" class="work-img" style="{{ get_admin_file_url($article->thumbnail) }}"></a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="half animate-box">
-                            <div class="row no-gutters">
-                                <div class="col-md-12 no-gutters">
-                                    <div class="display-t desc">
-                                        <div class="display-tc">
-                                            <h2><a href="#">A beige chair at a small white desk</a></h2>
-                                            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life</p>
+                            <div class="half animate-box">
+                                <div class="row no-gutters">
+                                    <div class="col-md-12 no-gutters">
+                                        <div class="display-t desc">
+                                            <div class="display-tc">
+                                                <h2><a href="{{ route('articles.show', ['article' => $article->id]) }}">{{ $article->title }}</a></h2>
+                                                <p>{{ $article->description }}</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-md-12">
-                    <div class="work-flex">
-                        <div class="half animate-box">
-                            <div class="row no-gutters">
-                                <div class="col-md-12 col-md-push-12 no-gutters">
-                                    <a href="#" class="work-img" style="background-image: url({{ $_theme_info['style_root_path'] }}/images/work-3.jpg);"></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="half animate-box">
-                            <div class="row no-gutters">
-                                <div class="col-md-12 col-md-pull-12 no-gutters">
-                                    <div class="display-t desc">
-                                        <div class="display-tc">
-                                            <h2><a href="#">A beige chair at a basket</a></h2>
-                                            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                @empty
+                    <div class="col-md-8 col-md-offset-2 text-center colorlib-heading animate-box fadeInUp animated-fast">
+                        <p>--- 暂无任何文章 ---</p>
                     </div>
-                </div>
+                @endforelse
 
-                <div class="col-md-12">
-                    <div class="work-flex">
-                        <div class="half animate-box">
-                            <div class="row no-gutters">
-                                <div class="col-md-12 no-gutters">
-                                    <a href="#" class="work-img" style="background-image: url({{ $_theme_info['style_root_path'] }}/images/work-4.jpg);"></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="half animate-box">
-                            <div class="row no-gutters">
-                                <div class="col-md-12 no-gutters">
-                                    <div class="display-t desc">
-                                        <div class="display-tc">
-                                            <h2><a href="#">A beige chair at a small white desk</a></h2>
-                                            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <ul class="pagination">
-                        <li class="disabled"><a href="#">&laquo;</a></li>
-                        <li class="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">&raquo;</a></li>
-                    </ul>
+                    {{ $articles->links() }}
                 </div>
             </div>
         </div>
