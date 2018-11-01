@@ -20,3 +20,34 @@ function getCurrentClassNameAndMethodName()
 
     return $tmp;
 }
+
+function list_to_tree($array, $root = 0, $id = 'id', $pid = 'pid', $child = 'child')
+{
+    $tree = [];
+    foreach ($array as $k => $v) {
+        if ($v[$pid] == $root) {
+            $v[$child] = list_to_tree($array, $v[$id], $id, $pid, $child);
+            $tree[] = $v;
+            unset($array[$k]);
+        }
+    }
+    return $tree;
+}
+
+function tree_to_list($tree, $id = 'id', $child = 'child')
+{
+    $array = array();
+    foreach ($tree as $k => $val) {
+        $array[] = $val;
+        if (isset($val[$child])) {
+            $children = tree_to_list($val[$child], $id, $child);
+            if ($children) {
+                $array = array_merge($array, $children);
+            }
+        }
+    }
+    foreach ($array as $item) {
+        unset($item[$child]);
+    }
+    return $array;
+}

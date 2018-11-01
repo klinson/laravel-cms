@@ -24,4 +24,11 @@ class Category extends Model
     {
         return self::where('is_page', 0)->get(['id', 'title'])->pluck('title', 'id');
     }
+
+    public static function getTree()
+    {
+        $list = self::orderBy('sort')->get()->toArray();
+        $tree = list_to_tree($list, 0, 'id', 'parent_id', 'children');
+        return $tree;
+    }
 }

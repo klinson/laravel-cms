@@ -13,6 +13,6 @@
 
 Route::namespace('Home')->group(function (){
     Route::get('/', 'IndexController@index');
-    Route::get('categories', 'ArticlesController@categories');
-    Route::get('articles', 'ArticlesController@show');
+    Route::get('categories/{category}', 'ArticlesController@categories')->where('category', '[0-9]+')->name('articles.categories');
+    Route::get('articles/{article}', 'ArticlesController@show')->where('category', '[0-9]+')->name('articles.show');
 });

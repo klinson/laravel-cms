@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller as BaseController;
+use App\Models\Category;
 use Illuminate\Support\Str;
 
 class Controller extends BaseController
@@ -10,12 +11,17 @@ class Controller extends BaseController
     // 前端模板主题
     protected $theme = 'default';
     protected $themeInfo = [];
+    protected $categories = [];
 
     public function __construct()
     {
         // 初始化主题
         $this->theme = config('theme.default');
         $this->themeInfo = config('theme.themes.'.$this->theme);
+
+        if (request()->isMethod('get')) {
+            $this->categories = Category::getTree();
+        }
     }
 
     /**
@@ -40,6 +46,8 @@ class Controller extends BaseController
 
         $view = $this->themeInfo['view_root_path'] . '.' . $view;
 
-        return view($view, $data, $mergeData)->with('_theme_info', $this->themeInfo);
+        return view($view, $data, $mergeData)
+            ->with('_theme_info', $this->themeInfo)
+            ->with('_categories', $this->categories);
     }
 }

@@ -8,6 +8,9 @@
 
 namespace App\Http\Controllers\Home;
 
+use App\Models\Article;
+use App\Models\Category;
+
 class ArticlesController extends Controller
 {
     public function index()
@@ -15,12 +18,12 @@ class ArticlesController extends Controller
         return $this->view();
     }
 
-    public function categories()
+    public function categories(Category $category)
     {
-        return $this->view();
+        return $this->view()->with(compact('category'));
     }
 
-    public function show()
+    public function show(Article $article)
     {
         return $this->view();
     }

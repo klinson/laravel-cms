@@ -8,17 +8,21 @@
                 <div class="col-md-10 text-right menu-1">
                     <ul>
                         <li class="active"><a href="/">首页</a></li>
-                        <li class="has-dropdown">
-                            <a href="work.html">Works</a>
-                            <ul class="dropdown">
-                                <li><a href="work-grid.html">Works grid with text</a></li>
-                                <li><a href="work-grid-without-text.html">Works grid w/o text</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="shop.html">Shop</a></li>
+                        @foreach ($_categories as $category)
+                            @empty($category['children'])
+                                <li><a href="{{ route('articles.categories', ['category' => $category['id']])}}">{{ $category['title'] }}</a></li>
+                            @else
+                                <li class="has-dropdown">
+                                    <a href="{{ route('articles.categories', ['category' => $category['id']]) }}">{{ $category['title'] }}</a>
+                                    <ul class="dropdown">
+                                        @foreach ($category['children'] as $children)
+                                            <a href="{{ route('articles.categories', ['id' => $children['id']]) }}">{{ $children['title'] }}</a>
+                                        @endforeach
+                                    </ul>
+                                </li>
+                            @endempty
+                        @endforeach
+
                         <li><a href="contact.html">联系我们</a></li>
                     </ul>
                 </div>
