@@ -48,41 +48,48 @@
                 </div>
                 <div class="col-md-8 col-md-pull-4 animate-box">
                     <h2>留言</h2>
-                    <form action="#">
+                    <form action="{{ route('system.contactUs.store') }}" method="post">
                         <div class="row form-group">
-                            <div class="col-md-6">
-                                <!-- <label for="fname">First Name</label> -->
-                                <input type="text" id="fname" class="form-control" placeholder="Your firstname">
-                            </div>
-                            <div class="col-md-6">
-                                <!-- <label for="lname">Last Name</label> -->
-                                <input type="text" id="lname" class="form-control" placeholder="Your lastname">
+                            <div class="col-md-12">
+                                {{--<label for="name">姓名</label>--}}
+                                <input type="text" id="name" class="form-control" placeholder="请输入您的姓名" required>
                             </div>
                         </div>
 
                         <div class="row form-group">
                             <div class="col-md-12">
-                                <!-- <label for="email">Email</label> -->
-                                <input type="text" id="email" class="form-control" placeholder="Your email address">
+                                {{--<label for="email">邮箱</label>--}}
+                                <input type="text" id="email" class="form-control" placeholder="请输入您常用的邮箱地址" required>
                             </div>
                         </div>
 
                         <div class="row form-group">
                             <div class="col-md-12">
-                                <!-- <label for="subject">Subject</label> -->
-                                <input type="text" id="subject" class="form-control" placeholder="Your subject of this message">
+                                {{--<label for="subject">主题</label>--}}
+                                <input type="text" id="subject" class="form-control" placeholder="请输入概要主题" required>
                             </div>
                         </div>
 
                         <div class="row form-group">
                             <div class="col-md-12">
-                                <!-- <label for="message">Message</label> -->
-                                <textarea name="message" id="message" cols="30" rows="10" class="form-control" placeholder="Say something about us"></textarea>
+                                {{--<label for="message">内容</label>--}}
+                                <textarea name="content" id="content" cols="30" rows="7" class="form-control" placeholder="请输入详细内容" required></textarea>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <input type="submit" value="Send Message" class="btn btn-primary">
+                        <div class="row form-group">
+                            <div class="col-sm-6">
+                                <input type="text" id="captcha" class="form-control {{$errors->has('captcha')?'parsley-error':''}}" name="captcha" placeholder="请输入验证码" required>
+                            </div>
+                            <div class="col-sm-3">
+                                <img src="{{captcha_src()}}" style="cursor: pointer" onclick="this.src='{{captcha_src()}}'+Math.random()">
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="pull-right" >
+                                    <input type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;提交留言&nbsp;&nbsp;&nbsp;&nbsp;" class="btn btn-primary">
+                                </div>
+                            </div>
                         </div>
+                        {{ csrf_field() }}
                     </form>
                 </div>
             </div>
