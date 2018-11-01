@@ -20,7 +20,11 @@ class ArticlesController extends Controller
 
     public function categories(Category $category)
     {
-        $articles = $category->articles()->paginate();
+        if ($category->is_page) {
+            $articles = $category->pageArticle;
+        } else {
+            $articles = $category->articles()->paginate();
+        }
         return $this->view()->with(compact(['category', 'articles']));
     }
 

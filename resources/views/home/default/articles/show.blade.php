@@ -33,8 +33,8 @@
 
 @section('content')
     <div class="colorlib-about">
-        <div class="container col-md-12">
-            <div class="row">
+        <div class="container">
+            <div class="row col-md-12">
                 <ucapcontent>
                     {!! $article->content !!}
                 </ucapcontent>

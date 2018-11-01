@@ -22,7 +22,7 @@ class Category extends Model
 
     public static function selectCategoryOptions()
     {
-        return self::where('is_page', 0)->get(['id', 'title'])->pluck('title', 'id');
+        return self::all(['id', 'title'])->pluck('title', 'id');
     }
 
     public static function getTree()
@@ -34,6 +34,14 @@ class Category extends Model
 
     public function articles()
     {
-        return $this->belongsToMany(Article::class, 'category_has_articles');
+        return $this->belongsToMany(Article::class, 'category_has_articles')
+            ->orderBy('articles.is_top', 'desc')
+            ->orderBy('articles.sort', 'desc')
+            ->where('articles.has_enabled', 1);
+    }
+
+    public function pageArticle()
+    {
+        return $this->articles()->limit(1);
     }
 }
