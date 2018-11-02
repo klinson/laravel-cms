@@ -31,16 +31,16 @@
                         <div class="col-md-12">
                             <div class="contact-info-wrap-flex">
                                 <div class="con-info">
-                                    <p><span><i class="icon-location-2"></i></span>&nbsp;{{ config('contact.location', '未设置') }}</p>
+                                    <p><span><i class="fa fa-qq"></i></span>&nbsp;<a href="tencent://message/?uin={{ config('contact.qq') }}&Site=&Menu=yes"></a>{{ config('contact.qq', '未设置') }}</p>
                                 </div>
                                 <div class="con-info">
-                                    <p><span><i class="icon-phone3"></i></span> <a href="tel:// {{ config('contact.mobile', '') }}">&nbsp;{{ config('contact.mobile', '未设置') }}</a></p>
+                                    <p><span><i class="fa fa-weixin"></i></span> <a href="javacript:void(0);">&nbsp;{{ config('contact.weixin', '未设置') }}</a></p>
                                 </div>
                                 <div class="con-info">
-                                    <p><span><i class="icon-paperplane"></i></span> <a href="mailto:{{ config('contact.email', '') }}">&nbsp;{{ config('contact.email', '未设置') }}</a></p>
+                                    <p><span><i class="fa fa-envelope"></i></span> <a href="mailto:{{ config('contact.email', '') }}">&nbsp;{{ config('contact.email', '未设置') }}</a></p>
                                 </div>
                                 <div class="con-info">
-                                    <p><span><i class="icon-globe"></i></span> <a href="{{ config('contact.site_link', '') }}" target="_blank">&nbsp;{{ config('contact.site_name', '未设置') }}</a></p>
+                                    <p><span><i class="fa fa-globe"></i></span> <a href="{{ config('contact.site_link', 'javacript:void(0);') }}" target="_blank">&nbsp;{{ config('contact.site_name', '未设置') }}</a></p>
                                 </div>
                             </div>
                         </div>

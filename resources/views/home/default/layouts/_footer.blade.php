@@ -15,12 +15,13 @@
         </div>
 
         <div class="col-md-6 colorlib-widget">
-            <h4>联系我</h4>
+            <h4>关于Klinson</h4>
             <ul class="colorlib-footer-links">
-                <li>291 South 21th Street, <br> Suite 721 New York NY 10016</li>
-                <li><a href="tel://1234567920"><i class="icon-phone"></i> + 1235 2355 98</a></li>
-                <li><a href="mailto:info@yoursite.com"><i class="icon-envelope"></i> info@yoursite.com</a></li>
-                <li><a href="#"><i class="icon-location4"></i> yourwebsite.com</a></li>
+                <li>后端开发工程师，专注WEB、PHP、微信相关开发 <br> 承接一切web、公众号、小程序相关开发，请联系我吧</li>
+                <li><a href="tencent://message/?uin={{ config('contact.qq', '') }}&Site=&Menu=yes"><i class="fa fa-qq"></i>&nbsp;{{ config('contact.qq', '未设置') }}</a></li>
+                <li><a href="javacript:void(0);"><i class="fa fa-weixin"></i>&nbsp;{{ config('contact.weixin') }}</a></li>
+                <li><a href="mailto:{{ config('contact.email', '') }}"><i class="fa fa-envelope"></i>&nbsp;{{ config('contact.email', '未设置') }}</a></li>
+                <li><a href="{{ config('contact.site_link', 'javacript:void(0);') }}"><i class="fa fa-globe"></i>&nbsp;{{ config('contact.site_name') }}</a></li>
             </ul>
         </div>
     </div>
@@ -31,7 +32,7 @@
         <div class="row">
             <div class="col-md-12 text-center">
                 <p>
-                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | by <a href="{{ config('contact.site_link', '') }}" target="_blank" title="{{ config('contact.owner', 'klinson') }}">{{ config('contact.owner', 'klinson') }}</a>
+                    Copyright &copy;2018 All rights reserved | by <a href="{{ config('contact.site_link', '') }}" target="_blank" title="{{ config('contact.owner', 'klinson') }}">{{ config('contact.owner', 'klinson') }}</a> | {{ config('contact.icp', '') }}
                 </p>
             </div>
         </div>
