@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller as BaseController;
+use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Support\Str;
 
@@ -12,6 +13,8 @@ class Controller extends BaseController
     protected $theme = 'default';
     protected $themeInfo = [];
     protected $categories = [];
+    protected $recentArticleCount = 3;
+    protected $recentArticles = [];
 
     public function __construct()
     {
@@ -22,6 +25,7 @@ class Controller extends BaseController
 
         if (request()->isMethod('get')) {
             $this->categories = Category::getTree();
+            $this->recentArticles = Article::recent($this->recentArticleCount);
         }
     }
 
@@ -49,6 +53,7 @@ class Controller extends BaseController
 
         return view($view, $data, $mergeData)
             ->with('_theme_info', $this->themeInfo)
-            ->with('_categories', $this->categories);
+            ->with('_categories', $this->categories)
+            ->with('_recent_articles', $this->recentArticles);
     }
 }

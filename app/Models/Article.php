@@ -25,4 +25,15 @@ class Article extends Model
         });
         parent::boot();
     }
+
+    public static function recent($count = 3)
+    {
+        return self::with(['categories'])
+            ->whereHas('categories', function ($query) {
+                $query->where('is_page', 0);
+            })
+            ->orderBy('publish_time', 'desc')
+            ->orderBy('created_at', 'desc')
+            ->limit($count)->get();
+    }
 }
