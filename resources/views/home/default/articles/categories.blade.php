@@ -1,7 +1,7 @@
 @extends($_theme_info['view_root_path'].'.layouts.app')
 
 @section('header')
-    <section id="home" class="video-hero" style="height: 500px; background-image: url({{ $_theme_info['style_root_path'] }}/images/cover_img_1.jpg);  background-size:cover; background-position: center center;background-attachment:fixed;" data-section="home">
+    <section id="home" class="video-hero" style="height: 500px; background-image: url({{ get_admin_file_url($category->thumbnail) }});  background-size:cover; background-position: center center;background-attachment:fixed;" data-section="home">
         <div class="overlay"></div>
         <div class="display-t display-t2 text-center">
             <div class="display-tc display-tc2">
@@ -16,6 +16,7 @@
                                 @endif
                                 <span>{{ $category->title }}</span>
                             </p>
+                            <p class="breadcrumbs">{{ $category->description }}</p>
                         </div>
                     </div>
                 </div>
