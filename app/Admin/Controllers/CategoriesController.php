@@ -37,7 +37,11 @@ class CategoriesController extends Controller
 
                     $form->select('parent_id', '上级分类')->options(Category::selectOptions());
                     $form->text('title', '分类标题')->rules('required');
+                    $form->select('is_page', '分类类型')->default(0)->options(['列表分类', '单页分类'])->rules('required|in:0,1');
                     $form->icon('icon', '分类icon')->default('fa-bars')->rules('required')->help($this->iconHelp());
+                    $form->image('thumbnail', '缩略图')->uniqueName()->rules('required');
+                    $form->switch('is_top', '是否置顶')->default(0)->rules('required');
+                    $form->textarea('description', '描述');
                     $form->hidden('_token')->default(csrf_token());
 
                     $column->append((new Box(trans('admin.new'), $form))->style('success'));
@@ -118,8 +122,11 @@ class CategoriesController extends Controller
             $form->text('title', trans('admin.title'))->rules('required');
 
             $form->select('parent_id', trans('admin.parent_id'))->options(Category::selectOptions());
-            $form->icon('icon', trans('admin.icon'))->default('fa-bars')->rules('required')->help($this->iconHelp());
-
+            $form->select('is_page', '分类类型')->default(0)->options(['列表分类', '单页分类'])->rules('required|in:0,1');
+            $form->icon('icon', '分类icon')->default('fa-bars')->rules('required')->help($this->iconHelp());
+            $form->image('thumbnail', '缩略图')->uniqueName()->rules('required');
+            $form->switch('is_top', '是否置顶')->default(0)->rules('required');
+            $form->textarea('description', '描述');
         });
     }
 
