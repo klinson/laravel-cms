@@ -8,10 +8,20 @@
 
 namespace App\Http\Controllers\Home;
 
+use App\Models\Category;
+
 class IndexController extends Controller
 {
     public function index()
     {
-        return $this->view();
+        // 首页推荐分类和其中3个内容
+        $topCategory = Category::where('is_top', 1)->where('is_page', 0)->first();
+        if (! empty($topCategory)) {
+            $topArticles = $topCategory->articles()->limit(3)->get();
+        } else {
+            $topArticles = [];
+        }
+
+        return $this->view()->with(compact(['topCategory', 'topArticles']));
     }
 }

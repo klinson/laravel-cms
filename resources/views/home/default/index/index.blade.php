@@ -91,40 +91,31 @@
         </div>
     </div>
 
-    <div class="colorlib-blog">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2 text-center colorlib-heading animate-box">
-                    <h2>作品展示</h2><a href="">查看更多</a>
-                    {{--<p></p>--}}
+    @if (! empty($topCategory))
+        <div class="colorlib-blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 text-center colorlib-heading animate-box">
+                        <h2>{{ $topCategory->title }}</h2><a href="{{ route('articles.categories', ['category' => $topCategory->id]) }}">查看更多</a>
+                        {{--<p></p>--}}
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4 animate-box">
-                    <article>
-                        <h2>Building the Mention Sales Application on Unapp</h2>
-                        <p class="admin"><span>May 12, 2018</span></p>
-                        <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life</p>
-                        <p class="author-wrap"><a href="#" class="author-img" style="background-image: url({{ $_theme_info['style_root_path'] }}/images/person1.jpg);"></a> <a href="#" class="author">by Dave Miller</a></p>
-                    </article>
-                </div>
-                <div class="col-md-4 animate-box">
-                    <article>
-                        <h2>Building the Mention Sales Application on Unapp</h2>
-                        <p class="admin"><span>May 12, 2018</span></p>
-                        <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life</p>
-                        <p class="author-wrap"><a href="#" class="author-img" style="background-image: url({{ $_theme_info['style_root_path'] }}/images/person2.jpg);"></a> <a href="#" class="author">by Dave Miller</a></p>
-                    </article>
-                </div>
-                <div class="col-md-4 animate-box">
-                    <article>
-                        <h2>Building the Mention Sales Application on Unapp</h2>
-                        <p class="admin"><span>May 12, 2018</span></p>
-                        <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life</p>
-                        <p class="author-wrap"><a href="#" class="author-img" style="background-image: url({{ $_theme_info['style_root_path'] }}/images/person3.jpg);"></a> <a href="#" class="author">by Dave Miller</a></p>
-                    </article>
+                <div class="row">
+                    @foreach ($topArticles as $article)
+                        <div class="col-md-4 text-center animate-box fadeInUp animated-fast">
+                            <div class="staff-entry">
+                                <a href="{{ route('articles.show', ['category' => $topCategory->id, 'article' => $article->id]) }}" class="staff-img" style="background-image: url({{ get_admin_file_url($article->thumbnail) }});"></a>
+                                <div class="desc">
+                                    <h3>{{ $article->title }}</h3>
+                                    <span>{{ $article->publish_time }}</span>
+                                    <p>{{ $article->description }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
-    </div>
+    @endif
+
 @endsection
