@@ -29,9 +29,11 @@
         <div class="colorlib-work">
             <div class="container">
                 <div class="row  col-md-12">
-                    <ucapcontent>
-                        {!! $articles[0]->content !!}
-                    </ucapcontent>
+                    @if(isset($articles[0]))
+                        <ucapcontent>
+                            {!! $articles[0]->content !!}
+                        </ucapcontent>
+                    @endif
                 </div>
 
             </div>
