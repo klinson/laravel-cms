@@ -3,7 +3,6 @@
 @section('header')
     <section id="home" class="video-hero" style="height: 700px; background-image: url({{ $_theme_info['style_root_path'] }}/images/cover_img_1.jpg);  background-size:cover; background-position: center center;background-attachment:fixed;" data-section="home">
         <div class="overlay"></div>
-        <a class="player" data-property="{videoURL:'https://www.youtube.com/watch?v=vqqt5p0q-eU',containment:'#home', showControls:false, autoPlay:true, loop:true, mute:true, startAt:0, opacity:1, quality:'default'}"></a>
         <div class="display-t text-center">
             <div class="display-tc">
                 <div class="container">
@@ -104,7 +103,7 @@
                     @foreach ($topArticles as $article)
                         <div class="col-md-4 text-center animate-box fadeInUp animated-fast">
                             <div class="staff-entry">
-                                <a href="{{ route('articles.show', ['category' => $topCategory->id, 'article' => $article->id]) }}" class="staff-img" style="background-image: url({{ get_admin_file_url($article->thumbnail) }});"></a>
+                                <a href="{{ route('articles.show', ['category' => $topCategory->id, 'article' => $article->id]) }}" class="staff-img" style="background-image: url({{ get_admin_file_url($article->thumbnail, '', asset($_theme_info['default_article_thumbnail'])) }});"></a>
                                 <div class="desc">
                                     <h3>{{ $article->title }}</h3>
                                     <span>{{ $article->publish_time }}</span>

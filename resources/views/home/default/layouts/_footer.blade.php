@@ -4,7 +4,7 @@
             <h4>最新发布</h4>
             @foreach($_recent_articles as $article)
                 <div class="f-blog">
-                    <a href="{{ route('articles.show', ['category' => $article->categories[0]->id, 'article' => $article->id]) }}" class="blog-img" style="background-image: url({{ get_admin_file_url($article->thumbnail) }});">
+                    <a href="{{ route('articles.show', ['category' => $article->categories[0]->id, 'article' => $article->id]) }}" class="blog-img" style="background-image: url({{ get_admin_file_url($article->thumbnail, '', asset($_theme_info['default_article_thumbnail'])) }});">
                     </a>
                     <div class="desc">
                         <h2><a href="{{ route('articles.show', ['category' => $article->categories[0]->id, 'article' => $article->id]) }}">{{ $article->title }}</a></h2>

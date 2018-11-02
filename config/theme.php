@@ -13,6 +13,8 @@ return [
             'keyword' => 'klinson,cms,个人主页',
             'author' => 'klinson',
             'author_link' => 'http://klinson.com',
+            'default_article_thumbnail' => 'theme/default/images/default_article_thumbnail.png',
+            'default_category_thumbnail' => 'theme/default/images/default_category_thumbnail.png',
         ]
     ]
 ];

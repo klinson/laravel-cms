@@ -49,7 +49,7 @@
                                 <div class="half animate-box">
                                     <div class="row no-gutters">
                                         <div class="col-md-12 no-gutters">
-                                            <a href="{{ route('articles.show', ['category' => $category->id, 'article' => $article->id]) }}" class="work-img" style="background-image: url({{ get_admin_file_url($article->thumbnail) }})"></a>
+                                            <a href="{{ route('articles.show', ['category' => $category->id, 'article' => $article->id]) }}" class="work-img" style="background-image: url({{ get_admin_file_url($article->thumbnail, '', asset($_theme_info['default_article_thumbnail'])) }})"></a>
                                         </div>
                                     </div>
                                 </div>

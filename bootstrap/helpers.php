@@ -58,10 +58,10 @@ function tree_to_list($tree, $id = 'id', $child = 'child')
  * @param string $server
  * @return mixed
  */
-function get_admin_file_url($path, $server = '')
+function get_admin_file_url($path, $server = '', $default = '')
 {
     if (is_null($path) || $path === '') {
-        return '';
+        return $default;
     }
     if (url()->isValidUrl($path)) {
         $src = $path;
