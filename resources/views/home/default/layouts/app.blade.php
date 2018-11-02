@@ -29,7 +29,11 @@
     <!-- Animate.css -->
     <link rel="stylesheet" href="{{ asset($_theme_info['style_root_path'].'/css/animate.css') }}">
     <!-- Icomoon Icon Fonts-->
-    <link rel="stylesheet" href="{{ asset($_theme_info['style_root_path'].'/css/icomoon.css') }}">
+    <link rel="stylesheet" href="{{ asset($_theme_info['style_root_path'].'/css/icomoon.css') }}">、
+
+    <!-- Font Awesome Icon Fonts-->
+    <link rel="stylesheet" href="{{asset($_theme_info['style_root_path'].'/vendor/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+
     <!-- Bootstrap  -->
     <link rel="stylesheet" href="{{ asset($_theme_info['style_root_path'].'/css/bootstrap.css') }}">
 
