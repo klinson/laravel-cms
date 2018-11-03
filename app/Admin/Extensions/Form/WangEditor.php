@@ -35,6 +35,7 @@ editor.customConfig.uploadImgHeaders = {
     'X-CSRF-TOKEN': '$token'
 };
 editor.customConfig.uploadFileName = 'files[]'
+editor.customConfig.uploadTimeout = 100000000;
 editor.create()
 EOT;
         return parent::render();
