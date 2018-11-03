@@ -68,7 +68,7 @@
                 </div>
                 <div class="col-md-4 text-center animate-box">
                     <div class="services">
-                        <span class="icon">
+                        <span class="icon" style="margin-bottom: 34px;">
                             <i class="fa fa-5x fa-weixin"></i>
                         </span>
                         <div class="desc">
