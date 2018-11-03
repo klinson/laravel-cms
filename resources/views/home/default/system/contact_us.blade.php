@@ -102,22 +102,23 @@
                             @endif
                         </div>
                         <div class="row form-group">
-                            <div class="col-sm-6 {{$errors->has('captcha')?'has-error':''}}">
+                            <div class="col-xs-6 col-sm-9 col-md-9 {{$errors->has('captcha')?'has-error':''}}">
                                 <input type="text" id="captcha" class="form-control" name="captcha" placeholder="请输入验证码" required value="{{ old('captcha') }}">
                             </div>
-                            <div class="col-sm-3 {{$errors->has('captcha')?'has-error':''}}">
+                            <div class="col-xs-6 col-sm-3 col-md-3 {{$errors->has('captcha')?'has-error':''}}">
                                 <img src="{{captcha_src()}}" style="cursor: pointer" onclick="this.src='{{captcha_src()}}'+Math.random()">
                             </div>
-                            <div class="col-sm-3">
-                                <div class="pull-right" >
-                                    <input type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;提交留言&nbsp;&nbsp;&nbsp;&nbsp;" class="btn btn-primary">
-                                </div>
-                            </div>
+
                             @if($errors->has('captcha'))
                                 <div class="col-md-12">
                                     <p class="text-danger text-left"><strong>{{$errors->first('captcha')}}</strong></p>
                                 </div>
                             @endif
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-md-12 text-center">
+                                <input type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;提交留言&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" class="btn btn-primary">
+                            </div>
                         </div>
                         {{ csrf_field() }}
                     </form>
