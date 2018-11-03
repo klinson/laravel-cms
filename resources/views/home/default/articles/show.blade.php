@@ -1,5 +1,7 @@
 @extends($_theme_info['view_root_path'].'.layouts.app')
 
+@section('title'){{ $article->title }}@endsection
+
 @section('header')
     <section id="home" class="video-hero" style="height: 500px; background-image: url({{ get_admin_file_url($article->thumbnail) }});  background-size:cover; background-position: center center;background-attachment:fixed;" data-section="home">
         <div class="overlay"></div>

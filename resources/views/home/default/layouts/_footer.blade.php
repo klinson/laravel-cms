@@ -15,14 +15,21 @@
         </div>
 
         <div class="col-md-6 colorlib-widget">
-            <h4>关于Klinson</h4>
-            <ul class="colorlib-footer-links">
-                <li>后端开发工程师，专注WEB、PHP、微信相关开发 <br> 承接一切web、公众号、小程序相关开发，请联系我吧</li>
-                <li><a href="tencent://message/?uin={{ config('contact.qq', '') }}&Site=&Menu=yes"><i class="fa fa-qq"></i>&nbsp;{{ config('contact.qq', '未设置') }}</a></li>
-                <li><a href="javacript:void(0);"><i class="fa fa-weixin"></i>&nbsp;{{ config('contact.weixin') }}</a></li>
-                <li><a href="mailto:{{ config('contact.email', '') }}"><i class="fa fa-envelope"></i>&nbsp;{{ config('contact.email', '未设置') }}</a></li>
-                <li><a href="{{ config('contact.site_link', 'javacript:void(0);') }}"><i class="fa fa-globe"></i>&nbsp;{{ config('contact.site_name') }}</a></li>
-            </ul>
+            <div class="col-md-6 colorlib-widget">
+                <h4>关于Klinson</h4>
+                <ul class="colorlib-footer-links">
+                    <li>后端开发工程师，专注WEB、PHP、微信相关开发 <br> 承接一切web、公众号、小程序相关开发，请联系我吧</li>
+                    <li><a href="tencent://message/?uin={{ config('contact.qq', '') }}&Site=klinson.com&Menu=yes"><i class="fa fa-qq"></i>&nbsp;{{ config('contact.qq', '未设置') }}</a></li>
+                    <li><a href="javascript:void(0)"><i class="fa fa-weixin"></i>&nbsp;{{ config('contact.weixin') }}</a></li>
+                    <li><a href="mailto:{{ config('contact.email', '') }}"><i class="fa fa-envelope"></i>&nbsp;{{ config('contact.email', '未设置') }}</a></li>
+                    <li><a href="{{ config('contact.site_link', 'javacript:void(0);') }}"><i class="fa fa-globe"></i>&nbsp;{{ config('contact.site_name') }}</a></li>
+
+                </ul>
+            </div>
+            <div class="col-md-6 colorlib-widget">
+                <img src="{{ asset(config('contact.weixin_qrcode')) }}" alt="" class="img-responsive" style="max-width: 105%;">
+            </div>
+
         </div>
     </div>
 </div>

@@ -1,5 +1,7 @@
 @extends($_theme_info['view_root_path'].'.layouts.app')
 
+@section('title')联系我们@endsection
+
 @section('header')
 <section id="home" class="video-hero" style="height: 500px; background-image: url({{ $_theme_info['style_root_path'] }}/images/cover_img_1.jpg);  background-size:cover; background-position: center center;background-attachment:fixed;" data-section="home">
     <div class="overlay"></div>
@@ -31,7 +33,7 @@
                         <div class="col-md-12">
                             <div class="contact-info-wrap-flex">
                                 <div class="con-info">
-                                    <p><span><i class="fa fa-qq"></i></span>&nbsp;<a href="tencent://message/?uin={{ config('contact.qq') }}&Site=&Menu=yes"></a>{{ config('contact.qq', '未设置') }}</p>
+                                    <p><span><i class="fa fa-qq"></i></span>&nbsp;<a href="tencent://message/?uin={{ config('contact.qq') }}&Site=klinson.com&Menu=yes"></a>{{ config('contact.qq', '未设置') }}</p>
                                 </div>
                                 <div class="con-info">
                                     <p><span><i class="fa fa-weixin"></i></span> <a href="javacript:void(0);">&nbsp;{{ config('contact.weixin', '未设置') }}</a></p>
@@ -40,7 +42,10 @@
                                     <p><span><i class="fa fa-envelope"></i></span> <a href="mailto:{{ config('contact.email', '') }}">&nbsp;{{ config('contact.email', '未设置') }}</a></p>
                                 </div>
                                 <div class="con-info">
-                                    <p><span><i class="fa fa-globe"></i></span> <a href="{{ config('contact.site_link', 'javacript:void(0);') }}" target="_blank">&nbsp;{{ config('contact.site_name', '未设置') }}</a></p>
+                                    <p><span><i class="fa fa-globe"></i></span> <a href="{{ config('contact.site_link', 'javascript:void(0)') }}" target="_blank">&nbsp;{{ config('contact.site_name', '未设置') }}</a></p>
+                                </div>
+                                <div>
+                                    <img src="{{ asset(config('contact.weixin_qrcode')) }}" alt="" class="img-responsive" style="max-width: 100%;">
                                 </div>
                             </div>
                         </div>
@@ -88,7 +93,7 @@
                         <div class="row form-group">
                             <div class="col-md-12 {{$errors->has('content')?'has-error':''}}">
                                 {{--<label for="message">内容</label>--}}
-                                <textarea name="content" id="content" cols="30" rows="7" class="form-control" placeholder="请输入详细内容" required>{{ old('content') }}</textarea>
+                                <textarea name="content" id="content" cols="30" rows="10" class="form-control" placeholder="请输入详细内容" required>{{ old('content') }}</textarea>
                             </div>
                             @if($errors->has('content'))
                                 <div class="col-md-12">

@@ -1,5 +1,7 @@
 @extends($_theme_info['view_root_path'].'.layouts.app')
 
+@section('title')首页@endsection
+
 @section('header')
     <section id="home" class="video-hero" style="height: 700px; background-image: url({{ $_theme_info['style_root_path'] }}/images/cover_img_1.jpg);  background-size:cover; background-position: center center;background-attachment:fixed;" data-section="home">
         <div class="overlay"></div>

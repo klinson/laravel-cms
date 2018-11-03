@@ -9,5 +9,6 @@ return [
     'site_link' => 'http://klinson.com',
     'qq' => '337217685',
     'weixin' => '337217685',
+    'weixin_qrcode' => 'images/contact_weixin_qrcode.png',
     'icp' => '粤ICP备18048684号',
 ];
