@@ -28,7 +28,7 @@ class Category extends Model
 
     public static function getTree()
     {
-        $list = self::orderBy('sort')->get()->toArray();
+        $list = self::orderBy('sort')->where('has_enabled', 1)->get()->toArray();
         $tree = list_to_tree($list, 0, 'id', 'parent_id', 'children');
         return $tree;
     }

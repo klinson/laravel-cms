@@ -31,6 +31,7 @@ class Article extends Model
         return self::with(['categories'])
             ->whereHas('categories', function ($query) {
                 $query->where('is_page', 0);
+                $query->where('has_enabled', 1);
             })
             ->orderBy('publish_time', 'desc')
             ->orderBy('created_at', 'desc')

@@ -41,6 +41,8 @@ class CategoriesController extends Controller
                     $form->icon('icon', '分类icon')->default('fa-bars')->rules('required')->help($this->iconHelp());
                     $form->image('thumbnail', '缩略图')->uniqueName()->removable();
                     $form->switch('is_top', '是否置顶')->default(0)->rules('required');
+                    $form->switch('has_enabled', '是否启用')->default(1)->rules('required');
+
                     $form->textarea('description', '描述');
                     $form->hidden('_token')->default(csrf_token());
 
@@ -126,6 +128,8 @@ class CategoriesController extends Controller
             $form->icon('icon', '分类icon')->default('fa-bars')->rules('required')->help($this->iconHelp());
             $form->image('thumbnail', '缩略图')->uniqueName()->removable();
             $form->switch('is_top', '是否置顶')->default(0)->rules('required');
+            $form->switch('has_enabled', '是否启用')->default(0)->rules('required');
+
             $form->textarea('description', '描述');
         });
     }
