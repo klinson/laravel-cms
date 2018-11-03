@@ -19,13 +19,13 @@ class FilesController extends Controller
             $urls = [];
             if (is_array($files)) {
                 foreach ($files as $file) {
-                    $path = $file->store('editor');
-                    $urls[] = Storage::url($path);
+                    $path = $file->store('editor', 'admin');
+                    $urls[] = Storage::disk('admin')->url($path);
                 }
 
             } else {
-                $path = $files->store('editor');
-                $urls[] = Storage::url($path);
+                $path = $files->store('editor', 'admin');
+                $urls[] = Storage::disk('admin')->url($path);
             }
 
             return [
