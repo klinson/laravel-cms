@@ -105,7 +105,7 @@
                     @foreach ($topArticles as $article)
                         <div class="col-md-4 text-center animate-box fadeInUp animated-fast">
                             <div class="staff-entry">
-                                <a href="{{ route('articles.show', ['category' => $topCategory->id, 'article' => $article->id]) }}" class="staff-img" style="background-image: url({{ get_admin_file_url($article->thumbnail, '', asset($_theme_info['default_article_thumbnail'])) }});"></a>
+                                <a href="{{ route('articles.show', ['category' => $topCategory->id, 'article' => $article->id]) }}" class="staff-img" style="background-image: url({{ get_admin_file_url($article->thumbnail, '', asset($_theme_info['default_article_thumbnail'])) }});width: 100%;border-radius: 1%;"></a>
                                 <div class="desc">
                                     <h3>{{ $article->title }}</h3>
                                     <span>{{ $article->publish_time }}</span>
