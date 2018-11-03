@@ -39,7 +39,7 @@ class CategoriesController extends Controller
                     $form->text('title', '分类标题')->rules('required');
                     $form->select('is_page', '分类类型')->default(0)->options(['列表分类', '单页分类'])->rules('required|in:0,1');
                     $form->icon('icon', '分类icon')->default('fa-bars')->rules('required')->help($this->iconHelp());
-                    $form->image('thumbnail', '缩略图')->uniqueName()->rules('required');
+                    $form->image('thumbnail', '缩略图')->uniqueName();
                     $form->switch('is_top', '是否置顶')->default(0)->rules('required');
                     $form->textarea('description', '描述');
                     $form->hidden('_token')->default(csrf_token());

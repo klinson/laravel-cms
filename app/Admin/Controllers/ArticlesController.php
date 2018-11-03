@@ -164,7 +164,7 @@ class ArticlesController extends Controller
                 $form->multipleSelect('categories', '所属分类')->options(Category::selectCategoryOptions());
                 $form->editor('content', '内容')->rules('required');
                 $form->textarea('description', '描述');
-                $form->image('thumbnail', '封面');
+                $form->image('thumbnail', '封面')->uniqueName();;
             })->tab('发布信息', function (Form $form) {
                 $form->text('author', '作者');
                 $form->datetime('publish_time', '发布时间')->format('YYYY-MM-DD HH:mm:ss')->default(date('Y-m-d H:i:s'));
