@@ -34,6 +34,7 @@ class Article extends Model
             })
             ->orderBy('publish_time', 'desc')
             ->orderBy('created_at', 'desc')
+            ->where('has_enabled', 1)
             ->limit($count)->get();
     }
 }
