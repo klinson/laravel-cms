@@ -95,16 +95,7 @@ class ArticlesController extends Controller
             $grid->column('sort', '排序')->sortable()->editable('text');
             $grid->column('title', '文章标题');
             $grid->categories('所属分类')->pluck('title')->label();
-            $grid->column('thumbnail', '缩略图')->display(function ($value) {
-                if (empty($value)) {
-                    return '无';
-                } else {
-                    if (substr($value, 0, 4) === 'http') {
-                        return "<img style='width: 100px' src='".$value."'>";
-                    }
-                    return "<img style='width: 100px' src='".\Storage::url($value)."'>";
-                }
-            });
+            $grid->column('thumbnail', '缩略图')->image();
 
             $states = [
                 'on'  => ['value' => 1, 'text' => '置顶', 'color' => 'primary'],
@@ -164,7 +155,7 @@ class ArticlesController extends Controller
                 $form->multipleSelect('categories', '所属分类')->options(Category::selectCategoryOptions());
                 $form->editor('content', '内容')->rules('required');
                 $form->textarea('description', '描述');
-                $form->image('thumbnail', '封面')->uniqueName();;
+                $form->image('thumbnail', '封面')->uniqueName()->removable();
             })->tab('发布信息', function (Form $form) {
                 $form->text('author', '作者');
                 $form->datetime('publish_time', '发布时间')->format('YYYY-MM-DD HH:mm:ss')->default(date('Y-m-d H:i:s'));
