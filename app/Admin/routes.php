@@ -16,4 +16,5 @@ Route::group([
     $router->resource('articles', ArticlesController::class);
 
     $router->post('files/editor', 'FilesController@editor');
+    $router->resource('messages', MessagesController::class);
 });
