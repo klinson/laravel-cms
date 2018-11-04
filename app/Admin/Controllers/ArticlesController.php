@@ -44,11 +44,29 @@ class ArticlesController extends Controller
             $this->_setPageDefault($content);
 
             $content->body(Admin::show(Article::findOrFail($id), function (Show $show) {
+                $show->id('id');
+                $show->title('标题');
+                $show->categories('分类')->as(function ($value) {
+                    $style = 'success';
 
-                $show->id();
+                    return $value->map(function ($category) use ($style) {
+                        return "<span class='label label-{$style}'>{$category['title']}</span>";
+                    })->implode('&nbsp;');
+                });
 
-                $show->created_at();
-                $show->updated_at();
+                show_images($show, 'thumbnail', '缩略图');
+                $show->description('描述');
+                $show->content('内容');
+                $show->is_top('是否置顶')->as(function ($v) {
+                    return $v ? '是' : '否';
+                });
+                $show->has_enabled('状态')->as(function ($v) {
+                    return $v ? '正常' : '禁用';
+                });
+                $show->author('作者');
+                $show->publish_time('发布时间');
+                $show->created_at('创建时间');
+                $show->updated_at('更新时间');
             }));
         });
     }

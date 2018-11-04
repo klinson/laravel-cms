@@ -92,3 +92,17 @@ function get_admin_file_urls($paths, $server = '')
         return get_admin_file_url($paths, $server);
     }
 }
+
+
+function show_images($show, $column, $label = '', $server = '', $width = 200, $height = 200)
+{
+    $show->$column($label)->as(function ($paths) use ($server, $width, $height) {
+        $urls = get_admin_file_urls($paths, $server);
+        if (empty($urls)) {
+            return '';
+        }
+        return implode("&nbsp;", array_map(function ($url) use ($width, $height) {
+            return "<img src='$url' style='max-width:{$width}px;max-height:{$height}px' class='img img-thumbnail' />";
+        }, $urls));
+    });
+}
