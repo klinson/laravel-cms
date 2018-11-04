@@ -11,4 +11,5 @@ return [
     'weixin' => '337217685',
     'weixin_qrcode' => 'images/contact_weixin_qrcode.png',
     'icp' => '粤ICP备18048684号',
+    'notify_email' => 'klinson@163.com',
 ];

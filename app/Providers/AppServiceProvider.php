@@ -18,6 +18,8 @@ class AppServiceProvider extends ServiceProvider
         // Carbon 是 PHP DateTime 的一个简单扩展, 调整汉语
         Carbon::setLocale('zh');
         Config::load();
+
+        $this->loadObserverConfig();
     }
 
     /**
@@ -41,5 +43,10 @@ class AppServiceProvider extends ServiceProvider
         \API::error(function (\Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException $exception) {
             abort(401, '用户未登录');
         });
+    }
+
+    protected function loadObserverConfig()
+    {
+        \App\Models\Message::observe(\App\Observers\MessageObserver::class);
     }
 }
