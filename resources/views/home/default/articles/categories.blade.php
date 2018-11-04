@@ -47,7 +47,7 @@
                 <div class="row">
                     @forelse ($articles as $article)
                         <div class="col-md-12">
-                            <div class="work-flex">
+                            <div class="work-flex shadow-box">
                                 <div class="half animate-box">
                                     <div class="row no-gutters">
                                         <div class="col-md-12 no-gutters">

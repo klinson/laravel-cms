@@ -1484,3 +1484,9 @@ input[type="text"] {
 
 .js .animate-box {
   opacity: 0; }
+
+.shadow-box {
+    box-shadow: -1px 0px 1px rgba(0, 0, 0, .04), 0px 1px 1px rgba(0, 0, 0, .13), 1px 0px 2px rgba(0, 0, 0, .05);
+    border-top: 1px solid #e4e4e4;
+    border-radius: 2px;
+}
