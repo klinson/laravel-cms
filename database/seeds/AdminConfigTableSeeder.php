@@ -98,6 +98,15 @@ class AdminConfigTableSeeder extends Seeder
                 'created_at' => '2018-11-04 11:10:49',
                 'updated_at' => '2018-11-04 11:10:49',
             ),
+            9 => 
+            array (
+                'id' => 10,
+                'name' => 'contact.notify_email',
+                'value' => 'klinson@163.com',
+                'description' => '新消息实时通知邮箱',
+                'created_at' => '2018-11-04 12:04:30',
+                'updated_at' => '2018-11-04 12:04:30',
+            ),
         ));
         
         
