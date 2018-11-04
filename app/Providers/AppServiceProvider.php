@@ -17,7 +17,7 @@ class AppServiceProvider extends ServiceProvider
     {
         // Carbon 是 PHP DateTime 的一个简单扩展, 调整汉语
         Carbon::setLocale('zh');
-//        Config::load();
+        Config::load();
     }
 
     /**
