@@ -58,7 +58,7 @@
                                 <div class="half animate-box">
                                     <div class="row no-gutters">
                                         <div class="col-md-12 no-gutters">
-                                            <div class="display-t desc col-md-12">
+                                            <div class="display-t desc col-md-12" style="width: 100%">
                                                 <div class="display-tc">
                                                     <h2><a href="{{ route('articles.show', ['category' => $category->id, 'article' => $article->id]) }}">{{ $article->title }}</a></h2>
                                                     <h5>
