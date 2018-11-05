@@ -99,6 +99,9 @@
 <!-- Main -->
 <script src="{{ asset($_theme_info['style_root_path'].'/js/main.js') }}"></script>
 
+<!-- 百度统计 -->
+<script src="{{ asset('/js/statistics.baidu.js') }}"></script>
+
 <!-- Scripts -->
 @yield('scripts')
 </body>
