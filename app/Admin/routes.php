@@ -20,4 +20,7 @@ Route::group([
 
     $router->post('files/editor', 'FilesController@editor');
     $router->resource('messages', MessagesController::class);
+
+    $router->get('wechat/menus', 'WechatController@menus');
+
 });
