@@ -18,3 +18,4 @@ Route::namespace('Home')->group(function (){
     Route::get('/contactUs', 'SystemController@contactUs')->name('system.contactUs');
     Route::post('/contactUs', 'SystemController@storeContactUs')->name('system.contactUs.store');
 });
+Route::any('/wechat', 'WeChatController@serve');
