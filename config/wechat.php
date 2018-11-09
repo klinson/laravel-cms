@@ -35,6 +35,9 @@ return [
             'level' => env('WECHAT_LOG_LEVEL', 'debug'),
             'file' => env('WECHAT_LOG_FILE', storage_path('logs/wechat.log')),
         ],
+
+        // 上传图片到公众号，方便推文过去
+        'test_openid' => env('WECHAT_TEST_OPENID', false)
     ],
 
     /*
