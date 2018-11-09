@@ -13,22 +13,29 @@
 
                 <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
                     <ul class="navbar-nav">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#secvice">Service</a></li>
-                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="/#home">Home</a></li>
+                        <li><a href="/#about">About</a></li>
+                        <li><a href="/#secvice">Service</a></li>
+                        <li><a href="/#gallery">Gallery</a></li>
                         <li><a href="#faq">Faq</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                        <!-- Dropdown -->
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                                Pages
-                            </a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="generic.html">Generic</a>
-                                <a class="dropdown-item" href="elements.html">Elements</a>
-                            </div>
-                        </li>
+                        <li><a href="/#contact">Contact</a></li>
+                        @foreach ($_categories as $_category)
+                            @empty($_category['children'])
+                                <li><a href="{{ route('articles.categories', ['category' => $_category['id']])}}">{{ $_category['title'] }}</a></li>
+                            @else
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" href="{{ route('articles.categories', ['category' => $_category['id']]) }}" data-toggle="dropdown">
+                                        {{ $_category['title'] }}
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        @foreach ($_category['children'] as $_children)
+                                            <a style="display: block;" href="{{ route('articles.categories', ['id' => $_children['id']]) }}">{{ $_children['title'] }}</a>
+                                        @endforeach
+                                    </div>
+                                </li>
+
+                            @endempty
+                        @endforeach
                     </ul>
                 </div>
             </div>
