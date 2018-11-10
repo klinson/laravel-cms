@@ -28,9 +28,12 @@
 </head>
 
 <body>
-@include($_theme_info['view_root_path'].'.layouts._header')
+<!-- start banner Area -->
+<section class="@yield('header-class', 'generic-banner relative')" id="home" style="@yield('header-bg', '')">
+    @include($_theme_info['view_root_path'].'.layouts._header')
 
-@yield('header')
+    @yield('header')
+</section>
 
 @include($_theme_info['view_root_path'].'.layouts._message')
 

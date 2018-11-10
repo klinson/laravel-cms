@@ -1,7 +1,6 @@
 @extends($_theme_info['view_root_path'].'.layouts.app')
 
-@section('header')
-@endsection
+@section('header-class') banner-area @endsection
 
 @section('content')
     <section class="default-banner active-blog-slider">
