@@ -2,56 +2,52 @@
 <footer class="footer-area section-gap">
     <div class="container">
         <div class="row">
-            <div class="col-lg-5 col-md-6 col-sm-6">
+            <div class="col-md-6 col-sm-12">
                 <div class="single-footer-widget">
-                    <h6>About Us</h6>
+                    <h6>关于我们</h6>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore magna aliqua.
+                        东莞市瑞安信息科技有限公司
+                        东莞市瑞安信息科技有限公司
+                        东莞市瑞安信息科技有限公司
+                        东莞市瑞安信息科技有限公司 东莞市瑞安信息科技有限公司
+                        东莞市瑞安信息科技有限公司 东莞市瑞安信息科技有限公司
+                        东莞市瑞安信息科技有限公司 东莞市瑞安信息科技有限公司
+                        东莞市瑞安信息科技有限公司
                     </p>
-
-                    <p class="footer-text">Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by Colorlib  -  More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
-
                 </div>
             </div>
-            <div class="col-lg-5  col-md-6 col-sm-6">
+            <div class="col-md-6 col-sm-12">
                 <div class="single-footer-widget">
-                    <h6>Newsletter</h6>
-                    <p>Stay update with our latest</p>
-                    <div class="" id="mc_embed_signup">
-
-                        <form target="_blank" novalidate action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="form-inline">
-
-                            <div class="d-flex flex-row">
-
-                                <input class="form-control" name="EMAIL" placeholder="Enter Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email '" required="" type="email">
-
-
-                                <button class="click-btn btn btn-default"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
-                                <div style="position: absolute; left: -5000px;">
-                                    <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
-                                </div>
-
-                                <!-- <div class="col-lg-4 col-md-4">
-                                    <button class="bb-btn btn"><span class="lnr lnr-arrow-right"></span></button>
-                                </div>  -->
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="col-sm-12">
+                                <h6>联系我们</h6>
                             </div>
-                            <div class="info"></div>
-                        </form>
+                            <div class="col-sm-12 footer-social switch-wrap justify-content-between">
+                                <p><a href="tencent://message/?uin={{ config('contact.qq', '') }}&Site=klinson.com&Menu=yes" style="color: #777777 !important;"><i class="fa fa-qq"></i>&nbsp;&nbsp;{{ config('contact.qq', '未设置') }}</a></p>
+                                <p><a href="javascript:void(0)" style="color: #777777 !important;"><i class="fa fa-weixin"></i>&nbsp;&nbsp;{{ config('contact.weixin') }}</a></p>
+                                <p><a href="mailto:{{ config('contact.email', '') }}" style="color: #777777 !important;"><i class="fa fa-envelope"></i>&nbsp;&nbsp;{{ config('contact.email', '未设置') }}</a></p>
+                                <p><a href="javascript:void(0)" style="color: #777777 !important;"><i class="fa fa-phone"></i>&nbsp;&nbsp;{{ config('contact.mobile', '未设置') }}</a></p>
+                                <p><a href="javascript:void(0)" style="color: #777777 !important;"><i class="fa fa-location-arrow"></i>&nbsp;&nbsp;{{ config('contact.location', '未设置') }}</a></p>
+                                <p><a href="{{ config('contact.site_link', 'javacript:void(0);') }}" style="color: #777777 !important;"><i class="fa fa-globe"></i>&nbsp;&nbsp;{{ config('contact.site_name') }}</a></p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <img src="{{ asset(config('contact.weixin_qrcode')) }}" alt="" class="img-responsive" style="max-width: 105%;max-height: 200px;">
+                        </div>
                     </div>
+
                 </div>
             </div>
-            <div class="col-lg-2 col-md-6 col-sm-6 social-widget">
-                <div class="single-footer-widget">
-                    <h6>Follow Us</h6>
-                    <p>Let us be social</p>
-                    <div class="footer-social d-flex align-items-center">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-dribbble"></i></a>
-                        <a href="#"><i class="fa fa-behance"></i></a>
-                    </div>
-                </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p class="footer-text text-center">
+                    Copyright &copy;2018 All rights reserved | by <a href="{{ config('contact.site_link', '') }}" target="_blank" title="{{ config('contact.owner', 'klinson') }}">{{ config('contact.owner', 'klinson') }}</a> | {{ config('contact.icp', '') }}
+                </p>
             </div>
+
         </div>
     </div>
 </footer>
