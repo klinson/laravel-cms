@@ -2,6 +2,22 @@
 
 @section('title'){{ $article->title }}@endsection
 
+@section('header-bg')
+    background-image:url({{ get_admin_file_url($article->thumbnail) }}); background-size:cover; background-position: center center;background-attachment:fixed;@endsection
+
+@section('header')
+    <div class="container">
+        <div class="row height align-items-center justify-content-center">
+            <div class="col-lg-10" style="background: rgba(0, 0, 0, 0.5);padding: 10em 1em;">
+                <div class="generic-banner-content">
+                    <h2 class="text-white">{{ $article->title }}</h2>
+                    <p class="text-white">{{ $article->description }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+
 @section('header')
     <section id="home" class="video-hero" style="height: 500px; background-image: url({{ get_admin_file_url($article->thumbnail) }});  background-size:cover; background-position: center center;background-attachment:fixed;" data-section="home">
         <div class="overlay"></div>
