@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Home;
 
 use App\Models\Message;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class SystemController extends Controller
 {
@@ -20,7 +21,7 @@ class SystemController extends Controller
 
     public function storeContactUs(Request $request)
     {
-        $this->validate($request, [
+        $validator = Validator::make($request->all(), [
             'name' => ['required', 'min:1', 'max:50'],
             'email' => ['required', 'email', 'min:1', 'max:250'],
             'subject' => ['required', 'min:1', 'max:50'],
@@ -37,11 +38,28 @@ class SystemController extends Controller
             'captcha' => '验证码',
         ]);
 
+        if ($validator->fails()) {
+            $request->session()->flash('error', '提交失败');
+            if ($error_uri = $request->get('error_uri', null)) {
+                return redirect($error_uri)
+                    ->withErrors($validator)
+                    ->withInput();
+            } else {
+                return redirect()->back()
+                    ->withErrors($validator)
+                    ->withInput();
+            }
+        }
+
         $message = new Message($request->all());
         $message->ip = $request->getClientIp();
         $message->save();
 
         $request->session()->flash('success', '提交成功');
-        return redirect(route('system.contactUs'));
+        if ($success_uri = $request->get('success_uri', null)) {
+            return redirect($success_uri);
+        } else {
+            return redirect()->back();
+        }
     }
 }

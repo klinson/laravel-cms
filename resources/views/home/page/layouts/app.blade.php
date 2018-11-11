@@ -35,10 +35,7 @@
     @yield('header')
 </section>
 
-@include($_theme_info['view_root_path'].'.layouts._message')
-
 @yield('content')
-
 
 @include($_theme_info['view_root_path'].'.layouts._footer')
 

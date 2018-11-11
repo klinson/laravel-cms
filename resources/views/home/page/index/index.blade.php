@@ -1,5 +1,14 @@
 @extends($_theme_info['view_root_path'].'.layouts.app')
 
+@section('styles')
+    <style>
+        .has-error {
+            outline: none;
+            border: 1px solid #eb6b55;
+        }
+    </style>
+@endsection
+
 @section('header-class') banner-area @endsection
 
 @section('content')
@@ -360,26 +369,82 @@
             <div class="row d-flex justify-content-center">
                 <div class="menu-content pb-60 col-lg-8">
                     <div class="title text-center">
-                        <h1 class="mb-10">If you need, Just drop us a line</h1>
-                        <p>Who are in extremely love with eco friendly system.</p>
+                        <h1 class="mb-10">联系我们</h1>
+                        {{--<p>Who are in extremely love with eco friendly system.</p>--}}
                     </div>
                 </div>
             </div>
-            <form class="form-area " id="myForm" action="mail.php" method="post" class="contact-form text-right">
+            @if (Session::has('success'))
+                <div class="col-mb-12">
+                    <blockquote class="generic-blockquote" style="border-left: 2px solid #73fbaf;">
+                        {{ Session::get('success') }}
+                    </blockquote>
+                </div>
+            @endif
+            @if (Session::has('error'))
+                <div class="col-mb-12">
+                    <blockquote class="generic-blockquote" style="border-left: 2px solid #f44a40;">
+                        {{ Session::get('error') }}
+                    </blockquote>
+                </div>
+            @endif
+            <form class="form-area" id="myForm"  action="{{ route('system.contactUs.store') }}" method="post" class="contact-form text-right">
                 <div class="row">
                     <div class="col-lg-6 form-group">
-                        <input name="name" placeholder="Enter your name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" class="common-input mb-20 form-control" required="" type="text">
+                        <input type="text" id="name" name="name" class="common-input mb-20 form-control {{$errors->has('name')?'has-error':''}}" placeholder="请输入您的姓名" value="{{ old('name') }}" required>
+                        @if($errors->has('name'))
+                            <div class="col-md-12">
+                                <p class="text-danger text-left"><strong>{{$errors->first('name')}}</strong></p>
+                            </div>
+                        @endif
 
-                        <input name="email" placeholder="Enter email address" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" class="common-input mb-20 form-control" required="" type="email">
+                        <input type="text" id="email" name="email" class="common-input mb-20 form-control {{$errors->has('email')?'has-error':''}}" placeholder="请输入您常用的邮箱地址" value="{{ old('email') }}" required>
+                        @if($errors->has('email'))
+                            <div class="col-md-12">
+                                <p class="text-danger text-left"><strong>{{$errors->first('email')}}</strong></p>
+                            </div>
+                        @endif
 
-                        <input name="subject" placeholder="Enter your subject" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your subject'" class="common-input mb-20 form-control" required="" type="text">
+                        <input type="text" id="subject" name="subject" class="common-input mb-20 form-control {{$errors->has('subject')?'has-error':''}}" placeholder="请输入概要主题" required value="{{ old('subject') }}">
+                        @if($errors->has('subject'))
+                            <div class="col-md-12">
+                                <p class="text-danger text-left"><strong>{{$errors->first('subject')}}</strong></p>
+                            </div>
+                        @endif
+
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-9 col-md-9">
+                                <input type="text" id="captcha" class="common-input mb-20 form-control {{$errors->has('captcha')?'has-error':''}}" name="captcha" placeholder="请输入验证码" required value="{{ old('captcha') }}">
+                                @if($errors->has('captcha'))
+                                    <div class="col-md-12">
+                                        <p class="text-danger text-left"><strong>{{$errors->first('captcha')}}</strong></p>
+                                    </div>
+                                @endif
+                            </div>
+                            <div class="col-xs-6 col-sm-3 col-md-3">
+                                <img src="{{captcha_src()}}" style="cursor: pointer" onclick="this.src='{{captcha_src()}}'+Math.random()">
+                            </div>
+                        </div>
+
+
                     </div>
                     <div class="col-lg-6 form-group">
-                        <textarea class="common-textarea mt-10 form-control" name="message" placeholder="Messege" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required></textarea>
-                        <button class="primary-btn mt-20">Send Message<span class="lnr lnr-arrow-right"></span></button>
+                        <textarea name="content" id="content" cols="30" rows="10" class="common-textarea mt-10 form-control {{$errors->has('content')?'has-error':''}}" placeholder="请输入详细内容" required>{{ old('content') }}</textarea>
+                        @if($errors->has('content'))
+                            <div class="col-md-12">
+                                <p class="text-danger text-left"><strong>{{$errors->first('content')}}</strong></p>
+                            </div>
+                        @endif
+
+                        <button class="primary-btn mt-20">提交<span class="lnr lnr-arrow-right"></span></button>
                         <div class="alert-msg">
                         </div>
-                    </div></div>
+                    </div>
+                </div>
+                {{ csrf_field() }}
+                <input type="hidden" name="success_uri" value="/#contact">
+                <input type="hidden" name="error_uri" value="/#contact">
+
             </form>
 
         </div>
