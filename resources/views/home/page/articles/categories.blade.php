@@ -19,11 +19,11 @@
 
 @section('content')
     @if($category->is_page)
-        <div class="colorlib-work">
+        <div class="whole-wrap">
             <div class="container">
-                <div class="row  col-md-12">
+                <div class="row">
                     @if(isset($articles[0]))
-                        <ucapcontent>
+                        <ucapcontent class="col-md-12">
                             {!! $articles[0]->content !!}
                         </ucapcontent>
                     @endif
