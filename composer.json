@@ -7,7 +7,7 @@
     "require": {
         "php": ">=7.0.0",
         "dingo/api": "2.0.0-alpha2",
-        "encore/laravel-admin": "1.5.*",
+        "encore/laravel-admin": "^1.6",
         "fideloper/proxy": "~3.3",
         "laravel-admin-ext/backup": "^1.0",
         "laravel-admin-ext/config": "^1.0",
@@ -17,6 +17,7 @@
         "mews/captcha": "^2.2",
         "overtrue/laravel-lang": "~3.0",
         "overtrue/laravel-query-logger": "^1.0",
+        "overtrue/laravel-wechat": "~4.0",
         "tymon/jwt-auth": "1.0.0-rc.1"
     },
     "require-dev": {
