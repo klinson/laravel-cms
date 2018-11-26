@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use Encore\Admin\Config\Config;
+use App\Handlers\ConfigHandler;
 use Illuminate\Support\ServiceProvider;
 use Carbon\Carbon;
 
@@ -17,7 +17,7 @@ class AppServiceProvider extends ServiceProvider
     {
         // Carbon 是 PHP DateTime 的一个简单扩展, 调整汉语
         Carbon::setLocale('zh');
-        Config::load();
+        ConfigHandler::load();
 
         $this->loadObserverConfig();
     }
