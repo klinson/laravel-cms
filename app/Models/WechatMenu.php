@@ -55,4 +55,60 @@ class WechatMenu extends Model
             return WechatMenu::where('parent_id', 0)->count() < 3;
         }
     }
+
+    public static function publishWechat()
+    {
+        $buttons = static::buildWechatMenusContent();
+        $app = app('wechat.official_account');
+        $res = $app->menu->create($buttons);
+        if (isset($res['errcode']) && $res['errcode'] > 0) {
+            throw new \Exception($res['errmsg'].'-'.$res['errcode']);
+        }
+    }
+
+    public static function buildWechatMenusContent()
+    {
+        $list = static::orderBy('sort')->get()->toArray();
+        $tree = list_to_tree($list, 0, 'id', 'parent_id', 'sub_button');
+        return (new static())->transformTree($tree);
+    }
+
+    protected function transformTree($tree)
+    {
+        $return = [];
+        foreach ($tree as $item) {
+            $return[] = $this->transform($item);
+        }
+        return $return;
+    }
+
+    protected function transform($item)
+    {
+        switch ($item['type']) {
+            case 'view':
+                $item_tmp = [
+                    'name' => $item['name'],
+                    'type' => $item['type'],
+                    'url'  => $item['value'],
+                ];
+                break;
+            case 'menus':
+                $item_tmp = [
+                    'name' => $item['name'],
+                    'sub_button' => array_map(function ($item_c) {
+                        return $this->transform($item_c);
+                    }, $item['sub_button']),
+                ];
+                break;
+            case 'click':
+            default:
+                $item_tmp = [
+                    'name' => $item['name'],
+                    'type' => $item['type'],
+                    'key'  => $item['value'],
+                ];
+                break;
+        }
+        return $item_tmp;
+    }
 }

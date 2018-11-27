@@ -10,6 +10,7 @@ namespace App\Admin\Controllers\Wechat;
 
 
 use App\Admin\Controllers\Controller;
+use App\Admin\Extensions\Tools\DefaultTool;
 use App\Models\WechatMenu;
 use App\Rules\CheckWechatMenu;
 use Encore\Admin\Controllers\HasResourceActions;
@@ -69,11 +70,11 @@ class MenusController extends Controller
                 $number++;
                 if (isset($order['children'])) {
                     $count = count($order['children']);
-                    if ($count > 3) {
-                        admin_toastr('子菜单最多只能3个', 'error');
+                    if ($count > 5) {
+                        admin_toastr('子菜单最多只能5个', 'error');
                         return response()->json([
                             'status'  => false,
-                            'message' => '子菜单最多只能3个',
+                            'message' => '子菜单最多只能5个',
                         ]);
                     } else {
                         $number += $count;
@@ -122,9 +123,9 @@ class MenusController extends Controller
     protected function form()
     {
         return Admin::form(WechatMenu::class, function (Form $form) {
-            $form->text('name', '菜单标题')->rules('required,max:16');
+            $form->text('name', '菜单标题')->rules(['required','max:16']);
             $form->display('type', '菜单类型')->options(WechatMenu::menu_options)->rules('required|in:'.implode(',', WechatMenu::menu_types))->default('view')->help($this->help());
-            $form->text('value', '菜单值')->rules('max:128')->help($this->help('value'));
+            $form->text('value', '菜单值')->rules(['max:128'])->help($this->help('value'));
         });
     }
 
@@ -139,9 +140,28 @@ class MenusController extends Controller
             $tree->disableCreate();
 
             $tree->branch(function ($branch) use ($map) {
-                $payload = "<i class='fa {$map[$branch['type']]}'></i>&nbsp;&nbsp;<strong>{$branch['name']}</strong>";
+                $value = '';
+                switch ($branch['type']) {
+                    case 'click':
+                        $value = "[{$branch['value']}]";
+                        break;
+                    case 'view':
+                        $value = "[<a href='{$branch['value']}' target='_blank'>{$branch['value']}</a>]";
+                        break;
+                }
+
+                $payload = "<i class='fa {$map[$branch['type']]}'></i>&nbsp;&nbsp;<strong>{$branch['name']}&nbsp;&nbsp;&nbsp;&nbsp;{$value}</strong>";
 
                 return $payload;
+            });
+
+            $tree->tools(function (Tree\Tools $tools) {
+                $btn = <<<HTML
+<div class="btn-group">
+    <a class="btn btn-success btn-sm" title="发布" href="/admin/wechat/menus/publish"><i class="fa fa-send"></i><span class="hidden-xs">&nbsp;发布</span></a>
+</div>
+HTML;
+                $tools->add($btn);
             });
         });
     }
@@ -168,4 +188,14 @@ HTML;
         return $help;
     }
 
+    public function publish()
+    {
+        try {
+            WechatMenu::publishWechat();
+            admin_toastr('发布成功', 'success');
+        } catch (\Exception $exception) {
+            admin_toastr($exception->getMessage(), 'error');
+        }
+        return redirect()->back();
+    }
 }
