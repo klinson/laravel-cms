@@ -18,6 +18,7 @@ return [
     'delete'                => '删除',
     'remove'                => '移除',
     'edit'                  => '编辑',
+    'continue_creating'     => '继续创建',
     'continue_editing'      => '继续编辑',
     'view'                  => '查看',
     'detail'                => '详细',

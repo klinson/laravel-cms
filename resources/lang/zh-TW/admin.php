@@ -19,6 +19,7 @@ return [
     'remove'                => '移除',
     'edit'                  => '編輯',
     'view'                  => '查看',
+    'continue_creating'     => '繼續創建',
     'continue_editing'      => '繼續編輯',
     'detail'                => '詳細',
     'browse'                => '瀏覽',
