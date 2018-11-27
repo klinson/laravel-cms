@@ -41,9 +41,16 @@ class MenusController extends Controller
                     $form = new \Encore\Admin\Widgets\Form();
                     $form->action(admin_base_path('wechat/menus'));
 
-                    $form->select('parent_id', '上级菜单')->options(WechatMenu::menus())->help($this->help('menus'));
-                    $form->text('name', '菜单标题')->rules('required');
-                    $form->select('type', '菜单类型')->options(WechatMenu::menu_options)->rules('required|in:'.implode(',', WechatMenu::menu_types))->default('view')->help($this->help());
+                    $form->select('parent_id', '上级菜单')
+                        ->options(WechatMenu::menus())
+                        ->help($this->help('menus'));
+                    $form->text('name', '菜单标题')
+                        ->rules('required');
+                    $form->select('type', '菜单类型')
+                        ->options(WechatMenu::menu_options)
+                        ->rules('required|in:'.implode(',', WechatMenu::menu_types))
+                        ->default('view')
+                        ->help($this->help());
 
                     $form->text('value', '菜单值')->help($this->help('value'));
                     $form->hidden('_token')->default(csrf_token());
@@ -134,7 +141,15 @@ class MenusController extends Controller
         $map = [
             'click' => 'fa-hand-pointer-o',
             'view' => 'fa-link',
-            'menus' => 'fa-align-justify'
+            'menus' => 'fa-align-justify',
+            'scancode_push' => 'fa-qrcode',
+            'scancode_waitmsg' => 'fa-qrcode',
+            'pic_sysphoto' => 'fa-photo',
+            'pic_photo_or_album' => 'fa-photo',
+            'pic_weixin' => 'fa-photo',
+            'location_select' => 'fa-photo',
+            'media_id' => 'fa-photo',
+            'view_limited' => 'fa-file-text-o',
         ];
         return WechatMenu::tree(function (Tree $tree) use ($map) {
             $tree->disableCreate();
@@ -143,14 +158,21 @@ class MenusController extends Controller
                 $value = '';
                 switch ($branch['type']) {
                     case 'click':
+                    case 'media_id':
+                    default:
                         $value = "[{$branch['value']}]";
                         break;
                     case 'view':
+                    case 'view_limited':
                         $value = "[<a href='{$branch['value']}' target='_blank'>{$branch['value']}</a>]";
                         break;
+                    case 'menus':
+                        $value = '';
+                        break;
                 }
+                $type = WechatMenu::menu_options[$branch['type']];
 
-                $payload = "<i class='fa {$map[$branch['type']]}'></i>&nbsp;&nbsp;<strong>{$branch['name']}&nbsp;&nbsp;&nbsp;&nbsp;{$value}</strong>";
+                $payload = "<i class='fa {$map[$branch['type']]}'></i>&nbsp;&nbsp;<strong>{$branch['name']}&nbsp;&nbsp;[{$type}]&nbsp;&nbsp;{$value}</strong>";
 
                 return $payload;
             });
@@ -175,6 +197,14 @@ HTML;
 <li>网页类型：跳转url连接</li>
 <li>点击类型：菜单KEY值</li>
 <li>子菜单类型：保留空</li>
+<li>扫一扫：事件KEY值</li>
+<li>扫一扫等待：事件KEY值</li>
+<li>拍照：事件KEY值</li>
+<li>拍照或选择图片：事件KEY值</li>
+<li>选择图片：事件KEY值</li>
+<li>发送地址：事件KEY值</li>
+<li>关联图文ID：图文ID</li>
+<li>关联图文URL：图文URL</li>
 </ul>
 HTML;
                 break;

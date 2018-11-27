@@ -14,12 +14,20 @@ class WechatMenu extends Model
     protected $fillable = ['name', 'type', 'parent_id', 'value'];
 
     const menu_types = [
-        'view', 'click', 'menus'
+        'view', 'click', 'menus', 'scancode_push', 'scancode_waitmsg', 'pic_sysphoto', 'pic_photo_or_album', 'pic_weixin', 'location_select', 'media_id', 'view_limited'
     ];
     const menu_options = [
         'view' => '网页类型',
         'click' => '点击类型',
-        'menus' => '子菜单类型'
+        'menus' => '子菜单类型',
+        'scancode_push' => '扫一扫',
+        'scancode_waitmsg' => '扫一扫等待',
+        'pic_sysphoto' => '拍照',
+        'pic_photo_or_album' => '拍照或选择图片',
+        'pic_weixin' => '选择图片',
+        'location_select' => '发送地址',
+        'media_id' => '关联图文ID',
+        'view_limited' => '关联图文URL'
     ];
 
     public function __construct(array $attributes = [])
@@ -59,6 +67,7 @@ class WechatMenu extends Model
     public static function publishWechat()
     {
         $buttons = static::buildWechatMenusContent();
+//        dd($buttons);
         $app = app('wechat.official_account');
         $res = $app->menu->create($buttons);
         if (isset($res['errcode']) && $res['errcode'] > 0) {
@@ -101,6 +110,20 @@ class WechatMenu extends Model
                 ];
                 break;
             case 'click':
+                $item_tmp = [
+                    'name' => $item['name'],
+                    'type' => $item['type'],
+                    'key'  => $item['value'],
+                ];
+                break;
+            case 'media_id':
+            case 'view_limited':
+                $item_tmp = [
+                    'name' => $item['name'],
+                    'type' => $item['type'],
+                    'media_id'  => $item['value'],
+                ];
+                break;
             default:
                 $item_tmp = [
                     'name' => $item['name'],
