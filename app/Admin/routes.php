@@ -15,6 +15,13 @@ Route::group([
     $router->resource('categories', CategoriesController::class);
     $router->resource('articles', ArticlesController::class);
 
+    // 发布微信群发
+    $router->put('articles/{article}/publishWechat', 'ArticlesController@publish');
+
     $router->post('files/editor', 'FilesController@editor');
     $router->resource('messages', MessagesController::class);
+
+//    $router->get('wechat/menus', 'WechatController@menus');
+    $router->resource('wechat/menus', Wechat\MenusController::class);
+
 });

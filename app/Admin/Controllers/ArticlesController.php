@@ -2,6 +2,7 @@
 
 namespace App\Admin\Controllers;
 
+use App\Admin\Extensions\Actions\AjaxButton;
 use App\Models\Article;
 use App\Models\Category;
 use Encore\Admin\Controllers\ModelForm;
@@ -11,6 +12,7 @@ use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Storage;
 
 class ArticlesController extends Controller
 {
@@ -156,6 +158,14 @@ class ArticlesController extends Controller
                     1    => '正常',
                 ]);
             });
+
+            $grid->actions(function (Grid\Displayers\Actions $actions) {
+                $actions->append(new AjaxButton(
+                    $actions->getResource() . '/' . $actions->getKey() . '/publishWechat',
+                    '微信群发',
+                    'primary'
+                ));
+            });
         });
     }
 
@@ -196,6 +206,24 @@ class ArticlesController extends Controller
             $data['is_top'] = ($data['is_top'] === 'on') ? 1 : 0;
         }
         return $this->form()->update($id, $data);
+    }
+
+    public function publish(Article $article)
+    {
+        try {
+            $article->publishWechatNews();
+            $data = [
+                'status'  => true,
+                'message' => trans('群发成功'),
+            ];
+        } catch (\Exception $exception) {
+            $data = [
+                'status'  => false,
+                'message' => trans($exception->getMessage()),
+            ];
+        }
+        return response()->json($data);
+
     }
 
 }
