@@ -24,5 +24,5 @@ Route::group([
 //    $router->get('wechat/menus', 'WechatController@menus');
     $router->get('wechat/menus/publish', 'Wechat\MenusController@publish');
     $router->resource('wechat/menus', Wechat\MenusController::class);
-
+    $router->resource('wechat/articles', Wechat\ArticlesController::class);
 });
