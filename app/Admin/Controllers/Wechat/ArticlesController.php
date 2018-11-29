@@ -10,6 +10,7 @@ namespace App\Admin\Controllers\Wechat;
 
 use App\Admin\Controllers\Controller;
 use App\Admin\Extensions\Actions\AjaxButton;
+use App\Admin\Extensions\Actions\GetButton;
 use App\Models\Article;
 use App\Models\WechatArticle;
 use Encore\Admin\Controllers\HasResourceActions;
@@ -21,7 +22,6 @@ use Illuminate\Http\Request;
 
 class ArticlesController extends Controller
 {
-    use HasResourceActions;
 
     public function index()
     {
@@ -43,7 +43,6 @@ class ArticlesController extends Controller
             $grid->article()->thumbnail('缩略图')->image();
 
             $grid->column('wechat_media_id', '微信资源id');
-            $grid->column('wechat_media_url', '微信资源url');
             $grid->column('published_at', '发布时间')->sortable();
             $grid->column('created_at', '创建时间')->sortable();
 
@@ -53,9 +52,16 @@ class ArticlesController extends Controller
 
             $grid->actions(function (Grid\Displayers\Actions $actions) {
                 $actions->disableEdit();
+                $actions->disableView();
                 $actions->append(new AjaxButton(
                     $actions->getResource() . '/' . $actions->getKey() . '/publish',
                     '微信群发',
+                    'primary'
+                ));
+                $actions->append(new GetButton(
+                    $actions->getResource() . '/' . $actions->getKey(),
+                    '预览',
+                    '_blank',
                     'primary'
                 ));
             });
@@ -128,6 +134,33 @@ class ArticlesController extends Controller
                 'message' => trans($exception->getMessage()),
             ];
         }
+        return response()->json($data);
+    }
+
+    public function show(WechatArticle $article)
+    {
+        try {
+            $info = $article->getWechatMediaInfo();
+            header('Location: ' . $info['url']);
+        } catch (\Exception $exception) {
+            return $exception->getMessage();
+        }
+    }
+
+    public function destroy(WechatArticle $article)
+    {
+        if ($article->delete()) {
+            $data = [
+                'status'  => true,
+                'message' => trans('admin.delete_succeeded'),
+            ];
+        } else {
+            $data = [
+                'status' => false,
+                'message' => trans('admin.delete_failed'),
+            ];
+        }
+
         return response()->json($data);
     }
 }
