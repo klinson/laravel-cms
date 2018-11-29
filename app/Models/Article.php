@@ -181,4 +181,15 @@ class Article extends Model
         $content = strtr($content, $replace_images);
         return $content;
     }
+
+    public static function selectOptions()
+    {
+        $list = Article::all();
+        $options = ['请选择'];
+        foreach($list as $item) {
+            $options[$item->id] = "No.{$item->id} {$item->title}";
+        }
+
+        return $options;
+    }
 }

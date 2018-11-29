@@ -160,11 +160,11 @@ class ArticlesController extends Controller
             });
 
             $grid->actions(function (Grid\Displayers\Actions $actions) {
-                $actions->append(new AjaxButton(
-                    $actions->getResource() . '/' . $actions->getKey() . '/publishWechat',
-                    '微信群发',
-                    'primary'
-                ));
+//                $actions->append(new AjaxButton(
+//                    $actions->getResource() . '/' . $actions->getKey() . '/publishWechat',
+//                    '微信群发',
+//                    'primary'
+//                ));
             });
         });
     }
