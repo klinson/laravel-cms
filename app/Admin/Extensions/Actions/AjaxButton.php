@@ -36,34 +36,39 @@ $('.{$this->title}-class').unbind('click').click(function() {
     var url = $(this).data('action');
 
     swal({
-      title: "$this->deleteConfirm",
-      type: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#DD6B55",
-      confirmButtonText: "$this->confirm",
-      closeOnConfirm: false,
-      cancelButtonText: "$this->cancel"
-    },
-    function(){
-        $.ajax({
-            method: 'post',
-            url: url,
-            data: {
-                _method:'put',
-                _token:LA.token,
-            },
-            success: function (data) {
-                $.pjax.reload('#pjax-container');
+        title: "$this->deleteConfirm",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "$this->confirm",
+        showLoaderOnConfirm: true,
+        cancelButtonText: "$this->cancel",
+        preConfirm: function() {
+            return new Promise(function(resolve) {
+                $.ajax({
+                    method: 'post',
+                    url: url,
+                    data: {
+                        _method:'put',
+                        _token:LA.token,
+                    },
+                    success: function (data) {
+                        $.pjax.reload('#pjax-container');
 
-                if (typeof data === 'object') {
-                    if (data.status) {
-                        swal(data.message, '', 'success');
-                    } else {
-                        swal(data.message, '', 'error');
+                        resolve(data);
                     }
-                }
+                });
+            });
+        }
+    }).then(function(result) {
+        var data = result.value;
+        if (typeof data === 'object') {
+            if (data.status) {
+                swal(data.message, '', 'success');
+            } else {
+                swal(data.message, '', 'error');
             }
-        });
+        }
     });
 });
 
