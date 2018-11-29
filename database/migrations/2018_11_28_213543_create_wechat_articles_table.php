@@ -17,7 +17,6 @@ class CreateWechatArticlesTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('article_id')->default(0);
             $table->string('wechat_media_id')->default('');
-            $table->string('wechat_media_url')->default('');
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });
