@@ -35,7 +35,7 @@ class MessagesController extends Controller
             $grid->column('id', 'ID')->sortable();
             $grid->column('user_info_avatar', '用户头像')->display(function ($item) {
                 return <<<HTML
-<img src="{$this->from_user_info->headimgurl}" />
+<img src="{$this->from_user_info->headimgurl}" style="max-width:200px;max-height:200px" class="img img-thumbnail"/>
 HTML;
             });
             $grid->column('user_info', '用户基本信息')->display(function ($item) {
@@ -49,7 +49,31 @@ HTML;
             $grid->column('type', '消息类型')->display(function ($item) {
                 return WechatMessage::TYPE_TITLE[$item] ?? '其他';
             });
-            $grid->column('content', '消息内容');
+//            $grid->column('content', '消息内容');
+            $grid->column('content_show', '消息内容')->display(function () {
+                switch ($this->type) {
+                    case 'video':
+                        return <<<HTML
+<video src="{$this->message}" controls="controls" style="max-width:200px;max-height:200px"></video>
+HTML;
+
+                        break;
+                    case 'voice':
+                        return <<<HTML
+<audio src="{$this->message}" controls="controls" style="z-index: 100" preload="auto" autoplay="autoplay" ></audio>
+HTML;
+                        break;
+                    case 'image':
+                        return <<<HTML
+<img src="{$this->content}" style="max-width:200px;max-height:200px" class="img img-thumbnail"/>
+HTML;
+                        break;
+                    case 'text':
+                    default:
+                        return $this->content;
+                        break;
+                }
+            });
             $grid->column('received_at', '留言时间')->sortable();
 
             $grid->filter(function ($filter) {
