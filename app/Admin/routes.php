@@ -30,7 +30,7 @@ Route::group([
 
     $router->get('wechat/messages', 'Wechat\MessagesController@index');
     $router->get('wechat/messages/{message}', 'Wechat\MessagesController@reply');
-    $router->post('wechat/messages/{message}', 'Wechat\MessagesController@storeReply');
+    $router->post('wechat/messages/{message}', 'Wechat\MessagesController@storeReply')->name('wechat.message.reply.store');
     $router->delete('wechat/messages/{message}', 'Wechat\MessagesController@destroy');
 
 });

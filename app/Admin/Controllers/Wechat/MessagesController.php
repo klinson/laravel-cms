@@ -135,6 +135,7 @@ HTML;
                         $row_c->column(12, function (Column $column) {
                             $form = new \Encore\Admin\Widgets\Form();
                             $form->method('POST');
+                            $form->action(route('wechat.message.reply.store'));
 
                             $form->textarea('content', '回复内容')->help('互动48小时内回复有效');
                             $form->hidden('_token')->default(csrf_token());
