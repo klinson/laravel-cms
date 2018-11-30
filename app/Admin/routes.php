@@ -27,4 +27,6 @@ Route::group([
 
     $router->put('wechat/articles/{article}/publish', 'Wechat\ArticlesController@publish');
     $router->resource('wechat/articles', Wechat\ArticlesController::class);
+
+    $router->resource('wechat/messages', Wechat\MessagesController::class);
 });

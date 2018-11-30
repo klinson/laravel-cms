@@ -8,12 +8,16 @@ class WechatMessage extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = [
-        'wechat_message_id', 'type', 'content', 'full_content', 'from', 'to', 'received_at', 'from_info'
+    const TYPE_TITLE = [
+        'text' => '文本消息',
+        'image' => '图片消息',
+        'voice' => '语音消息',
+        'video' => '视频消息',
+        'location' => '位置消息',
     ];
 
-    protected $visible = [
-        'from_'
+    protected $fillable = [
+        'wechat_message_id', 'type', 'content', 'full_content', 'from', 'to', 'received_at', 'from_info'
     ];
 
     public function getFromUserInfoAttribute()
