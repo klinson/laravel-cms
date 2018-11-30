@@ -106,3 +106,35 @@ function show_images($show, $column, $label = '', $server = '', $width = 200, $h
         }, $urls));
     });
 }
+
+/**
+ * 下载微信临时资源
+ * @param $media_id
+ * @author klinson <klinson@163.com>
+ * @return null
+ */
+function download_wechat_temp_media($media_id)
+{
+    $app = app('wechat.official_account');
+    $stream = $app->media->get($media_id);
+
+    if ($stream instanceof \EasyWeChat\Kernel\Http\StreamResponse) {
+        // 以内容 md5 为文件名存到本地
+//      $stream->save('abc');
+        // 自定义文件名，不需要带后缀
+//      $stream->saveAs('abc', 'aaa');
+
+        // 获取文件名
+        $h = $stream->getHeader('Content-disposition');
+        $tmp = explode('=', $h[0]);
+        $filename = trim($tmp[1], "\"'");
+
+        if (! \Storage::disk('wechat')->exists($filename)) {
+            \Storage::disk('wechat')->put($filename, $stream);
+        }
+
+        return \Storage::disk('wechat')->url($filename);
+    }
+
+    return null;
+}

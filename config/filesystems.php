@@ -80,6 +80,13 @@ return [
             'root' => storage_path('app/temp'),
         ],
 
+        'wechat' => [
+            'driver' => 'local',
+            'root' => public_path('wechat'),
+            'visibility' => 'public',
+            'url' => env('APP_URL').'/wechat',
+        ]
+
     ],
 
 ];
