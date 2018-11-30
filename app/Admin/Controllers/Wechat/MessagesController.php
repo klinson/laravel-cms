@@ -131,11 +131,11 @@ HTML;
                 $row->column(6, $this->replyShow($message));
 
                 $row->column(6, function (Column $column) use ($message) {
-                    $column->row(function (Row $row_c) {
-                        $row_c->column(12, function (Column $column) {
+                    $column->row(function (Row $row_c) use ($message) {
+                        $row_c->column(12, function (Column $column) use ($message) {
                             $form = new \Encore\Admin\Widgets\Form();
                             $form->method('POST');
-                            $form->action(route('wechat.message.reply.store'));
+                            $form->action(route('wechat.message.reply.store', ['message' => $message]));
 
                             $form->textarea('content', '回复内容')->help('互动48小时内回复有效');
                             $form->hidden('_token')->default(csrf_token());
