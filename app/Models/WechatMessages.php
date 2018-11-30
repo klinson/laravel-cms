@@ -20,12 +20,15 @@ class WechatMessages extends Model
 
     public static function formatWechatMessage($message)
     {
+        $app = app('wechat.official_account');
+
         $data = [
             'wechat_message_id' => $message['MsgId'],
             'type' => $message['MsgType'],
             'content' => static::getContentByMessage($message),
             'full_content' => json_encode($message),
             'form' => $message['FromUserName'],
+            'form_info' => json_encode($app->user->get($message['FromUserName'])),
             'to' => $message['ToUserName'],
             'received_at' => date('Y-m-d H:i:s', $message['CreateTime'])
         ];

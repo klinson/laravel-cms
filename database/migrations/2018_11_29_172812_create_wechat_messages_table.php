@@ -20,6 +20,7 @@ class CreateWechatMessagesTable extends Migration
             $table->string('content', 2048)->nullable()->comment('消息内容');
             $table->text('full_content')->nullable()->comment('消息内容');
             $table->string('form')->default('')->comment('来自用户openid');
+            $table->text('form_info')->nullable()->comment('来自用户基本信息');
             $table->string('to')->default('')->comment('发给公众号账号');
             $table->timestamp('received_at')->nullable()->comment('收到时间');
             $table->timestamps();
