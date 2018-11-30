@@ -78,4 +78,9 @@ class WechatMessage extends Model
                 break;
         }
     }
+
+    public function replies()
+    {
+        return $this->hasMany(WechatMessageReply::class);
+    }
 }

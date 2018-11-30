@@ -28,5 +28,9 @@ Route::group([
     $router->put('wechat/articles/{article}/publish', 'Wechat\ArticlesController@publish');
     $router->resource('wechat/articles', Wechat\ArticlesController::class);
 
-    $router->resource('wechat/messages', Wechat\MessagesController::class);
+    $router->get('wechat/messages', 'Wechat\MessagesController@index');
+    $router->get('wechat/messages/{message}', 'Wechat\MessagesController@reply');
+    $router->post('wechat/messages/{message}', 'Wechat\MessagesController@storeReply');
+    $router->delete('wechat/messages/{message}', 'Wechat\MessagesController@destroy');
+
 });
