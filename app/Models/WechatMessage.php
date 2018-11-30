@@ -9,8 +9,22 @@ class WechatMessage extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'wechat_message_id', 'type', 'content', 'full_content', 'form', 'to', 'received_at', 'form_info'
+        'wechat_message_id', 'type', 'content', 'full_content', 'from', 'to', 'received_at', 'from_info'
     ];
+
+    protected $visible = [
+        'from_'
+    ];
+
+    public function getFromUserInfoAttribute()
+    {
+        return json_decode($this->getAttribute('from_info'));
+    }
+
+    public function getMessageAttribute()
+    {
+        return $this->getAttribute('content');
+    }
 
     public function saveByWechatMessage($message)
     {
@@ -27,8 +41,8 @@ class WechatMessage extends Model
             'type' => $message['MsgType'],
             'content' => static::getContentByMessage($message),
             'full_content' => json_encode($message),
-            'form' => $message['FromUserName'],
-            'form_info' => json_encode($app->user->get($message['FromUserName'])),
+            'from' => $message['FromUserName'],
+            'from_info' => json_encode($app->user->get($message['FromUserName'])),
             'to' => $message['ToUserName'],
             'received_at' => date('Y-m-d H:i:s', $message['CreateTime'])
         ];
