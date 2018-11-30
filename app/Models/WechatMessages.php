@@ -9,7 +9,7 @@ class WechatMessages extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'wechat_message_id', 'type', 'content', 'full_content', 'form', 'to', 'received_at'
+        'wechat_message_id', 'type', 'content', 'full_content', 'form', 'to', 'received_at', 'form_info'
     ];
 
     public function saveByWechatMessage($message)
