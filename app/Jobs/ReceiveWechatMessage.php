@@ -2,7 +2,7 @@
 
 namespace App\Jobs;
 
-use App\Models\WechatMessages;
+use App\Models\WechatMessage;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -31,7 +31,7 @@ class ReceiveWechatMessage implements ShouldQueue
      */
     public function handle()
     {
-        $wechatMessage = new WechatMessages();
+        $wechatMessage = new WechatMessage();
         $wechatMessage->saveByWechatMessage($this->message);
     }
 }
