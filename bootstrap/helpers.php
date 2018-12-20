@@ -194,3 +194,16 @@ function random_string($length = 6, $type = 0): string
 
     return $random_string;
 }
+
+/**
+ * 初始化自定义导出
+ * @param $grid
+ * @param $fields
+ * @param $fieldName
+ * @param $transform
+ * @author klinson <klinson@163.com>
+ */
+function gird_exporter_init(Encore\Admin\Grid $grid, $fields, $fieldName, $transform = [])
+{
+    $grid->exporter((new \App\Admin\Extensions\Exporters\ExcelExporter())->setFields($fields)->setFileName($fieldName)->setTransform($transform));
+}
