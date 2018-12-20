@@ -199,11 +199,11 @@ function random_string($length = 6, $type = 0): string
  * 初始化自定义导出
  * @param $grid
  * @param $fields
- * @param $fieldName
+ * @param $fileName
  * @param $transform
  * @author klinson <klinson@163.com>
  */
-function gird_exporter_init(Encore\Admin\Grid $grid, $fields, $fieldName, $transform = [])
+function gird_exporter_init(Encore\Admin\Grid $grid, $fields, $fileName, $transform = [])
 {
-    $grid->exporter((new \App\Admin\Extensions\Exporters\ExcelExporter())->setFields($fields)->setFileName($fieldName)->setTransform($transform));
+    $grid->exporter((new \App\Admin\Extensions\Exporters\ExcelExporter())->setFields($fields)->setFileName($fileName)->setTransform($transform));
 }
