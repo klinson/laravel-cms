@@ -96,7 +96,7 @@ function get_admin_file_urls($paths, $server = '')
 
 function show_images($show, $column, $label = '', $server = '', $width = 200, $height = 200)
 {
-    $show->$column($label)->as(function ($paths) use ($server, $width, $height) {
+    $show->$column($label)->unescape()->as(function ($paths) use ($server, $width, $height) {
         $urls = get_admin_file_urls($paths, $server);
         if (empty($urls)) {
             return '';
