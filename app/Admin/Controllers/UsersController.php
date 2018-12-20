@@ -15,6 +15,23 @@ class UsersController extends Controller
 {
     use ModelForm;
     protected $pageHeader = '用户管理';
+    protected $exportTitle = '用户列表';
+    protected $exportFields = [
+        'id' => 'ID',
+        'username' => '用户名',
+        'nickname' => '昵称',
+        'mobile' => '手机号',
+        'email' => '邮箱',
+        'sex' => '性别',
+        'has_enabled' => '是否启用',
+        'created_at.toDateTimeString()' => '注册时间',
+//        'created_at.timestamp' => '注册时间',
+    ];
+    protected $transform = [
+        'sex' => WECHAT_USER_SEX,
+        'has_enabled' => ['否', '是'],
+//        'created_at.timestamp' => 'function,date,Y-m-d H:i:s,{{:field}}'
+    ];
 
     /**
      * Index interface.
@@ -116,6 +133,9 @@ class UsersController extends Controller
                 return date('Y-m-d H:i:s', $data);
             });
 
+
+            // 导出
+            gird_exporter_init($grid, $this->exportFields, $this->exportTitle, $this->transform);
 
             $grid->filter(function ($filter) {
                 $filter->where(function ($query) {
