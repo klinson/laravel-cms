@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "name": "klinson/laravel-cms",
+    "description": "The cms depend on laravel/lavavel and encore/laravel-admin",
+    "keywords": ["framework", "laravel", "laravel-cms", "laravel-admin", "cms"],
     "license": "MIT",
     "type": "project",
     "require": {
