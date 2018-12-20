@@ -17,7 +17,8 @@ $api = app('Dingo\Api\Routing\Router');
 
 $api->version('v1', [
     'namespace' => 'App\Http\Controllers\Api',
-    ], function ($api) {
+    'middleware' => ['serializer:array', 'bindings'],
+], function ($api) {
     // 登录验证相关路由
     $api->group([
         'prefix' => 'auth'
