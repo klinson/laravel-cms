@@ -40,8 +40,8 @@
                             <div class="row" style="color: #777777">
                                 <div class="single-feature mb-30 col-md-12">
                                     <div class="row">
-                                        <div class="col-md-3">
-                                            <img src="{{ get_admin_file_url($article->thumbnail, '', asset($_theme_info['default_article_thumbnail'])) }}" alt="" class="img-fluid" style="width: 100%">
+                                        <div class="col-md-3" style="height: 175px;">
+                                            <img src="{{ get_admin_file_url($article->thumbnail, '', asset($_theme_info['default_article_thumbnail'])) }}" alt="" class="img-fluid img-thumbnail" style="width: 100%;max-height: 160px">
                                         </div>
                                         <div class="col-md-9 mt-sm-20">
                                             <div class="title d-flex flex-row pb-20">
