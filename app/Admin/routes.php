@@ -33,4 +33,12 @@ Route::group([
     $router->post('wechat/messages/{message}', 'Wechat\MessagesController@storeReply')->name('wechat.message.reply.store');
     $router->delete('wechat/messages/{message}', 'Wechat\MessagesController@destroy');
 
+    // 通用轮播路由
+    $router->get('carouselAds/{ad}/items', 'CarouselAdsController@items')->where('ad', '[0-9]+');
+    $router->post('carouselAds/{ad}/items', 'CarouselAdsController@storeItems')->where('ad', '[0-9]+');
+    $router->get('carouselAds/{ad}/items/{item}/edit', 'CarouselAdsController@editItems')->where('ad', '[0-9]+')->where('item', '[0-9]+');
+    $router->put('carouselAds/{ad}/items/{item}', 'CarouselAdsController@updateItems')->where('ad', '[0-9]+')->where('item', '[0-9]+');
+    $router->delete('carouselAds/{ad}/items/{item}', 'CarouselAdsController@destroyItems')->where('ad', '[0-9]+')->where('item', '[0-9]+');
+    $router->resource('carouselAds', CarouselAdsController::class);
+
 });

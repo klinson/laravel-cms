@@ -9,7 +9,7 @@ namespace App\Admin\Extensions\Tools;
 
 use Encore\Admin\Grid\Tools\BatchAction;
 
-class DefaultTool extends BatchAction
+class DefaultBatchTool extends BatchAction
 {
     protected $action;
 

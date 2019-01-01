@@ -12,4 +12,9 @@ class Model extends EloquentModel
     {
         return $query->orderBy('created_at', 'desc');
     }
+
+    public function scopeSort($query)
+    {
+        return $query->orderBy('sort', 'desc');
+    }
 }
