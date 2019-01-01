@@ -15,6 +15,9 @@ class Controller extends BaseController
 {
     protected $pageHeader = '';
     protected $pageDescription = '';
+    protected $exportFields = [];
+    protected $transform = [];
+    protected $exportTitle = '导出列表';
 
     protected function _setPageDefault(Content $content, $header = '', $description = '')
     {
