@@ -29,7 +29,8 @@ class CarouselAd extends Model
         if ($carouseAd->items->isEmpty()) {
             return [];
         }
-        foreach ($carouseAd->items as $item) {
+        $items = $carouseAd->items->sortByDesc('sort');
+        foreach ($items as $item) {
             $return[] = $item->transform();
         }
         return $return;
