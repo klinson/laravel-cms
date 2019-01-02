@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers\Home;
 
+use App\Models\CarouselAd;
 use App\Models\Category;
 
 class IndexController extends Controller
@@ -22,6 +23,8 @@ class IndexController extends Controller
             $topArticles = [];
         }
 
-        return $this->view()->with(compact(['topCategory', 'topArticles']));
+        $carouselAdItems = CarouselAd::getByKeyByCache('home_page');
+
+        return $this->view()->with(compact(['topCategory', 'topArticles', 'carouselAdItems']));
     }
 }
