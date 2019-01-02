@@ -10,7 +10,7 @@ class CarouselAd extends Model
 
     public function items()
     {
-        return $this->hasMany(CarouselAdItem::class, 'carousel_ad_id', 'id');
+        return $this->hasMany(CarouselAdItem::class, 'carousel_ad_id', 'id')->orderBy('sort', 'desc');
     }
 
     /**
@@ -29,8 +29,7 @@ class CarouselAd extends Model
         if ($carouseAd->items->isEmpty()) {
             return [];
         }
-        $items = $carouseAd->items->sortByDesc('sort');
-        foreach ($items as $item) {
+        foreach ($carouseAd->items as $item) {
             $return[] = $item->transform();
         }
         return $return;
