@@ -3,6 +3,10 @@
 namespace App\Providers;
 
 use App\Handlers\ConfigHandler;
+use App\Models\CarouselAd;
+use App\Models\CarouselAdItem;
+use App\Observers\CarouselAdItemObserver;
+use App\Observers\CarouselAdObserver;
 use Illuminate\Support\ServiceProvider;
 use Carbon\Carbon;
 
@@ -64,5 +68,7 @@ class AppServiceProvider extends ServiceProvider
     protected function loadObserverConfig()
     {
         \App\Models\Message::observe(\App\Observers\MessageObserver::class);
+        CarouselAd::observe(CarouselAdObserver::class);
+        CarouselAdItem::observe(CarouselAdItemObserver::class);
     }
 }

@@ -17,4 +17,19 @@ class CarouselAdItem extends Model
     {
         return $query->orderBy('sort', 'desc');
     }
+
+    public function ad()
+    {
+        return $this->belongsTo(CarouselAd::class, 'carousel_ad_id', 'id');
+    }
+
+    public function transform()
+    {
+        return [
+            'id' => $this->id,
+            'title' => $this->item_title,
+            'url' => $this->url,
+            'picture' => get_admin_file_url($this->picture),
+        ];
+    }
 }
