@@ -7,7 +7,9 @@ use Encore\Admin\Traits\ModelTree;
 
 class LinkItem extends Model
 {
-    use ModelTree, AdminBuilder;
+    use AdminBuilder, ModelTree {
+        buildSelectOptions as protectedBuildSelectOptions;
+    }
 
     public $timestamps = false;
 
@@ -32,4 +34,8 @@ class LinkItem extends Model
         return $this->belongsTo(Link::class, 'link_id', 'id');
     }
 
+    public function buildSelectOptions(array $nodes = [], $parentId = 0, $prefix = '')
+    {
+        return $this->protectedBuildSelectOptions($nodes, $parentId, $prefix);
+    }
 }

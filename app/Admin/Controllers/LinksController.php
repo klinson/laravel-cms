@@ -140,7 +140,7 @@ class LinksController extends Controller
             $this->pageHeader .= " [{$link->key}]{$link->title}超链接设置";
             $this->_setPageDefault($content);
             $content->row(function ($row) use ($link) {
-                $row->column(6, $this->treeView()->render());
+                $row->column(6, $this->treeView($link)->render());
 
                 $row->column(6, function ($column) use ($link) {
                     $form = new \Encore\Admin\Widgets\Form();
@@ -164,10 +164,13 @@ class LinksController extends Controller
         });
     }
 
-    protected function treeView()
+    protected function treeView(Link $link)
     {
-        return LinkItem::tree(function (Tree $tree) {
+        return LinkItem::tree(function (Tree $tree) use ($link) {
             $tree->disableCreate();
+            $tree->query(function ($query) use ($link) {
+                return $query->where('link_id', $link->id);
+            });
 
             $tree->branch(function ($branch) {
                 $payload = "<i class='fa ".($branch['target'] == '_blank' ? 'fa-external-link' : 'fa-link')."'></i>&nbsp;&nbsp;<strong>{$branch['item_title']}&nbsp;&nbsp;{$branch['url']}</strong>";
