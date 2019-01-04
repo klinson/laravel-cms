@@ -8,22 +8,21 @@
                 <div class="col-md-10 text-right menu-1">
                     <ul>
                         <li class="{{ request()->route()->getName() === 'index' ? 'active' : ''}}"><a href="{{ route('index') }}">首页</a></li>
-                        @foreach ($_categories as $_category)
-                            @empty($_category['children'])
-                                <li class="{{ (in_array(request()->route()->getName(),['articles.categories', 'articles.show']) && $_category['id'] == ($category->id ?? 0)) ? 'active' : ''}}"><a href="{{ route('articles.categories', ['category' => $_category['id']])}}">{{ $_category['title'] }}</a></li>
+                        @foreach ($_navs as $_nav)
+                            @empty($_nav['children'])
+                                <li class="{{ check_nav_active($_nav) ? 'active' : ''}}"><a href="{{ $_nav['url'] }}" target="{{ $_nav['target'] }}">{{ $_nav['title'] }}</a></li>
                             @else
-                                <li class="has-dropdown {{ (in_array(request()->route()->getName(),['articles.categories', 'articles.show']) && ($_category['id'] == ($category->id ?? 0)) || $_category['id'] == ($category->parent_id ?? 0)) ? 'active' : ''}}">
-                                    <a href="{{ route('articles.categories', ['category' => $_category['id']]) }}">{{ $_category['title'] }}</a>
+                                <li class="has-dropdown {{ check_nav_active($_nav) ? 'active' : ''}}">
+                                    <a href="{{ $_nav['url'] }}" target="{{ $_nav['target'] }}">{{ $_nav['title'] }}</a>
                                     <ul class="dropdown">
-                                        @foreach ($_category['children'] as $_children)
-                                            <a href="{{ route('articles.categories', ['id' => $_children['id']]) }}">{{ $_children['title'] }}</a>
+                                        @foreach ($_nav['children'] as $_children)
+                                            <a href="{{ $_nav['url'] }}" target="{{ $_nav['target'] }}">{{ $_nav['title'] }}</a>
                                         @endforeach
                                     </ul>
                                 </li>
                             @endempty
                         @endforeach
 
-                        <li class="{{ request()->route()->getName() === 'system.contactUs' ? 'active' : ''}}"><a href="{{ route('system.contactUs') }}">联系我们</a></li>
                     </ul>
                 </div>
             </div>

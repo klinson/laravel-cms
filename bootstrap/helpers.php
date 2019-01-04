@@ -207,3 +207,27 @@ function gird_exporter_init(Encore\Admin\Grid $grid, $fields, $fileName, $transf
 {
     $grid->exporter((new \App\Admin\Extensions\Exporters\ExcelExporter())->setFields($fields)->setFileName($fileName)->setTransform($transform));
 }
+
+/**
+ * 判断导航是否是当前页面打开的
+ * @param $nav
+ * @param string $url
+ * @param string $children
+ * @author klinson <klinson@163.com>
+ * @return bool
+ */
+function check_nav_active($nav, $url = 'url', $children = 'children')
+{
+    $urls[] = $nav[$url] ?? '';
+    if (isset($nav[$children]) && ! empty($nav[$children])) {
+        $urls = array_merge($urls, array_column($nav['children'], $url));
+    }
+    $request_path = '/'.request()->decodedPath();
+
+    foreach ($urls as $url_item) {
+        if (\Illuminate\Support\Str::is($url_item, $request_path)) {
+            return true;
+        }
+    }
+    return false;
+}

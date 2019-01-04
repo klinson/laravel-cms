@@ -3,7 +3,7 @@
     <nav class="navbar navbar-expand-lg  navbar-light">
         <div class="container">
             <a class="navbar-brand" href="/">
-                <img src="{{ asset($_theme_info['style_root_path'].'/img/logo.png') }}" alt="" style="width: 50%;">
+                <img src="{{ asset($_theme_info['style_root_path'].'/img/logo-xiao.png') }}" alt="" style="width: 50%;">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,11 +14,11 @@
                 <ul class="navbar-nav">
                     @foreach ($_navs as $_nav)
                         @empty($_nav['children'])
-                            <li>
+                            <li class="{{ check_nav_active($_nav) ? 'active ' : '' }}">
                                 <a href="{{ $_nav['url'] }}" target="{{ $_nav['target'] }}">{{ $_nav['title'] }}</a>
                             </li>
                         @else
-                            <li class="dropdown">
+                            <li class="dropdown {{ check_nav_active($_nav) ? 'active ' : '' }}">
                                 <a class="dropdown-toggle"
                                    href="{{ $_nav['url'] }}"
                                    target="{{ $_nav['target'] }}"
