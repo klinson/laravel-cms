@@ -45,4 +45,16 @@ class Category extends Model
     {
         return $this->articles()->limit(1);
     }
+
+    public function getWebUrlAttribute()
+    {
+        return route('categories.show', ['category' => $this]);
+    }
+
+    public function toArray()
+    {
+        $array = parent::toArray();
+        $array['web_url'] = $this->web_url;
+        return $array;
+    }
 }

@@ -192,4 +192,9 @@ class Article extends Model
 
         return $options;
     }
+
+    public function getWebUrlAttribute()
+    {
+        return route('articles.show', ['category' => $this->categories[0], 'article' => $this]);
+    }
 }

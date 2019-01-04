@@ -136,11 +136,21 @@ class CategoriesController extends Controller
 
     protected function treeView()
     {
+        Admin::script(
+            <<<HTML
+(new Clipboard('.clipboard-url-btn')).on('success', function(e) {
+    alert('复制url['+e.text+']成功');
+
+    e.clearSelection();
+});
+HTML
+        );
         return Category::tree(function (Tree $tree) {
             $tree->disableCreate();
 
             $tree->branch(function ($branch) {
                 $payload = "<i class='fa {$branch['icon']}'></i>&nbsp;<strong>{$branch['title']}</strong>";
+                $payload .= "<span class='pull-right dd-nodrag'><a class='clipboard-url-btn' data-clipboard-text='{$branch['web_url']}' href='javascript:void(0);' style='margin-left: 3px'><i class='fa fa-clipboard'></i></a></span>";
 
                 return $payload;
             });

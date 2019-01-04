@@ -116,6 +116,9 @@ class ArticlesController extends Controller
             $grid->column('title', '文章标题');
             $grid->categories('所属分类')->pluck('title')->label();
             $grid->column('thumbnail', '缩略图')->image();
+            $grid->column('web_url', '页面url')->display(function ($item) {
+                return $this->web_url;
+            })->urlWrapper();
 
             $states = [
                 'on'  => ['value' => 1, 'text' => '置顶', 'color' => 'primary'],

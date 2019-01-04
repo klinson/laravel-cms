@@ -31,4 +31,5 @@ Form::extend('editor', \App\Admin\Extensions\Form\WangEditor::class);
 //Form::extend('markdown', \App\Admin\Extensions\Form\MarkdownEditor::class);
 
 //Column::extend('qrcode', \App\Admin\Extensions\Column\Qrcode::class);
-//Column::extend('urlWrapper', \App\Admin\Extensions\Column\UrlWrapper::class);
+Admin::js('/vendor/clipboard/dist/clipboard.min.js');
+Column::extend('urlWrapper', \App\Admin\Extensions\Column\UrlWrapper::class);
