@@ -38,8 +38,8 @@
             <div class="row d-flex justify-content-center">
                 <div class="menu-content pb-40 col-lg-8">
                     <div class="title text-center">
-                        <h1 class="mb-10">Why Choose Us Your Fitness Builder</h1>
-                        <p>Who are in extremely love with eco friendly system.</p>
+                        <h1 class="mb-10">为什么选择我们「睿安科技」</h1>
+                        <p>Why Choose Us ？</p>
                     </div>
                 </div>
             </div>
@@ -51,20 +51,12 @@
                 </div>
                 <div class="col-lg-6 col-md-12 no-padding info-rigth">
                     <div class="info-content">
-                        <h2 class="pb-30">We Realize that <br>
-                            there are reduced <br>
-                            Wastege Stand out</h2>
-                        <p>
-                            inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards – especially in the workplace. That’s why it’s crucial that, as women.
-                        </p>
+                        <h2 class="pb-30">我们的超级团队和最高的服务质量</h2>
+                        <p>我们的超级团队和最高的服务质量我们的超级团队和最高的服务质量我们的超级团队和最高的服务质量我们的超级团队和最高的服务质量我们的超级团队和最高的服务质量我们的超级团队和最高的服务质量我们的超级团队和最高的服务质量我们的超级团队和最高的服务质量我们的超级团队和最高的服务质量我们的超级团队和最高的服务质量</p>
                         <br>
-                        <p>
-                            inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards – especially in the workplace. That’s why it’s crucial that, as women. inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards – especially in the workplace. That’s why it’s crucial that, as women.
-                        </p>
+                        <p>我们的超级团队和最高的服务质量我们的超级团队和最高的服务质量我们的超级团队和最高的服务质量我们的超级团队和最高的服务质量我们的超级团队和最高的服务质量我们的超级团队和最高的服务质量我们的超级团队和最高的服务质量我们的超级团队和最高的服务质量我们的超级团队和最高的服务质量</p>
                         <br>
-                        <p>
-                            inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards – especially in the workplace. That’s why it’s crucial that, as women.
-                        </p>
+                        <p>我们的超级团队和最高的服务质量我们的超级团队和最高的服务质量我们的超级团队和最高的服务质量我们的超级团队和最高的服务质量我们的超级团队和最高的服务质量我们的超级团队和最高的服务质量我们的超级团队和最高的服务质量我们的超级团队和最高的服务质量我们的超级团队和最高的服务质量我们的超级团队和最高的服务质量我们的超级团队和最高的服务质量我们的超级团队和最高的服务质量我们的超级团队和最高的服务质量</p>
                     </div>
                 </div>
             </div>
@@ -79,8 +71,7 @@
             <div class="row d-flex justify-content-center">
                 <div class="menu-content pb-30 col-lg-8">
                     <div class="title text-center">
-                        <h1 class="mb-10">Latest Project on the go</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut <br> labore  et dolore magna aliqua.</p>
+                        <h1 class="mb-10">特色产品推荐</h1>
                     </div>
                 </div>
             </div>
@@ -129,7 +120,7 @@
 
 
     <!-- Start feature Area -->
-    <section class="feature-area section-gap" id="service">
+    <section class="feature-area section-gap" id="sevice">
         <div class="container">
             <div class="row d-flex justify-content-center">
                 <div class="menu-content pb-60 col-lg-8">

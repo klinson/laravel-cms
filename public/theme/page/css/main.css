@@ -1953,9 +1953,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .p1-gradient-bg, .primary-btn, .primary-btn2:hover, .single-feature:hover, .video-area .overlay-bg, .single-footer-widget .click-btn, .generic-banner {
-  background-image: -moz-linear-gradient(0deg, #b21aff 0%, #732bde 100%);
-  background-image: -webkit-linear-gradient(0deg, #b21aff 0%, #732bde 100%);
-  background-image: -ms-linear-gradient(0deg, #b21aff 0%, #732bde 100%);
+  background-image: -moz-linear-gradient(0deg, #5182e4 0%, #0055ff 100%);
+  background-image: -webkit-linear-gradient(0deg, #5182e4 0%, #0055ff 100%);
+  background-image: -ms-linear-gradient(0deg, #5182e4 0%, #0055ff 100%);
 }
 
 .p1-gradient-color, .counter-left h2, .footer-social a:hover i, .single-footer-widget .bb-btn {
@@ -2690,7 +2690,7 @@ h6 {
 }
 
 .footer-text a, .footer-text i {
-  color: #b01afe;
+  color: #0a52fe;
 }
 
 .whole-wrap {
