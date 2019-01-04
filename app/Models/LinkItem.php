@@ -38,4 +38,15 @@ class LinkItem extends Model
     {
         return $this->protectedBuildSelectOptions($nodes, $parentId, $prefix);
     }
+
+    public function transform()
+    {
+        return [
+            'id' => $this->id,
+            'title' => $this->item_title,
+            'url' => $this->url,
+            'target' => $this->target,
+            'parent_id' => $this->parent_id
+        ];
+    }
 }

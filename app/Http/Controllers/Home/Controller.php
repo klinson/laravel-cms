@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Home;
 use App\Http\Controllers\Controller as BaseController;
 use App\Models\Article;
 use App\Models\Category;
+use App\Models\Link;
 use Illuminate\Support\Str;
 
 class Controller extends BaseController
@@ -12,7 +13,7 @@ class Controller extends BaseController
     // 前端模板主题
     protected $theme = 'default';
     protected $themeInfo = [];
-    protected $categories = [];
+    protected $navs = [];
     protected $recentArticleCount = 3;
     protected $recentArticles = [];
 
@@ -24,7 +25,7 @@ class Controller extends BaseController
         $this->themeInfo['style_root_path'] = '/'.$this->themeInfo['style_root_path'];
 
         if (request()->isMethod('get')) {
-            $this->categories = Category::getTree();
+            $this->navs = Link::getTree('index_nav');
             $this->recentArticles = Article::recent($this->recentArticleCount);
         }
     }
@@ -53,7 +54,7 @@ class Controller extends BaseController
 
         return view($view, $data, $mergeData)
             ->with('_theme_info', $this->themeInfo)
-            ->with('_categories', $this->categories)
+            ->with('_navs', $this->navs)
             ->with('_recent_articles', $this->recentArticles);
     }
 }

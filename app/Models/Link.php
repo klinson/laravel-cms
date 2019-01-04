@@ -34,7 +34,9 @@ class Link extends Model
         if ($link->items->isEmpty()) {
             return [];
         }
-        $return = $link->items->toArray();
+        foreach ($link->items as $item) {
+            $return[] = $item->transform();
+        }
         return $return;
     }
 
@@ -47,6 +49,23 @@ class Link extends Model
         });
     }
 
+    /**
+     * 缓存中获取树结构数据
+     *
+     * @param $key
+     * @author klinson <klinson@163.com>
+     * @return array
+     */
+    public static function getTree($key)
+    {
+        $list = static::getByKeyByCache($key);
+        if (empty($list)) {
+            return [];
+        }
+        $tree = list_to_tree($list, 0, 'id', 'parent_id', 'children');
+        return $tree;
+    }
+
     public function resetCache()
     {
         $cache_key = 'ads:links:'.$this->key;
@@ -55,7 +74,10 @@ class Link extends Model
             if ($this->items->isEmpty()) {
                 return [];
             }
-            $return = $this->items->toArray();
+            $return = [];
+            foreach ($this->items as $item) {
+                $return[] = $item->transform();
+            }
             return $return;
         });
     }

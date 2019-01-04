@@ -129,7 +129,7 @@
 
 
     <!-- Start feature Area -->
-    <section class="feature-area section-gap" id="secvice">
+    <section class="feature-area section-gap" id="service">
         <div class="container">
             <div class="row d-flex justify-content-center">
                 <div class="menu-content pb-60 col-lg-8">
