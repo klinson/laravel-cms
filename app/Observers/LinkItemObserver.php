@@ -13,6 +13,9 @@ class LinkItemObserver
 
     public function deleted(LinkItem $linkItem)
     {
+        if ($linkItem->children) {
+            $linkItem->children()->delete();
+        }
         $linkItem->link->resetCache();
     }
 }
