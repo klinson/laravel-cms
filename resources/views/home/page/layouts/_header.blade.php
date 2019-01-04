@@ -2,7 +2,7 @@
 <header class="default-header">
     <nav class="navbar navbar-expand-lg  navbar-light">
         <div class="container">
-            <a class="navbar-brand" href="/">
+            <a class="navbar-brand" href="/" style="margin-right: 0px">
                 <img src="{{ asset($_theme_info['style_root_path'].'/img/logo-bian1.png') }}" alt="" style="width: 50%;">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
