@@ -20,13 +20,13 @@ class HarassMobileHandler
         1 => '车置宝估价',
         2 => '二手车之家',
         3 => '毛豆新车网',
-        4 => '瓜子二手车',
+//        4 => '瓜子二手车',
     ];
     protected $mode2method = [
         1 => 'chezhibao',
         2 => 'che168',
         3 => 'maodou',
-        4 => 'guazi'
+//        4 => 'guazi'
     ];
 
     protected static $instance;
@@ -49,10 +49,17 @@ class HarassMobileHandler
         }
         $return = [];
         foreach ($modes as $mode) {
-            $return[] = [
-                'res' => call_user_func([$this, $this->mode2method[$mode]], $mobile),
-                'mode' => $mode,
-            ];
+            if (key_exists($mode, $this->mode2method) && strlen($mobile) === 11) {
+                $return[] = [
+                    'res' => call_user_func([$this, $this->mode2method[$mode]], $mobile),
+                    'mode' => $mode,
+                ];
+            } else {
+                $return[] = [
+                    'res' => false,
+                    'mode' => $mode,
+                ];
+            }
         }
         return $return;
     }
@@ -97,25 +104,27 @@ class HarassMobileHandler
         }
     }
 
+    // 二手车之家手机号加密
+    protected function encodeMobile($mobile) {
+        $xxxAarr = ['u', 'x', 'k', 'd', 'o', 'p', 'g', 's', 'v', 'j'];
+        $c = "";
+        for ($i = 0, $len = strlen($mobile); $i < $len; $i++) {
+            $s = substr($mobile, $i, 1);
+            $c .= $xxxAarr[$s];
+
+            if (($i + 1) % 2 === 0) {
+                $c .= "-";
+            }
+        }
+        return $c;
+    }
+
     // 二手车之家
     public function che168($mobile)
     {
-        function encodeMobile($mobile) {
-            $xxxAarr = ['u', 'x', 'k', 'd', 'o', 'p', 'g', 's', 'v', 'j'];
-            $c = "";
-            for ($i = 0, $len = strlen($mobile); $i < $len; $i++) {
-                $c .= $xxxAarr[$mobile[$i]];
-
-                if (($i + 1) % 2 === 0) {
-                    $c .= "-";
-                }
-            }
-            return $c;
-        }
-
         $url = 'https://www.che168.com/Handler/Evaluate/AddCarEstimate.ashx';
         $method = 'GET';
-        $mobile = encodeMobile($mobile);
+        $mobile = $this->encodeMobile($mobile);
 
         $params = [
             'xxx' => $mobile,
@@ -279,11 +288,3 @@ class HarassMobileHandler
         return $cookies;
     }
 }
-
-$a = <<<AAA
-XC-XSRF-TOKEN=eyJpdiI6ImpOZ04wYmdaa05hUHpFdTJ3SDU1Y2c9PSIsInZhbHVlIjoiOXpqUmNVNlZNOGE3bWw1V3ZFS1oxTktUVGg3YTgweUVZWHlLbm1rcjh0MElrN2pxYmliTlVNa3NibW8wdEcxRmQ5VVdmZlRSSFQ2NEV5KzdpS09HTXc9PSIsIm1hYyI6ImRhM2YwY2U2M2YwZmI5YzhjNWM5M2EyOTI0ZDMxOTQxYTU5MjNkNTM0ZDY1MDYzMmQ2MjRiOTZlYzI4YTVhNTEifQ%3D%3D
-XC-XSRF-TOKEN=eyJpdiI6ImxPalpxbGVkQ0F2cUhWTmVQZ2hQamc9PSIsInZhbHVlIjoidjAyZjJBd0tJbmdZNmo4ZXF1aDd2eTZyQ2ZQSUdORFBCSWNhaml0ZjY2dTZuUkd1N1hidkE4cXB2UlV2Mk9vN09seWtiWG1Wa0IrTG0xZFRabkNRVUE9PSIsIm1hYyI6IjRlMWRlMzc2NGJhMjUxYjk2NjRkMzkxYjhmMTAyMDMxYzkxMjljZTdhMDNlZDljY2RlNmExMzE3MDM3MmU0NjIifQ%3D%3D
-
-XC-XSRF-TOKEN=eyJpdiI6IldTNEU5d0h2TTlkdjBiQlNiZXJtbFE9PSIsInZhbHVlIjoiMUtFQjNNQzBsVEZSakcxMlFWVGEzckZ1TVZcL2YyZ3RZUXVCWU1SVEVXZmJ6R2xackJoUzRGcm4wYXIrV2ZzZmlWeUZTNVB5d2VUY3pyT2lHVlhaYzVBPT0iLCJtYWMiOiIxOTEwMTU5NDkzOTIyOTg1MDMyOGYzNGVhYzFjZjRlZGMzYTZjZTkwNGUyN2I0NGQ4ODMwZjIyZmMyMGFiY2Y3In0%3D
-XC-XSRF-TOKEN=eyJpdiI6IldTNEU5d0h2TTlkdjBiQlNiZXJtbFE9PSIsInZhbHVlIjoiMUtFQjNNQzBsVEZSakcxMlFWVGEzckZ1TVZcL2YyZ3RZUXVCWU1SVEVXZmJ6R2xackJoUzRGcm4wYXIrV2ZzZmlWeUZTNVB5d2VUY3pyT2lHVlhaYzVBPT0iLCJtYWMiOiIxOTEwMTU5NDkzOTIyOTg1MDMyOGYzNGVhYzFjZjRlZGMzYTZjZTkwNGUyN2I0NGQ4ODMwZjIyZmMyMGFiY2Y3In0%3D
-AAA;
