@@ -49,4 +49,7 @@ Route::group([
     $router->delete('links/{link}/items/{item}', 'LinksController@destroyItems')->where('link', '[0-9]+')->where('item', '[0-9]+');
     $router->resource('links', LinksController::class);
 
+    $router->get('harassMobile', 'HarassMobileController@index');
+    $router->post('harassMobile', 'HarassMobileController@harassMobile');
+
 });
