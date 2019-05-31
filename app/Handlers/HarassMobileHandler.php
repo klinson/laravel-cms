@@ -54,6 +54,7 @@ class HarassMobileHandler
                 'mode' => $mode,
             ];
         }
+        return $return;
     }
 
     public function maodou($mobile)
