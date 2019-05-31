@@ -23,13 +23,17 @@ class ConfigHandler
 
     public static function getConfigs($reset = false)
     {
-        $cache_key = 'data:admin_configs';
-        if (app()->environment() !== 'production' || $reset === true) {
-            Cache::forget($cache_key);
-        }
+        try {
+            $cache_key = 'data:admin_configs';
+            if (app()->environment() !== 'production' || $reset === true) {
+                Cache::forget($cache_key);
+            }
 
-        return Cache::remember($cache_key, 24*60, function () {
-            return ConfigModel::all(['name', 'value']);
-        });
+            return Cache::remember($cache_key, 24*60, function () {
+                return ConfigModel::all(['name', 'value']);
+            });
+        } catch (\Exception $exception) {
+            return [];
+        }
     }
 }
