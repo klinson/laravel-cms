@@ -242,7 +242,7 @@ return [
     | each page
     |
     */
-    'show_version' => true,
+    'show_version' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -252,7 +252,7 @@ return [
     | Whether to display the environment at the footer of each page
     |
     */
-    'show_environment' => true,
+    'show_environment' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -270,7 +270,7 @@ return [
     |
     | Whether enable default breadcrumb for every page content.
     */
-    'enable_default_breadcrumb' => true,
+    'enable_default_breadcrumb' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -297,5 +297,17 @@ return [
             // Select a local disk that you configured in `config/filesystem.php`
             'disk' => 'admin'
         ],
+
+        'ueditor' => [
+
+            // 如果要关掉这个扩展，设置为false
+            'enable' => true,
+
+            // 编辑器的前端配置 参考：http://fex.baidu.com/ueditor/#start-config
+            'config' => [
+                'initialFrameHeight' => 400, // 例如初始化高度
+            ],
+             'field_type' => 'editor'
+        ]
     ],
 ];
