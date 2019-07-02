@@ -21,7 +21,7 @@
 use Encore\Admin\Form;
 use Encore\Admin\Grid\Column;
 
-Admin::script("document.getElementsByTagName('footer')[0].getElementsByTagName('strong')[0].innerHTML='".config('admin.powered_by_info')."'");
+Admin::script("document.getElementsByTagName('footer')[0].getElementsByTagName('strong')[0].innerHTML='".config('admin.powered_by_info')."';");
 
 Form::forget('map');
 
