@@ -383,6 +383,29 @@ return [
                 'initialFrameHeight' => 400, // 例如初始化高度
             ],
              'field_type' => 'editor'
+        ],
+
+        // 中国地图选择器
+        'china-distpicker' => [
+            // distpicker
+            // https://github.com/laravel-admin-extensions/china-distpicker
+
+            // 如果要关掉这个扩展，设置为false
+            'enable' => false,
+        ],
+
+        // 日期区间选择器
+        'daterangepicker' => [
+            // https://github.com/laravel-admin-extensions/daterangepicker
+            // $form->daterangepicker(['created_at', 'updated_at'], 'Date range');
+
+            // Set to `false` if you want to disable this extension
+            'enable' => true,
+
+            // Find more configurations http://www.daterangepicker.com/
+            'config' => [
+
+            ]
         ]
     ],
 
