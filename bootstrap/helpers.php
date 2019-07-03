@@ -101,6 +101,9 @@ function show_images($show, $column, $label = '', $server = '', $width = 200, $h
         if (empty($urls)) {
             return '';
         }
+        if (is_string($urls)) {
+            $urls = [$urls];
+        }
         return implode("&nbsp;", array_map(function ($url) use ($width, $height) {
             return "<img src='$url' style='max-width:{$width}px;max-height:{$height}px' class='img img-thumbnail' />";
         }, $urls));

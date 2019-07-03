@@ -58,7 +58,7 @@ class ArticlesController extends Controller
 
                 show_images($show, 'thumbnail', '缩略图');
                 $show->description('描述');
-                $show->content('内容');
+                $show->content('内容')->unescape();
                 $show->is_top('是否置顶')->as(function ($v) {
                     return $v ? '是' : '否';
                 });

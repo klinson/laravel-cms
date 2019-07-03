@@ -21,11 +21,13 @@
 use Encore\Admin\Form;
 use Encore\Admin\Grid\Column;
 
+Admin::script("document.getElementsByTagName('footer')[0].getElementsByTagName('strong')[0].innerHTML='".config('admin.powered_by_info')."';");
+
 Form::forget('map');
 
 // 编辑器
-Form::forget('editor');
-Form::extend('editor', \App\Admin\Extensions\Form\WangEditor::class);
+//Form::forget('editor');
+//Form::extend('editor', \App\Admin\Extensions\Form\WangEditor::class);
 //Form::extend('editor', \App\Admin\Extensions\Form\CKEditor::class);
 //Form::extend('code', \App\Admin\Extensions\Form\CodeEditor::class);
 //Form::extend('markdown', \App\Admin\Extensions\Form\MarkdownEditor::class);

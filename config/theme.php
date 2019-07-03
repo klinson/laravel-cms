@@ -16,18 +16,5 @@ return [
             'default_article_thumbnail' => 'theme/default/images/default_article_thumbnail.png',
             'default_category_thumbnail' => 'theme/default/images/default_category_thumbnail.png',
         ],
-
-        'page' => [
-            'view_root_path' => 'home.page',
-            'style_root_path' => 'theme/page',
-            'system_name' => 'Klinson',
-            'default_title' => 'Cms',
-            'description' => 'klinson个人主页cms',
-            'keyword' => 'klinson,cms,个人主页',
-            'author' => 'klinson',
-            'author_link' => 'http://klinson.com',
-            'default_article_thumbnail' => 'theme/default/images/default_article_thumbnail.png',
-            'default_category_thumbnail' => 'theme/default/images/default_category_thumbnail.png',
-        ],
     ]
 ];

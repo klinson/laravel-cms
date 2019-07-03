@@ -38,6 +38,16 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Laravel-admin bootstrap setting
+    |--------------------------------------------------------------------------
+    |
+    | This value is the path of laravel-admin bootstrap file.
+    |
+    */
+    'bootstrap' => app_path('Admin/bootstrap.php'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Laravel-admin route settings
     |--------------------------------------------------------------------------
     |
@@ -48,7 +58,7 @@ return [
     */
     'route' => [
 
-        'prefix' => 'admin',
+        'prefix' => env('ADMIN_ROUTE_PREFIX', 'admin'),
 
         'namespace' => 'App\\Admin\\Controllers',
 
@@ -85,7 +95,7 @@ return [
     | If your page is going to be accessed via https, set it to `true`.
     |
     */
-    'secure' => env('APP_SECURE', false),
+    'https' => env('ADMIN_HTTPS', env('APP_SECURE', false)),
 
     /*
     |--------------------------------------------------------------------------
@@ -95,8 +105,15 @@ return [
     | Authentication settings for all admin pages. Include an authentication
     | guard and a user provider setting of authentication driver.
     |
+    | You can specify a controller for `login` `logout` and other auth routes.
+    |
     */
     'auth' => [
+
+        'controller' => \Encore\Admin\Controllers\AuthController::class,
+
+        'guard' => 'admin',
+
         'guards' => [
             'admin' => [
                 'driver'   => 'session',
@@ -109,6 +126,18 @@ return [
                 'driver' => 'eloquent',
                 'model'  => \App\Models\AdminUser::class,
             ],
+        ],
+
+        // Add "remember me" to login form
+        'remember' => true,
+
+        // Redirect to the specified URI when user is not authorized.
+        'redirect_to' => 'auth/login',
+
+        // The URIs that should be excluded from authorization.
+        'excepts' => [
+            'auth/login',
+            'auth/logout',
         ],
     ],
 
@@ -183,6 +212,11 @@ return [
         'enable' => env('ADMIN_OPERATION_LOG', false),
 
         /*
+         * Only logging allowed methods in the list
+         */
+        'allowed_methods' => ['GET', 'HEAD', 'POST', 'PUT', 'DELETE', 'CONNECT', 'OPTIONS', 'TRACE', 'PATCH'],
+
+        /*
          * Routes that will not log to database.
          *
          * All method to path like: admin/auth/logs
@@ -195,11 +229,31 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | User default avatar
+    |--------------------------------------------------------------------------
+    |
+    | Set a default avatar for newly created users.
+    |
+    */
+    'default_avatar' => '/vendor/laravel-admin/AdminLTE/dist/img/user2-160x160.jpg',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Admin map field provider
+    |--------------------------------------------------------------------------
+    |
+    | Supported: "tencent", "google", "yandex".
+    |
+    */
+    'map_provider' => 'google',
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Skin
     |--------------------------------------------------------------------------
     |
     | This value is the skin of admin pages.
-    | @see https://adminlte.io/docs/2.4/skin
+    | @see https://adminlte.io/docs/2.4/layout
     |
     | Supported:
     |    "skin-blue", "skin-blue-light", "skin-yellow", "skin-yellow-light",
@@ -238,11 +292,11 @@ return [
     | Show version at footer
     |--------------------------------------------------------------------------
     |
-    | Whether to display the version number of laravel-admim at the footer of
+    | Whether to display the version number of laravel-admin at the footer of
     | each page
     |
     */
-    'show_version' => true,
+    'show_version' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -252,7 +306,7 @@ return [
     | Whether to display the environment at the footer of each page
     |
     */
-    'show_environment' => true,
+    'show_environment' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -270,7 +324,28 @@ return [
     |
     | Whether enable default breadcrumb for every page content.
     */
-    'enable_default_breadcrumb' => true,
+    'enable_default_breadcrumb' => false,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Enable/Disable assets minify
+    |--------------------------------------------------------------------------
+    */
+    'minify_assets' => [
+
+        // Assets will not be minified.
+        'excepts' => [
+
+        ],
+
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Enable/Disable sidebar menu search
+    |--------------------------------------------------------------------------
+    */
+    'enable_menu_search' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -297,5 +372,43 @@ return [
             // Select a local disk that you configured in `config/filesystem.php`
             'disk' => 'admin'
         ],
+
+        'ueditor' => [
+
+            // 如果要关掉这个扩展，设置为false
+            'enable' => true,
+
+            // 编辑器的前端配置 参考：http://fex.baidu.com/ueditor/#start-config
+            'config' => [
+                'initialFrameHeight' => 400, // 例如初始化高度
+            ],
+             'field_type' => 'editor'
+        ],
+
+        // 中国地图选择器
+        'china-distpicker' => [
+            // distpicker
+            // https://github.com/laravel-admin-extensions/china-distpicker
+
+            // 如果要关掉这个扩展，设置为false
+            'enable' => false,
+        ],
+
+        // 日期区间选择器
+        'daterangepicker' => [
+            // https://github.com/laravel-admin-extensions/daterangepicker
+            // $form->daterangepicker(['created_at', 'updated_at'], 'Date range');
+
+            // Set to `false` if you want to disable this extension
+            'enable' => true,
+
+            // Find more configurations http://www.daterangepicker.com/
+            'config' => [
+
+            ]
+        ]
     ],
+
+    'powered_by_info' => '技术支持：<a href="https://www.klinson.com/" target="_blank" title="专业开发一切web、公众号、小程序，请联系我吧">klinson.com</a>',
+
 ];
