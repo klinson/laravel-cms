@@ -385,20 +385,28 @@ return [
              'field_type' => 'editor'
         ],
 
-        // 中国地图选择器
+        /**
+         * 中国地图选择器 distpicker
+         * https://github.com/laravel-admin-extensions/china-distpicker
+         *
+         * 表单使用
+         * $form->distpicker(['province_id' => '省', 'city_id' => '市', 'district_id' => '区'], '请选择区域');
+         *
+         * // 筛选使用
+         * $filter->distpicker('province_id', 'city_id', 'district_id', '地域选择');
+         */
         'china-distpicker' => [
-            // distpicker
-            // https://github.com/laravel-admin-extensions/china-distpicker
-
             // 如果要关掉这个扩展，设置为false
             'enable' => false,
         ],
 
-        // 日期区间选择器
+        /**
+         * 日期区间选择器
+         * https://github.com/laravel-admin-extensions/daterangepicker
+         *
+         * $form->daterangepicker(['created_at', 'updated_at'], 'Date range');
+         */
         'daterangepicker' => [
-            // https://github.com/laravel-admin-extensions/daterangepicker
-            // $form->daterangepicker(['created_at', 'updated_at'], 'Date range');
-
             // Set to `false` if you want to disable this extension
             'enable' => false,
 
@@ -408,12 +416,14 @@ return [
             ]
         ],
 
-        // 图片裁剪上传
+        /**
+         * 图片裁剪上传
+         * https://github.com/laravel-admin-extensions/cropper
+         *
+         * 默认模式是自由剪裁模式，如果需要强制剪裁尺寸，请使用（注意该尺寸就是最后得到的图片尺寸 非“比例”）
+         * $form->cropper('content','label')->cRatio($width,$height);
+         */
         'cropper' => [
-            // https://github.com/laravel-admin-extensions/cropper
-            // 默认模式是自由剪裁模式，如果需要强制剪裁尺寸，请使用（注意该尺寸就是最后得到的图片尺寸 非“比例”）
-            // $form->cropper('content','label')->cRatio($width,$height);
-
             // 如果要关掉这个扩展，设置为false
             'enable' => false,
         ],
