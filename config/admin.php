@@ -424,6 +424,22 @@ return [
         // 异步选择器 Laravel-Admin select2 异步插件
         // https://github.com/xiaohuilam/laravel-admin-select2/blob/master/README_cn.md
 
+        /**
+         * 文件夹路径文件选择器 File-browser
+         * https://github.com/laravel-admin-extensions/file-browser
+         *
+         * 在app/Admin/bootstrap.php中添加以下代码：
+         * Encore\Admin\Form::extend('media', \Encore\FileBrowser\FileBrowserField::class);
+         *
+         * 使用方法：
+         * $form->media('images', 'images')->path('uploads/images');
+         * Model下对应字段需要处理
+         * public function getImagesAttribute($v)
+         * {
+         *     return json_decode($v, true);
+         * }
+         */
+
     ],
 
     'powered_by_info' => '技术支持：<a href="https://www.klinson.com/" target="_blank" title="专业开发一切web、公众号、小程序，请联系我吧">klinson.com</a>',

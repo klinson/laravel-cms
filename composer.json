@@ -15,6 +15,7 @@
         "laravel-admin-ext/config": "^1.0",
         "laravel-admin-ext/cropper": "1.0.2.1",
         "laravel-admin-ext/daterangepicker": "^1.0",
+        "laravel-admin-ext/file-browser": "^0.0.2",
         "laravel-admin-ext/media-manager": "^1.0",
         "laravel-admin-ext/media-player": "^1.0",
         "laravel/framework": "5.5.*",
