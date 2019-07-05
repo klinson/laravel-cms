@@ -27,9 +27,9 @@ Form::forget('map');
 
 // 编辑器
 //Form::forget('editor');
-//Form::extend('editor', \App\Admin\Extensions\Form\WangEditor::class);
-//Form::extend('editor', \App\Admin\Extensions\Form\CKEditor::class);
-//Form::extend('code', \App\Admin\Extensions\Form\CodeEditor::class);
+//Form::extend('wangEditor', \App\Admin\Extensions\Form\WangEditor::class);
+//Form::extend('ckEditor', \App\Admin\Extensions\Form\CKEditor::class);
+//Form::extend('codeEditor', \App\Admin\Extensions\Form\CodeEditor::class);
 //Form::extend('markdown', \App\Admin\Extensions\Form\MarkdownEditor::class);
 
 //Column::extend('qrcode', \App\Admin\Extensions\Column\Qrcode::class);

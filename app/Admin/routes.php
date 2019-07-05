@@ -52,4 +52,6 @@ Route::group([
     $router->get('harassMobile', 'HarassMobileController@index');
     $router->post('harassMobile', 'HarassMobileController@harassMobile');
 
+    $router->get('testFrom', 'TestFormController@index');
+    $router->post('testFrom', 'TestFormController@store');
 });
