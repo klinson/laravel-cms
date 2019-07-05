@@ -418,6 +418,9 @@ return [
             'enable' => false,
         ],
 
+        // 多tags输入，没有控制
+        // tagsinput: https://github.com/namet117/laravel-admin-tagsinput
+
     ],
 
     'powered_by_info' => '技术支持：<a href="https://www.klinson.com/" target="_blank" title="专业开发一切web、公众号、小程序，请联系我吧">klinson.com</a>',
