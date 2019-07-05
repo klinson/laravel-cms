@@ -418,8 +418,11 @@ return [
             'enable' => false,
         ],
 
-        // 多tags输入，没有控制
+        // 多tags输入
         // tagsinput: https://github.com/namet117/laravel-admin-tagsinput
+
+        // 异步选择器 Laravel-Admin select2 异步插件
+        // https://github.com/xiaohuilam/laravel-admin-select2/blob/master/README_cn.md
 
     ],
 
