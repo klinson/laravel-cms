@@ -400,13 +400,24 @@ return [
             // $form->daterangepicker(['created_at', 'updated_at'], 'Date range');
 
             // Set to `false` if you want to disable this extension
-            'enable' => true,
+            'enable' => false,
 
             // Find more configurations http://www.daterangepicker.com/
             'config' => [
 
             ]
-        ]
+        ],
+
+        // 图片裁剪上传
+        'cropper' => [
+            // https://github.com/laravel-admin-extensions/cropper
+            // 默认模式是自由剪裁模式，如果需要强制剪裁尺寸，请使用（注意该尺寸就是最后得到的图片尺寸 非“比例”）
+            // $form->cropper('content','label')->cRatio($width,$height);
+
+            // 如果要关掉这个扩展，设置为false
+            'enable' => false,
+        ],
+
     ],
 
     'powered_by_info' => '技术支持：<a href="https://www.klinson.com/" target="_blank" title="专业开发一切web、公众号、小程序，请联系我吧">klinson.com</a>',
