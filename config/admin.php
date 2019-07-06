@@ -397,23 +397,7 @@ return [
          */
         'china-distpicker' => [
             // 如果要关掉这个扩展，设置为false
-            'enable' => false,
-        ],
-
-        /**
-         * 日期区间选择器
-         * https://github.com/laravel-admin-extensions/daterangepicker
-         *
-         * $form->daterangepicker(['created_at', 'updated_at'], 'Date range');
-         */
-        'daterangepicker' => [
-            // Set to `false` if you want to disable this extension
-            'enable' => false,
-
-            // Find more configurations http://www.daterangepicker.com/
-            'config' => [
-
-            ]
+            'enable' => true,
         ],
 
         /**
@@ -425,7 +409,7 @@ return [
          */
         'cropper' => [
             // 如果要关掉这个扩展，设置为false
-            'enable' => false,
+            'enable' => true,
         ],
 
         // 多tags输入
@@ -449,6 +433,75 @@ return [
          *     return json_decode($v, true);
          * }
          */
+
+        /**
+         * Simditor 富文本编辑器
+         * https://github.com/laravel-admin-extensions/simditor
+         *
+         * $form->simditor('simditor');
+         */
+        'simditor' => [
+            // Set to false if you want to disable this extension
+            'enable' => true,
+            // Editor configuration
+            'config' => [
+                'upload' => [
+                    'url' => '/admin/files/simditor', # example api route: admin/api/upload
+                    'fileKey' => 'files',
+                    'connectionCount' => 3,
+                    'leaveConfirm' => 'Uploading is in progress, are you sure to leave this page?'
+                ],
+                'tabIndent' => true,
+                'toolbar' => ['title', 'bold', 'italic', 'underline', 'strikethrough', 'fontScale', 'color', '|', 'ol', 'ul', 'blockquote', 'code', 'table', '|', 'link', 'image', 'hr', '|', 'indent', 'outdent', 'alignment'],
+                'toolbarFloat' => true,
+                'toolbarFloatOffset' => 0,
+                'toolbarHidden' => false,
+                'pasteImage' => true,
+                'cleanPaste' => false,
+            ]
+        ],
+
+        /**
+         * md编辑器
+         * https://github.com/ShareManT/laravel-admin-ext-editormd
+         *
+         * $form->editormd('editormd');
+         *
+         * 注意： 此组件不可与simditor同时使用
+         */
+        'editormd' => [
+            // Set to false if you want to disable this extension
+            'enable' => true,
+            // Set to true if you want to take advantage the screen length for your editormd instance.
+            'wideMode' => false,
+            // Set to true when the instance included in larave-admin tab component.
+            'dynamicMode' => false,
+            // Editor.js configuration (Refer to http://pandao.github.io/editor.md/)
+            'config' =>
+                [
+                    'path' => '/vendor/laravel-admin-ext/editormd/editormd-1.5.0/lib/',
+                    'width' => '100%',
+                    'height' => 600,
+                    'emoji' => true
+                ]
+        ],
+
+        /**
+         * 富文本编辑器
+         * https://github.com/laravel-admin-extensions/wangEditor
+         *
+         * $form->editor('content');
+         */
+        'wang-editor' => [
+
+            // 如果要关掉这个扩展，设置为false
+            'enable' => true,
+
+            // 编辑器的配置
+            'config' => [
+                'uploadImgServer' => '/uploads'
+            ]
+        ],
 
     ],
 

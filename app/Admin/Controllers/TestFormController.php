@@ -78,10 +78,18 @@ class TestFormController extends Controller
             $form->timezone('timezone');
             $form->keyValue('keyValue');
             $form->list('list');
-            $form->hidden('hidden');
-            $form->hidden('hidden');
-            $form->hidden('hidden');
-            $form->editor('editor');
+            $form->tagsinput('tagsinput');
+            $form->media('media')->path('images');
+            $form->cropper('cropper');
+            $form->distpicker(['province_id' => '省', 'city_id' => '市', 'district_id' => '区'], 'distpicker');
+
+            $form->editor('ueditor');
+            $form->ckEditor('ckEditor');
+            $form->codeEditor('codeEditor');
+            $form->markdown('markdown');
+//            $form->simditor('simditor');
+//            注意： 此组件不可与simditor同时使用
+            $form->editormd('editormd');
 
             $content->body(new Box($this->pageHeader, $form));
         });

@@ -39,4 +39,33 @@ class FilesController extends Controller
             ];
         }
     }
+
+    public function simditor(Request $request)
+    {
+        if ($files = $request->file('files')) {
+            $urls = [];
+            if (is_array($files)) {
+                foreach ($files as $file) {
+                    $path = $file->store('editor', 'admin');
+                    $urls[] = Storage::disk('admin')->url($path);
+                }
+
+            } else {
+                $path = $files->store('editor', 'admin');
+                $urls[] = Storage::disk('admin')->url($path);
+            }
+
+            return [
+                "success" => true,
+                "msg" => '上传成功',
+                "file_path" => $urls,
+            ];
+        } else {
+            return [
+                "success" => false,
+                "msg" => '请选择上传文件',
+                "file_path" => [],
+            ];
+        }
+    }
 }

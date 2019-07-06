@@ -18,7 +18,9 @@ Route::group([
     // 发布微信群发
     $router->put('articles/{article}/publishWechat', 'ArticlesController@publish');
 
-    $router->post('files/editor', 'FilesController@editor');
+    $router->post('files', 'FilesController@editor');
+    $router->post('files/simditor', 'FilesController@simditor');
+
     $router->resource('messages', MessagesController::class);
 
 //    $router->get('wechat/menus', 'WechatController@menus');
