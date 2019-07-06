@@ -35,7 +35,7 @@ class TestFormController extends Controller
             ];
 
             $form = new Form();
-            $form->action('/admin/testForm');
+            $form->action('/admin/testFrom');
             $form->method();
             $form->text('text');
             $form->password('password');
@@ -92,6 +92,7 @@ class TestFormController extends Controller
 //            注意： 此组件不可与simditor同时使用
             $form->editormd('editormd');
 
+
             $content->body(new Box($this->pageHeader, $form));
         });
     }
@@ -100,7 +101,7 @@ class TestFormController extends Controller
     public function store(Request $request)
     {
 
-//        dump($request->all());
+//        dd($request->all());
 
         admin_toastr('保存成功', 'success');
         admin_info('保存成功', '保存成功');
