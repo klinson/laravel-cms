@@ -442,7 +442,7 @@ return [
          */
         'simditor' => [
             // Set to false if you want to disable this extension
-            'enable' => true,
+            'enable' => false,
             // Editor configuration
             'config' => [
                 'upload' => [
@@ -495,11 +495,37 @@ return [
         'wang-editor' => [
 
             // 如果要关掉这个扩展，设置为false
-            'enable' => true,
+            'enable' => false,
 
             // 编辑器的配置
             'config' => [
                 'uploadImgServer' => '/uploads'
+            ]
+        ],
+
+        /**
+         * 代码编辑器
+         * https://github.com/laravel-admin-extensions/clike-editor
+         *
+         * 支持语音 https://codemirror.net/mode/index.html
+         *
+         * $form->clang('code')->height(500);
+         * $form->cpp('code');
+         * $form->csharp('code');
+         * $form->java('code');
+         * $form->objectivec('code');
+         * $form->scala('code');
+         * $form->kotlin('code');
+         * $form->ceylon('code');
+         */
+        'clike-editor' => [
+
+            // 如果要关掉这个扩展，设置为false
+            'enable' => true,
+
+            // 编辑器的配置
+            'config' => [
+
             ]
         ],
 

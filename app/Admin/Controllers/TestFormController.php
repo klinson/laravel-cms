@@ -85,7 +85,8 @@ class TestFormController extends Controller
 
             $form->editor('ueditor');
             $form->ckEditor('ckEditor');
-            $form->codeEditor('codeEditor');
+            $form->codeEditor('codeEditor')->attribute('language', 'php');
+            $form->java('clike-editor');
             $form->markdown('markdown');
 //            $form->simditor('simditor');
 //            注意： 此组件不可与simditor同时使用

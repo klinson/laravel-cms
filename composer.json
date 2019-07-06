@@ -13,6 +13,7 @@
         "jxlwqq/simditor": "^1.0",
         "laravel-admin-ext/backup": "^1.0",
         "laravel-admin-ext/china-distpicker": "^1.4",
+        "laravel-admin-ext/clike-editor": "^1.0",
         "laravel-admin-ext/config": "^1.0",
         "laravel-admin-ext/cropper": "1.0.2.1",
         "laravel-admin-ext/file-browser": "^0.0.2",
