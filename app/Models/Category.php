@@ -48,7 +48,7 @@ class Category extends Model
 
     public function getWebUrlAttribute()
     {
-        return route('categories.show', ['category' => $this]);
+        return route('articles.categories', ['category' => $this]);
     }
 
     public function toArray()
