@@ -234,3 +234,55 @@ function check_nav_active($nav, $url = 'url', $children = 'children')
     }
     return false;
 }
+
+/**
+ * 模型转后台链接显示
+ * @param $item
+ * @param string $title
+ * @author klinson <klinson@163.com>
+ * @return string
+ */
+function model2a($item, $title = 'title')
+{
+    if ($item->admin_link) {
+        return "<a target='_blank' href='{$item->admin_link}'>{$item->$title}</a>";
+    } else {
+        return $item->$title;
+    }
+}
+
+/**
+ * @param \Encore\Admin\Grid $grid
+ * @param string $related
+ * @param string $title
+ * @param null|string $relate_column
+ * @author klinson <klinson@163.com>
+ * @return mixed
+ */
+function grid_display_relation($grid, $related, $title = 'title', $relate_column = null)
+{
+    if (empty($relate_column)) {
+        $relate_column = __(ucfirst(\Illuminate\Support\Str::snake($related, ' ')) . ' id');
+    }
+    return $grid->column($related, $relate_column)->display(function () use ($related, $title) {
+        return model2a($this->$related, $title);
+    });
+}
+
+/**
+ * @param Encore\Admin\Show $show
+ * @param string $related
+ * @param string $title
+ * @param null|string $relate_column
+ * @author klinson <klinson@163.com>
+ * @return mixed
+ */
+function show_display_relation($show, $related, $title = 'title', $relate_column = null)
+{
+    if (empty($relate_column)) {
+        $relate_column = __(ucfirst(\Illuminate\Support\Str::snake($related, ' ')) . ' id');
+    }
+    return $show->field($related, $relate_column)->unescape()->as(function ($item) use ($title) {
+        return model2a($item, $title);
+    });
+}
