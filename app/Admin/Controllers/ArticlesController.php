@@ -183,7 +183,9 @@ class ArticlesController extends Controller
 
             $form->tab('基本信息', function (Form $form) {
                 $form->text('title', '标题')->rules('required');
-                $form->multipleSelect('categories', '所属分类')->options(Category::selectCategoryOptions());
+//                $form->multipleSelect('categories', '所属分类')->options(Category::selectCategoryOptions());
+                Category::form_display_select($form, 'categories', 'id,title', '所属分类', false, 'title', 'multipleSelect');
+//                Category::form_display_select($form, 'category_id', 'id,title', '默认分类', false);
                 $form->editor('content', '内容')->rules('required');
                 $form->textarea('description', '描述');
                 $form->image('thumbnail', '封面')->uniqueName()->removable();
