@@ -45,12 +45,14 @@ class Model extends EloquentModel
     }
 
     /**
+     * 生成后台form的模型select选择器
      * @param \Encore\Admin\Form $form
-     * @param string $formField
-     * @param string $title
-     * @param string $label
+     * @param string $formField 存储表单字段
+     * @param string $titles 选择下拉显示标题的字段，可以是title或者数组['id', 'title']或者id,title 多个会以|拼接
+     * @param string $label 选择项目标题
      * @param boolean $is_all_options 是否一次获取全部
      * @param string $query_field 模糊查询字段
+     * @param string $select_type 选择类型，可选参数select,multipleSelect
      * @author klinson <klinson@163.com>
      * @return $this|mixed
      */
