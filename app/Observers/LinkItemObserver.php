@@ -8,7 +8,7 @@ class LinkItemObserver
 {
     public function saved(LinkItem $linkItem)
     {
-        $linkItem->link->resetCache();
+        $linkItem->plink->resetCache();
     }
 
     public function deleted(LinkItem $linkItem)
@@ -16,6 +16,6 @@ class LinkItemObserver
         if ($linkItem->children) {
             $linkItem->children()->delete();
         }
-        $linkItem->link->resetCache();
+        $linkItem->plink->resetCache();
     }
 }
