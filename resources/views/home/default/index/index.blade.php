@@ -33,6 +33,7 @@
                                 <div class="col-md-8 col-md-offset-2">
                                     <div class="featured-entry">
                                         <img class="img-responsive" src="{{ $item['picture'] }}" alt="">
+                                        <h1 class="text-center">{{ $item['title'] }}</h1>
                                     </div>
                                 </div>
                             </div>
