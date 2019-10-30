@@ -30,7 +30,7 @@ class ConfigHandler
             }
 
             return Cache::remember($cache_key, 24*60, function () {
-                return ConfigModel::all(['name', 'value']);
+                return ConfigModel::all(['name', 'value'])->toArray();
             });
         } catch (\Exception $exception) {
             return [];
