@@ -1,0 +1,10 @@
+{
+  "Id": "Id",
+  "Title": "标题",
+  "Name": "名称",
+  "Type": "类型",
+  "Has Enabled": "启用？",
+  "Created at": "创建时间",
+  "Updated at": "更新时间",
+  "Deleted at": "删除时间"
+}

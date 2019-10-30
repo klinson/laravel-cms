@@ -8,6 +8,7 @@ Route::group([
     'prefix'        => config('admin.route.prefix'),
     'namespace'     => config('admin.route.namespace'),
     'middleware'    => config('admin.route.middleware'),
+    'as'            => 'admin::',
 ], function (Router $router) {
 
     $router->get('/', 'HomeController@index');
@@ -18,7 +19,9 @@ Route::group([
     // 发布微信群发
     $router->put('articles/{article}/publishWechat', 'ArticlesController@publish');
 
-    $router->post('files/editor', 'FilesController@editor');
+    $router->post('files', 'FilesController@editor');
+    $router->post('files/simditor', 'FilesController@simditor');
+
     $router->resource('messages', MessagesController::class);
 
 //    $router->get('wechat/menus', 'WechatController@menus');
@@ -52,4 +55,6 @@ Route::group([
     $router->get('harassMobile', 'HarassMobileController@index');
     $router->post('harassMobile', 'HarassMobileController@harassMobile');
 
+    $router->get('testFrom', 'TestFormController@index');
+    $router->post('testFrom', 'TestFormController@store');
 });

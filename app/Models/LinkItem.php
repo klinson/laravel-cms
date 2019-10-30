@@ -29,7 +29,7 @@ class LinkItem extends Model
         return $query->orderBy('sort', 'desc');
     }
 
-    public function link()
+    public function plink()
     {
         return $this->belongsTo(Link::class, 'link_id', 'id');
     }

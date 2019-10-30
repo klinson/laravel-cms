@@ -14,7 +14,7 @@ use Encore\Admin\Layout\Content;
 class Controller extends BaseController
 {
     protected $pageHeader = '';
-    protected $pageDescription = '';
+    protected $pageDescription = "&nbsp;";
     protected $exportFields = [];
     protected $transform = [];
     protected $exportTitle = '导出列表';

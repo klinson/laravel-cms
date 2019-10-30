@@ -25,9 +25,9 @@ class AdminMenuTableSeeder extends Seeder
                 'title' => '管理平台',
                 'icon' => 'fa-dashboard',
                 'uri' => '/',
+                'permission' => NULL,
                 'created_at' => '2017-11-04 11:15:46',
                 'updated_at' => '2018-11-04 11:15:46',
-                'permission' => NULL,
             ),
             1 => 
             array (
@@ -37,9 +37,9 @@ class AdminMenuTableSeeder extends Seeder
                 'title' => '用户管理',
                 'icon' => 'fa-users',
                 'uri' => 'users',
+                'permission' => NULL,
                 'created_at' => '2017-11-04 11:15:46',
                 'updated_at' => '2019-01-01 22:59:07',
-                'permission' => NULL,
             ),
             2 => 
             array (
@@ -49,9 +49,9 @@ class AdminMenuTableSeeder extends Seeder
                 'title' => '系统管理',
                 'icon' => 'fa-tasks',
                 'uri' => '',
+                'permission' => NULL,
                 'created_at' => '2017-11-04 11:15:46',
                 'updated_at' => '2019-01-01 22:59:07',
-                'permission' => NULL,
             ),
             3 => 
             array (
@@ -61,9 +61,9 @@ class AdminMenuTableSeeder extends Seeder
                 'title' => '管理员管理',
                 'icon' => 'fa-users',
                 'uri' => 'auth/users',
+                'permission' => NULL,
                 'created_at' => '2017-11-04 11:15:46',
                 'updated_at' => '2019-01-01 22:59:07',
-                'permission' => NULL,
             ),
             4 => 
             array (
@@ -73,9 +73,9 @@ class AdminMenuTableSeeder extends Seeder
                 'title' => '管理员角色管理',
                 'icon' => 'fa-user',
                 'uri' => 'auth/roles',
+                'permission' => NULL,
                 'created_at' => '2017-11-04 11:15:46',
                 'updated_at' => '2019-01-01 22:59:07',
-                'permission' => NULL,
             ),
             5 => 
             array (
@@ -85,9 +85,9 @@ class AdminMenuTableSeeder extends Seeder
                 'title' => '管理员角色权限管理',
                 'icon' => 'fa-ban',
                 'uri' => 'auth/permissions',
+                'permission' => NULL,
                 'created_at' => '2017-11-04 11:15:46',
                 'updated_at' => '2019-01-01 22:59:07',
-                'permission' => NULL,
             ),
             6 => 
             array (
@@ -97,9 +97,9 @@ class AdminMenuTableSeeder extends Seeder
                 'title' => '系统菜单管理',
                 'icon' => 'fa-bars',
                 'uri' => 'auth/menu',
+                'permission' => NULL,
                 'created_at' => '2017-11-04 11:15:46',
                 'updated_at' => '2019-01-01 22:59:07',
-                'permission' => NULL,
             ),
             7 => 
             array (
@@ -109,9 +109,9 @@ class AdminMenuTableSeeder extends Seeder
                 'title' => '系统操作日志',
                 'icon' => 'fa-history',
                 'uri' => 'auth/logs',
+                'permission' => NULL,
                 'created_at' => '2017-11-04 11:15:46',
                 'updated_at' => '2019-01-01 22:59:07',
-                'permission' => NULL,
             ),
             8 => 
             array (
@@ -121,9 +121,9 @@ class AdminMenuTableSeeder extends Seeder
                 'title' => '内容管理',
                 'icon' => 'fa-copy',
                 'uri' => '',
+                'permission' => NULL,
                 'created_at' => '2017-11-04 11:15:46',
                 'updated_at' => '2018-11-04 10:48:11',
-                'permission' => NULL,
             ),
             9 => 
             array (
@@ -133,9 +133,9 @@ class AdminMenuTableSeeder extends Seeder
                 'title' => '分类管理',
                 'icon' => 'fa-cubes',
                 'uri' => 'categories',
+                'permission' => NULL,
                 'created_at' => '2017-11-04 11:15:46',
                 'updated_at' => '2018-11-04 11:13:52',
-                'permission' => NULL,
             ),
             10 => 
             array (
@@ -145,9 +145,9 @@ class AdminMenuTableSeeder extends Seeder
                 'title' => '文章管理',
                 'icon' => 'fa-file-text',
                 'uri' => 'articles',
+                'permission' => NULL,
                 'created_at' => '2017-11-04 11:15:46',
                 'updated_at' => '2018-11-04 11:15:34',
-                'permission' => NULL,
             ),
             11 => 
             array (
@@ -157,9 +157,9 @@ class AdminMenuTableSeeder extends Seeder
                 'title' => '资源管理',
                 'icon' => 'fa-file',
                 'uri' => 'media',
+                'permission' => NULL,
                 'created_at' => '2017-11-04 11:15:46',
                 'updated_at' => '2019-01-01 22:59:07',
-                'permission' => NULL,
             ),
             12 => 
             array (
@@ -169,9 +169,9 @@ class AdminMenuTableSeeder extends Seeder
                 'title' => '系统配置管理',
                 'icon' => 'fa-toggle-on',
                 'uri' => 'config',
+                'permission' => NULL,
                 'created_at' => '2017-11-04 11:15:46',
                 'updated_at' => '2019-01-01 22:59:07',
-                'permission' => NULL,
             ),
             13 => 
             array (
@@ -181,9 +181,9 @@ class AdminMenuTableSeeder extends Seeder
                 'title' => '备份管理',
                 'icon' => 'fa-copy',
                 'uri' => 'backup',
+                'permission' => NULL,
                 'created_at' => '2017-11-04 11:15:46',
                 'updated_at' => '2019-01-01 22:59:07',
-                'permission' => NULL,
             ),
             14 => 
             array (
@@ -193,9 +193,9 @@ class AdminMenuTableSeeder extends Seeder
                 'title' => '联系我们',
                 'icon' => 'fa-commenting-o',
                 'uri' => 'messages',
+                'permission' => NULL,
                 'created_at' => '2018-11-04 10:48:57',
                 'updated_at' => '2019-01-01 22:59:07',
-                'permission' => NULL,
             ),
             15 => 
             array (
@@ -205,9 +205,9 @@ class AdminMenuTableSeeder extends Seeder
                 'title' => '微信管理',
                 'icon' => 'fa-wechat',
                 'uri' => 'wechat',
+                'permission' => NULL,
                 'created_at' => '2018-11-27 16:19:08',
                 'updated_at' => '2019-01-01 22:59:07',
-                'permission' => NULL,
             ),
             16 => 
             array (
@@ -217,9 +217,9 @@ class AdminMenuTableSeeder extends Seeder
                 'title' => '菜单设置',
                 'icon' => 'fa-bars',
                 'uri' => 'wechat/menus',
+                'permission' => NULL,
                 'created_at' => '2018-11-27 16:33:01',
                 'updated_at' => '2019-01-01 22:59:07',
-                'permission' => NULL,
             ),
             17 => 
             array (
@@ -229,9 +229,9 @@ class AdminMenuTableSeeder extends Seeder
                 'title' => '推文素材管理',
                 'icon' => 'fa-file-text-o',
                 'uri' => 'wechat/articles',
+                'permission' => NULL,
                 'created_at' => '2018-11-29 17:02:25',
                 'updated_at' => '2019-01-01 22:59:07',
-                'permission' => NULL,
             ),
             18 => 
             array (
@@ -241,9 +241,9 @@ class AdminMenuTableSeeder extends Seeder
                 'title' => '广告管理',
                 'icon' => 'fa-adn',
                 'uri' => NULL,
+                'permission' => NULL,
                 'created_at' => '2019-01-01 22:53:23',
                 'updated_at' => '2019-01-01 22:59:07',
-                'permission' => NULL,
             ),
             19 => 
             array (
@@ -253,9 +253,21 @@ class AdminMenuTableSeeder extends Seeder
                 'title' => '轮播管理',
                 'icon' => 'fa-caret-square-o-right',
                 'uri' => 'carouselAds',
+                'permission' => NULL,
                 'created_at' => '2019-01-01 22:58:52',
                 'updated_at' => '2019-01-01 22:59:07',
+            ),
+            20 => 
+            array (
+                'id' => 21,
+                'parent_id' => 19,
+                'order' => 0,
+                'title' => '导航管理',
+                'icon' => 'fa-link',
+                'uri' => '/links',
                 'permission' => NULL,
+                'created_at' => '2019-09-18 16:25:05',
+                'updated_at' => '2019-09-18 16:25:05',
             ),
         ));
         

@@ -15,14 +15,12 @@ class UpdateAdminTables extends Migration
         $connection = config('admin.database.connection') ?: config('database.default');
 
 
-        Schema::connection($connection)->table(config('admin.database.menu_table'), function (Blueprint $table) {
-            $table->string('permission')->nullable();
+        Schema::connection($connection)->table('admin_config', function (Blueprint $table) {
+            $table->string('description')->nullable()->change();
+            $table->text('value')->change();
         });
 
 
-        Schema::connection($connection)->table(config('admin.database.operation_log_table'), function (Blueprint $table) {
-            $table->string('ip')->change();
-        });
     }
 
     /**
@@ -34,12 +32,10 @@ class UpdateAdminTables extends Migration
     {
         $connection = config('admin.database.connection') ?: config('database.default');
 
-        Schema::connection($connection)->table(config('admin.database.menu_table'), function (Blueprint $table) {
-            $table->dropColumn('permission');
+        Schema::connection($connection)->table('admin_config', function (Blueprint $table) {
+            $table->text('description')->nullable()->change();
+            $table->string('value')->change();
         });
 
-        Schema::connection($connection)->table(config('admin.database.operation_log_table'), function (Blueprint $table) {
-            $table->dropColumn('ip', 15)->change();
-        });
     }
 }

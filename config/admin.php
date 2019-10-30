@@ -385,28 +385,150 @@ return [
              'field_type' => 'editor'
         ],
 
-        // 中国地图选择器
+        /**
+         * 中国地图选择器 distpicker
+         * https://github.com/laravel-admin-extensions/china-distpicker
+         *
+         * 表单使用
+         * $form->distpicker(['province_id' => '省', 'city_id' => '市', 'district_id' => '区'], '请选择区域');
+         *
+         * // 筛选使用
+         * $filter->distpicker('province_id', 'city_id', 'district_id', '地域选择');
+         */
         'china-distpicker' => [
-            // distpicker
-            // https://github.com/laravel-admin-extensions/china-distpicker
+            // 如果要关掉这个扩展，设置为false
+            'enable' => true,
+        ],
+
+        /**
+         * 图片裁剪上传
+         * https://github.com/laravel-admin-extensions/cropper
+         *
+         * 默认模式是自由剪裁模式，如果需要强制剪裁尺寸，请使用（注意该尺寸就是最后得到的图片尺寸 非“比例”）
+         * $form->cropper('content','label')->cRatio($width,$height);
+         */
+        'cropper' => [
+            // 如果要关掉这个扩展，设置为false
+            'enable' => true,
+        ],
+
+        // 多tags输入
+        // tagsinput: https://github.com/namet117/laravel-admin-tagsinput
+
+        // 异步选择器 Laravel-Admin select2 异步插件
+        // https://github.com/xiaohuilam/laravel-admin-select2/blob/master/README_cn.md
+
+        /**
+         * 文件夹路径文件选择器 File-browser
+         * https://github.com/laravel-admin-extensions/file-browser
+         *
+         * 在app/Admin/bootstrap.php中添加以下代码：
+         * Encore\Admin\Form::extend('media', \Encore\FileBrowser\FileBrowserField::class);
+         *
+         * 使用方法：
+         * $form->media('images', 'images')->path('uploads/images');
+         * Model下对应字段需要处理
+         * public function getImagesAttribute($v)
+         * {
+         *     return json_decode($v, true);
+         * }
+         */
+
+        /**
+         * Simditor 富文本编辑器
+         * https://github.com/laravel-admin-extensions/simditor
+         *
+         * $form->simditor('simditor');
+         */
+        'simditor' => [
+            // Set to false if you want to disable this extension
+            'enable' => false,
+            // Editor configuration
+            'config' => [
+                'upload' => [
+                    'url' => '/admin/files/simditor', # example api route: admin/api/upload
+                    'fileKey' => 'files',
+                    'connectionCount' => 3,
+                    'leaveConfirm' => 'Uploading is in progress, are you sure to leave this page?'
+                ],
+                'tabIndent' => true,
+                'toolbar' => ['title', 'bold', 'italic', 'underline', 'strikethrough', 'fontScale', 'color', '|', 'ol', 'ul', 'blockquote', 'code', 'table', '|', 'link', 'image', 'hr', '|', 'indent', 'outdent', 'alignment'],
+                'toolbarFloat' => true,
+                'toolbarFloatOffset' => 0,
+                'toolbarHidden' => false,
+                'pasteImage' => true,
+                'cleanPaste' => false,
+            ]
+        ],
+
+        /**
+         * md编辑器
+         * https://github.com/ShareManT/laravel-admin-ext-editormd
+         *
+         * $form->editormd('editormd');
+         *
+         * 注意： 此组件不可与simditor同时使用
+         */
+        'editormd' => [
+            // Set to false if you want to disable this extension
+            'enable' => true,
+            // Set to true if you want to take advantage the screen length for your editormd instance.
+            'wideMode' => false,
+            // Set to true when the instance included in larave-admin tab component.
+            'dynamicMode' => false,
+            // Editor.js configuration (Refer to http://pandao.github.io/editor.md/)
+            'config' =>
+                [
+                    'path' => '/vendor/laravel-admin-ext/editormd/editormd-1.5.0/lib/',
+                    'width' => '100%',
+                    'height' => 600,
+                    'emoji' => true
+                ]
+        ],
+
+        /**
+         * 富文本编辑器
+         * https://github.com/laravel-admin-extensions/wangEditor
+         *
+         * $form->editor('content');
+         */
+        'wang-editor' => [
 
             // 如果要关掉这个扩展，设置为false
             'enable' => false,
+
+            // 编辑器的配置
+            'config' => [
+                'uploadImgServer' => '/uploads'
+            ]
         ],
 
-        // 日期区间选择器
-        'daterangepicker' => [
-            // https://github.com/laravel-admin-extensions/daterangepicker
-            // $form->daterangepicker(['created_at', 'updated_at'], 'Date range');
+        /**
+         * 代码编辑器
+         * https://github.com/laravel-admin-extensions/clike-editor
+         *
+         * 支持语音 https://codemirror.net/mode/index.html
+         *
+         * $form->clang('code')->height(500);
+         * $form->cpp('code');
+         * $form->csharp('code');
+         * $form->java('code');
+         * $form->objectivec('code');
+         * $form->scala('code');
+         * $form->kotlin('code');
+         * $form->ceylon('code');
+         */
+        'clike-editor' => [
 
-            // Set to `false` if you want to disable this extension
+            // 如果要关掉这个扩展，设置为false
             'enable' => true,
 
-            // Find more configurations http://www.daterangepicker.com/
+            // 编辑器的配置
             'config' => [
 
             ]
-        ]
+        ],
+
     ],
 
     'powered_by_info' => '技术支持：<a href="https://www.klinson.com/" target="_blank" title="专业开发一切web、公众号、小程序，请联系我吧">klinson.com</a>',

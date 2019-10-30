@@ -27,27 +27,18 @@
         <div class="row animate-box">
             <div class="featured-wrap">
                 <div class="owl-carousel">
-                    <div class="item">
-                        <div class="col-md-8 col-md-offset-2">
-                            <div class="featured-entry">
-                                <img class="img-responsive" src="{{ $_theme_info['style_root_path'] }}/images/dashboard_full_1.jpg" alt="">
+                    @foreach($carouselAdItems as $item)
+                        <a href="{{ $item['url'] }}">
+                            <div class="item">
+                                <div class="col-md-8 col-md-offset-2">
+                                    <div class="featured-entry">
+                                        <img class="img-responsive" src="{{ $item['picture'] }}" alt="">
+                                        <h1 class="text-center">{{ $item['title'] }}</h1>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="col-md-8 col-md-offset-2">
-                            <div class="featured-entry">
-                                <img class="img-responsive" src="{{ $_theme_info['style_root_path'] }}/images/dashboard_full_2.jpg" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="col-md-8 col-md-offset-2">
-                            <div class="featured-entry">
-                                <img class="img-responsive" src="{{ $_theme_info['style_root_path'] }}/images/dashboard_full_3.jpg" alt="">
-                            </div>
-                        </div>
-                    </div>
+                        </a>
+                    @endforeach
                 </div>
             </div>
         </div>

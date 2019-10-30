@@ -144,7 +144,7 @@ class LinksController extends Controller
 
                 $row->column(6, function ($column) use ($link) {
                     $form = new \Encore\Admin\Widgets\Form();
-                    $form->action(route('links.items.store', ['link' => $link]));
+                    $form->action(route('admin::links.items.store', ['link' => $link]));
                     $form->method('POST');
 
                     $form->select('parent_id', '上级链接')
