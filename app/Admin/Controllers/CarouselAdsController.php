@@ -121,7 +121,7 @@ class CarouselAdsController extends Controller
             if ($id) {
                 $form->display('key', 'KEY');
             } else {
-                $form->text('key', 'KEY')->rules('required|unique:carousel_ads,key,NULL,id,deleted_at,NULL');
+                $form->text('key', 'KEY')->rules('required');
             }
             $form->switch('has_enabled', '状态')->default(1);
 
