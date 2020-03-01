@@ -12,10 +12,12 @@ use Encore\Admin\Grid\Tools\BatchAction;
 class DefaultBatchTool extends BatchAction
 {
     protected $action;
+    protected $method;
 
-    public function __construct($action)
+    public function __construct($action, $method = 'put')
     {
         $this->action = $action;
+        $this->method = $method;
     }
 
     public function script()
@@ -27,8 +29,9 @@ $('{$this->getElementClass()}').on('click', function() {
         method: 'post',
         url: '{$this->resource}/{$this->action}',
         data: {
-            _token:LA.token,
-            ids: selectedRows()
+            _token: LA.token,
+            _method: '{$this->method}',
+            ids: $.admin.grid.selected()
         },
         success: function (data) {
             $.pjax.reload('#pjax-container');
