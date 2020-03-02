@@ -32,7 +32,7 @@
         "predis/predis": "^1.1",
         "sharemant/laravel-admin-ext-editormd": "^1.0",
         "tymon/jwt-auth": "1.0.0-rc.1",
-        "xiaohuilam/laravel-admin-select2": "^1.1"
+        "xiaohuilam/laravel-admin-select2": "^1.2"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
