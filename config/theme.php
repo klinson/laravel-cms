@@ -28,5 +28,18 @@ return [
             'default_article_thumbnail' => 'theme/default/images/default_article_thumbnail.png',
             'default_category_thumbnail' => 'theme/default/images/default_category_thumbnail.png',
         ],
+        'video' => [
+            'view_root_path' => 'home.video',
+            'style_root_path' => 'theme/video',
+            'system_name' => '视频资讯',
+            'default_title' => '视频资讯',
+            'description' => '视频资讯',
+            'keyword' => 'klinson,cms,视频资讯',
+            'author' => 'klinson',
+            'author_link' => 'http://klinson.com',
+            'default_article_thumbnail' => 'theme/default/images/default_article_thumbnail.png',
+            'default_category_thumbnail' => 'theme/default/images/default_category_thumbnail.png',
+        ],
+
     ]
 ];

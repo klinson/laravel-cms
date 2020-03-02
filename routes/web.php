@@ -17,5 +17,6 @@ Route::namespace('Home')->group(function (){
     Route::get('categories/{category}/articles/{article}', 'ArticlesController@show')->where('category', '[0-9]+')->where('category', '[0-9]+')->name('articles.show');
     Route::get('/contactUs', 'SystemController@contactUs')->name('system.contactUs');
     Route::post('/contactUs', 'SystemController@storeContactUs')->name('system.contactUs.store');
+
+    Route::get('login', 'AuthController@login')->name('login');
 });
-Route::any('/wechat-serve', 'WechatController@serve');

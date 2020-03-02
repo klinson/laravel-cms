@@ -15,6 +15,7 @@ class IndexController extends Controller
 {
     public function index()
     {
+        $topCategories = Category::top()->limit(4)->get();
         // 首页推荐分类和其中3个内容
         $topCategory = Category::where('is_top', 1)->where('is_page', 0)->first();
         if (! empty($topCategory)) {
@@ -25,6 +26,6 @@ class IndexController extends Controller
 
         $carouselAdItems = CarouselAd::getByKeyByCache('home_page');
 
-        return $this->view()->with(compact(['topCategory', 'topArticles', 'carouselAdItems']));
+        return $this->view()->with(compact(['topCategories', 'topArticles', 'carouselAdItems']));
     }
 }

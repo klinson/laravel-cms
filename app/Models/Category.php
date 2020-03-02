@@ -57,4 +57,9 @@ class Category extends Model
         $array['web_url'] = $this->web_url;
         return $array;
     }
+
+    public function scopeTop($query)
+    {
+        return $query->orderBy('is_top', 1);
+    }
 }
