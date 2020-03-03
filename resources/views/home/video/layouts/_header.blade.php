@@ -12,12 +12,13 @@
                 <h1><a class="navbar-brand" href="/">Mansion<span>Home for happy families</span></a></h1>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+            <div class="collapse navbar-collapse navbar-right" style="float: right !important;" id="bs-example-navbar-collapse-1">
                 <nav class="link-effect-3" id="link-effect-3">
                     <ul class="nav navbar-nav">
                         @foreach($_navs as $item)
                             <li><a href="{{$item['url']}}" data-hover="Home" target="{{$item['target']}}">{{$item['title']}}</a></li>
                         @endforeach
+                            <li><a href="{{route('login')}}"><span style="border: 1px solid #ddd; padding: 0.5em">登录</span></a></li>
                     </ul>
                 </nav>
             </div>
