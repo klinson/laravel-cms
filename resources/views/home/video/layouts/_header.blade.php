@@ -9,19 +9,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <h1><a class="navbar-brand" href="index.html">Mansion<span>Home for happy families</span></a></h1>
+                <h1><a class="navbar-brand" href="/">Mansion<span>Home for happy families</span></a></h1>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                 <nav class="link-effect-3" id="link-effect-3">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="index.html" data-hover="Home">Home</a></li>
-                        <li><a href="services.html" data-hover="Services">Services</a></li>
-                        <li><a href="about.html" data-hover="About Us">About Us</a></li>
-                        <li><a href="gallery.html" data-hover="Gallery">Gallery</a></li>
-                        <li><a href="short-codes.html" data-hover="Short Codes">Short Codes</a></li>
-                        <li><a href="blog.html" data-hover="Blog">Blog</a></li>
-                        <li><a href="mail.html" data-hover="Mail Us">Mail Us</a></li>
+                        @foreach($_navs as $item)
+                            <li><a href="{{$item['url']}}" data-hover="Home" target="{{$item['target']}}">{{$item['title']}}</a></li>
+                        @endforeach
                     </ul>
                 </nav>
             </div>
