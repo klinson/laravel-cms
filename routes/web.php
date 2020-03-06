@@ -19,4 +19,15 @@ Route::namespace('Home')->group(function (){
     Route::post('/contactUs', 'SystemController@storeContactUs')->name('system.contactUs.store');
 
     Route::get('login', 'AuthController@login')->name('login');
+    Route::post('login', 'AuthController@storeLogin')->name('login.store');
+
+    Route::get('register', 'AuthController@register')->name('register');
+    Route::post('register', 'AuthController@storeRegister')->name('register.store');
+
+    Route::group([
+        'middleware' => 'auth'
+    ], function (){
+        Route::get('user', 'UserController@index')->name('user');
+
+    });
 });

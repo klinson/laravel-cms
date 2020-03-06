@@ -18,7 +18,11 @@
                         @foreach($_navs as $item)
                             <li><a href="{{$item['url']}}" data-hover="Home" target="{{$item['target']}}">{{$item['title']}}</a></li>
                         @endforeach
+                        @if (\Auth::check())
+                            <li><a href="{{route('user')}}"><span style="border: 1px solid #ddd; padding: 0.5em">用户中心</span></a></li>
+                        @else
                             <li><a href="{{route('login')}}"><span style="border: 1px solid #ddd; padding: 0.5em">登录</span></a></li>
+                        @endif
                     </ul>
                 </nav>
             </div>
