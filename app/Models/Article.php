@@ -195,6 +195,11 @@ class Article extends Model
 
     public function getWebUrlAttribute()
     {
-        return route('articles.show', ['category' => $this->categories[0], 'article' => $this]);
+        return route('articles.show', ['article' => $this]);
+    }
+
+    public function getThumbnailUrlAttribute()
+    {
+        return get_admin_file_url($this->thumbnail);
     }
 }

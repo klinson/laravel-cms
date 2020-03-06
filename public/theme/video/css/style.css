@@ -1818,7 +1818,7 @@ ul.pagination.w3_pagination {
 .pagination > li > a, .pagination > li > span {
     color: #212121;
 }
-.agileits_search input[type="email"]{
+.agileits_search input{
 	outline:none;
 	border:1px solid #999;
 	background:none;

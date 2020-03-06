@@ -48,7 +48,10 @@ class Category extends Model
 
     public function getWebUrlAttribute()
     {
-        return route('articles.categories', ['category' => $this]);
+        if (! $this->id) {
+            return '';
+        }
+        return route('articles', ['category_id' => $this->id]);
     }
 
     public function toArray()
@@ -62,4 +65,26 @@ class Category extends Model
     {
         return $query->orderBy('is_top', 1);
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function collects()
+    {
+        return $this->belongsToMany(User::class, 'user_collect_articles');
+    }
+
+    public function getThumbnailUrlAttribute()
+    {
+        return get_admin_file_url($this->thumbnail);
+    }
+
+    public static function top($count)
+    {
+        $topCategories = Category::orderBy('is_top', 'desc')->orderBy('id', 'asc')->limit($count)->get();
+        return $topCategories;
+    }
+
 }
