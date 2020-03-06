@@ -198,6 +198,12 @@ class ArticlesController extends Controller
                 $form->switch('has_enabled', '状态')->default(1);
                 $form->number('pv', '阅读量')->default(0);
             });
+
+            $form->saving(function ($form) {
+                if (empty($form->description)) {
+                    $form->description = mb_strcut(strip_tags($form->content), 0, 100);
+                }
+            });
         });
     }
 
