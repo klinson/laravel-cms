@@ -81,7 +81,7 @@ class Category extends Model
         return get_admin_file_url($this->thumbnail);
     }
 
-    public static function top($count)
+    public static function topList($count = 3)
     {
         $topCategories = Category::orderBy('is_top', 'desc')->orderBy('id', 'asc')->limit($count)->get();
         return $topCategories;

@@ -1,5 +1,5 @@
 <!-- banner -->
-<div class="banner">
+<div class="@yield('header_class', 'banner1')">
     <div class="container">
         <nav class="navbar navbar-default">
             <div class="navbar-header navbar-left">
@@ -23,21 +23,22 @@
                 </nav>
             </div>
         </nav>
-        <div class="w3l_banner_info">
-            <section class="slider">
-                <div class="flexslider">
-                    <ul class="slides">
-                        @foreach($_banners as $item)
-                            <li>
-                                <div class="wthree_banner_info_grid">
-                                    <h3><a href="{{$item['url']}}"><span>{{$item['title']}}</span></a></h3>
-                                </div>
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
-            </section>
-        </div>
+
+{{--        <div class="w3l_banner_info">--}}
+{{--            <section class="slider">--}}
+{{--                <div class="flexslider">--}}
+{{--                    <ul class="slides">--}}
+{{--                        @foreach($_banners as $item)--}}
+{{--                            <li>--}}
+{{--                                <div class="wthree_banner_info_grid">--}}
+{{--                                    <h3><a href="{{$item['url']}}"><span>{{$item['title']}}</span></a></h3>--}}
+{{--                                </div>--}}
+{{--                            </li>--}}
+{{--                        @endforeach--}}
+{{--                    </ul>--}}
+{{--                </div>--}}
+{{--            </section>--}}
+{{--        </div>--}}
     </div>
 </div>
 <!-- //banner -->

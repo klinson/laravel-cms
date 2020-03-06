@@ -46,51 +46,7 @@
                 </nav>
             </div>
             <div class="col-md-5 w3agile_blog_left">
-                <div class="agileits_search">
-                    <form action="{{ route('articles') }}" method="get">
-                        <input class="email" type="text" name="q" placeholder="搜索关键词" value="{{request('q', '')}}" required>
-                        <input type="hidden" name="category_id" value="{{request('category_id', 0)}}" required>
-                        <input type="submit" value="Search">
-                    </form>
-                </div>
-                @if($category)
-                    <div class="agile_author">
-                        <h3>关于 {{ $category->title }}</h3>
-                        <div class="agile_author_grid">
-                            <p>{{ $category->description }}</p>
-                            <div class="agile_author_grid_pos">
-                                <img src="{{ $category->thumbnail_url }}" alt=" " class="img-responsive img-circle">
-                            </div>
-                        </div>
-                    </div>
-                @endif
-
-                <div class="w3ls_recent_posts">
-                    <h3>最新发布</h3>
-                    @foreach($recents as $item)
-                        <div class="agileits_recent_posts_grid">
-                            <div class="agileits_recent_posts_gridl">
-                                <a href="{{ $item->web_url }}"><img src="{{ $item->thumbnail_url }}" alt=" " class="img-responsive"></a>
-                            </div>
-                            <div class="agileits_recent_posts_gridr">
-                                <h4><a href="{{ $item->web_url }}">{{ $item->title }}</a></h4>
-                                <ul>
-{{--                                    <li><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><a href="#">2</a></li>--}}
-                                    <li><span class="glyphicon glyphicon-time" aria-hidden="true"></span>{{ $item->publish_time }}</li>
-                                </ul>
-                            </div>
-                            <div class="clearfix"> </div>
-                        </div>
-                    @endforeach
-                </div>
-                <div class="w3l_categories">
-                    <h3>热门栏目</h3>
-                    <ul>
-                        @foreach($categories as $item)
-                            <li><a href="{{ $item->web_url }}"><span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>{{ $item->title }}</a></li>
-                        @endforeach
-                    </ul>
-                </div>
+                @include($_theme_info['view_root_path'].'.articles.right')
             </div>
             <div class="clearfix"> </div>
         </div>

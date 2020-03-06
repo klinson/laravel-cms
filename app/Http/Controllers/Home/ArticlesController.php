@@ -35,7 +35,7 @@ class ArticlesController extends Controller
         $articles = $query->paginate();
 
         $recents = Article::recent(5);
-        $categories = Category::top(5);
+        $categories = Category::topList(5);
 
         return $this->view()->with(compact('category', 'articles', 'recents', 'categories'));
     }
@@ -50,8 +50,10 @@ class ArticlesController extends Controller
         return $this->view()->with(compact(['category', 'articles']));
     }
 
-    public function show(Category $category, Article $article)
+    public function show(Article $article)
     {
-        return $this->view()->with(compact(['article', 'category']));
+        $recents = Article::recent(5);
+        $categories = Category::topList(5);
+        return $this->view()->with(compact('article', 'recents', 'categories'));
     }
 }
