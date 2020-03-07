@@ -28,6 +28,7 @@ Route::namespace('Home')->group(function (){
         'middleware' => 'auth'
     ], function (){
         Route::get('user', 'UserController@index')->name('user');
+        Route::put('user', 'UserController@update')->name('user.update');
 
     });
 });

@@ -10,7 +10,7 @@
         <div class="container">
             @include($_theme_info['view_root_path'].'.layouts._form_tip')
 
-            <form action="{{ route('login.store') }}" method="post">
+            <form action="{{ route('register.store') }}" method="post">
                 {{ csrf_field() }}
                 <div class="input-group input-group-lg w3_w3layouts">
                     <span class="input-group-addon" id="sizing-addon1">用户名</span>
@@ -27,8 +27,8 @@
                 <div class="input-group input-group-lg w3_w3layouts">
                     <span class="input-group-addon" id="sizing-addon1">性别</span>
                     <select class="form-control" name="sex">
-                        <option value="1" @if(old('sex', 1) == 1)selected@endif >男</option>
-                        <option value="2" @if(old('sex', 1) == 2)selected@endif >女</option>
+                        <option value="1" @if(old('sex', 1) == 1) selected @endif >男</option>
+                        <option value="2" @if(old('sex', 1) == 2) selected @endif >女</option>
                     </select>
                 </div>
 
