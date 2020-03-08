@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Traits\IntTimestampsHelper;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Storage;
 
@@ -201,5 +202,35 @@ class Article extends Model
     public function getThumbnailUrlAttribute()
     {
         return get_admin_file_url($this->thumbnail);
+    }
+
+    public function collects()
+    {
+        return $this->belongsToMany(User::class, 'user_collects_articles')->withTimestamps();
+    }
+
+    public function icollect()
+    {
+        return $this->belongsToMany(User::class, 'user_collects_articles')->withTimestamps()->where('user_id', \Auth::user()->id ?? 0);
+    }
+
+    public function collect($user)
+    {
+        $now = Carbon::now()->toDateTimeString();
+        $this->collects()->detach($user);
+        return $this->collects()->attach($user, [
+            'created_at' => $now,
+            'updated_at' => $now
+        ]);
+    }
+
+    public function discollect($user)
+    {
+        $this->collects()->detach($user);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 }

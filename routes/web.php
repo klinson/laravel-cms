@@ -29,6 +29,8 @@ Route::namespace('Home')->group(function (){
     ], function (){
         Route::get('user', 'UserController@index')->name('user');
         Route::put('user', 'UserController@update')->name('user.update');
-
+        Route::post('articles/{article}/collect', 'ArticlesController@collect')->where('article', '[0-9]+')->name('articles.collect');
+        Route::delete('articles/{article}/collect', 'ArticlesController@collect')->where('article', '[0-9]+');
+        Route::post('articles/{article}/comments', 'ArticlesController@comment')->where('article', '[0-9]+')->name('articles.comment');
     });
 });
