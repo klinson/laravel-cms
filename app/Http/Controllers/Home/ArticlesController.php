@@ -53,6 +53,7 @@ class ArticlesController extends Controller
 
     public function show(Article $article)
     {
+        $article->incPv();
         $recents = Article::recent(5);
         $categories = Category::topList(5);
         $article->load(['icollect']);
