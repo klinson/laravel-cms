@@ -73,7 +73,7 @@ class ArticlesController extends Controller
 
         return response()->json([
             'status' => 1,
-            'msg' => $type.'关注成功',
+            'msg' => $type.'收藏成功',
         ]);
     }
 

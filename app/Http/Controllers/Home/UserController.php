@@ -34,4 +34,16 @@ class UserController extends Controller
         return redirect()->route('user');
     }
 
+    public function collects(Request $request)
+    {
+        $list = \Auth::user()->collects()->with(['categories'])->orderBy('pivot_created_at', 'desc')->paginate();
+        return $this->view()->with(compact('list'));
+    }
+
+    public function comments(Request $request)
+    {
+        $list = \Auth::user()->comments()->with(['article'])->paginate();
+        return $this->view()->with(compact('list'));
+    }
+
 }

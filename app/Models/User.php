@@ -48,4 +48,14 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+    public function collects()
+    {
+        return $this->belongsToMany(Article::class, 'user_collects_articles')->withTimestamps();
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }
