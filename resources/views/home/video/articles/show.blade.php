@@ -21,10 +21,12 @@
                                 {{$article->title}}
                                 <span style="margin-left: 1em">{{$article->categories->pluck('title')->implode(' / ')}}</span>
                             </a>
-                            @if($article->icollect->isNotEmpty())
-                                <i style="cursor:pointer; margin-left: 0.5em; color: red" class="glyphicon glyphicon-heart" aria-hidden="true" title="取消关注" onclick="collect(0)"></i>
-                            @else
-                                <i style="cursor:pointer; margin-left: 0.5em; color: #2E2D3C" onclick="collect(1)" class="glyphicon glyphicon-heart" aria-hidden="true" title="关注"></i>
+                            @if (\Auth::check())
+                                @if($article->icollect->isNotEmpty())
+                                    <i style="cursor:pointer; margin-left: 0.5em; color: red" class="glyphicon glyphicon-heart" aria-hidden="true" title="取消关注" onclick="collect(0)"></i>
+                                @else
+                                    <i style="cursor:pointer; margin-left: 0.5em; color: #cfcfcf" onclick="collect(1)" class="glyphicon glyphicon-heart" aria-hidden="true" title="关注"></i>
+                                @endif
                             @endif
                         </h3>
                         <ul>
@@ -78,10 +80,17 @@
 
                         <form action="{{ route('articles.comment', ['article' => $article]) }}" method="post" id="comment-form">
                             {{ csrf_field() }}
-                            <textarea name="content" placeholder="请输入评论内容" required>{{ old('content') }}</textarea>
-                            <div class="w3_w3layouts" style="text-align:center;">
-                                <span onclick="comment()" class="btn btn-success btn-lg">提交</span>
-                            </div>
+                            @if (\Auth::check())
+                                <textarea name="content" placeholder="请输入评论内容" required>{{ old('content') }}</textarea>
+                                <div class="w3_w3layouts" style="text-align:center;">
+                                    <span onclick="comment()" class="btn btn-success btn-lg">提交</span>
+                                </div>
+                            @else
+                                <textarea name="content" placeholder="登录后评论~" required disabled readonly style="background: #cfcfcf">{{ old('content') }}</textarea>
+                                <div class="w3_w3layouts" style="text-align:center;">
+                                    <span onclick="window.location.href='/login'" class="btn btn-success btn-lg">点我登录</span>
+                                </div>
+                            @endif
                         </form>
                     </div>
                     <div class="clearfix"> </div>
@@ -109,13 +118,25 @@
                 },
                 success: function (res) {
                     console.log(res)
-                    alert('提交成功');
-                    location.reload()
+                    alert(res.msg);
+                    if (res.status) {
+                        location.reload()
+                    }
 
                 },
                 error: function (res) {
                     console.log(res)
-                    alert('服务器异常');
+                    switch(res.status) {
+                        case 422:
+                            alert('数据验证错误')
+                            break;
+                        case 401:
+                            alert('请先登录后评论')
+                            break;
+                        case 500:
+                        default:
+                            alert('服务器异常');
+                    }
                 }
             })
         }
@@ -128,8 +149,10 @@
                 data: $('#comment-form').serialize(),
                 success: function (res) {
                     console.log(res)
-                    alert('提交成功');
-                    location.reload()
+                    alert(res.msg);
+                    if (res.status) {
+                        location.reload()
+                    }
                 },
                 error: function (res) {
                     console.log(res)
@@ -137,6 +160,10 @@
                         case 422:
                             alert('评论内容不合法')
                             break;
+                        case 401:
+                            alert('请先登录后评论')
+                            break;
+                        case 500:
                         case 500:
                         default:
                             alert('服务器异常');
