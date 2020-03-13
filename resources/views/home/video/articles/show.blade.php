@@ -50,23 +50,24 @@
                     <p class="wthree_para">最新评论</p>
                     <div class="col-md-12 ">
                         <div class="agileinfo_team_grids" style="margin-top: 2em">
-                        @foreach($comments as $item)
-                            <div class="col-md-12 agileinfo_team_grid">
-                                <div class="agileinfo_team_grid1">
-                                    <div class="agileinfo_team_grid1_text">
-                                        <div class="agileinfo_team_grid1_pos">
-                                            <img src="{{ asset('/images/user.png') }}" alt=" " class="img-responsive">
-                                        </div>
-                                        <h4>{{ $item->user->nickname }}</h4>
-                                        <h5>{{ $item->created_at }}</h5>
-                                        <p>{{ $item->content }}</p>
-                                    </div>
-                                </div>
-                                <hr>
-
-                            </div>
-                            <div class="clearfix"> </div>
-                        @endforeach
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>用户</th>
+                                    <th>评论内容</th>
+                                    <th>评论时间</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($comments as $item)
+                                    <tr>
+                                        <td>{{ $item->user->nickname }}</td>
+                                        <td>{{ $item->content }}</td>
+                                        <td>{{ $item->created_at }}</td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                     <div class="text-center">
