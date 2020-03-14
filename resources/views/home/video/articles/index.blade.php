@@ -27,18 +27,18 @@
                             </ul>
                         </div>
                         <div class="clearfix"> </div>
-                        <div class="w3agile_blog_left_grid_sub">
-                            <a href="{{$item->web_url}}"><img src="{{$item->thumbnail_url}}" alt=" " class="img-responsive"></a>
-                        </div>
+{{--                        <div class="w3agile_blog_left_grid_sub">--}}
+{{--                            <a href="{{$item->web_url}}"><img src="{{$item->thumbnail_url}}" alt=" " class="img-responsive"></a>--}}
+{{--                        </div>--}}
 
-                        <div class="w3agile_blog_left_grid_sub1">
-                            <div class="w3agile_blog_left_grid_sub1_pos">
-                                <p>{{ $item->description }}</p>
-                            </div>
-                        </div>
-                        <div class="agileits_more agileits_more1">
-                            <a href="{{$item->web_url}}" class="button button--rayen button--border-thin button--text-thick button--text-upper button--size-s" data-text="Learn More"><span>点击进入</span></a>
-                        </div>
+{{--                        <div class="w3agile_blog_left_grid_sub1">--}}
+{{--                            <div class="w3agile_blog_left_grid_sub1_pos">--}}
+{{--                                <p>{{ $item->description }}</p>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="agileits_more agileits_more1">--}}
+{{--                            <a href="{{$item->web_url}}" class="button button--rayen button--border-thin button--text-thick button--text-upper button--size-s" data-text="Learn More"><span>点击进入</span></a>--}}
+{{--                        </div>--}}
                     </div>
                 @endforeach
                 <nav aria-label="Page navigation">

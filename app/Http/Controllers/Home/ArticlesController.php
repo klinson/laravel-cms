@@ -24,7 +24,7 @@ class ArticlesController extends Controller
             ->orderBy('sort', 'desc')
             ->where('articles.has_enabled', 1);
         if ($request->q) {
-            $query->where('title', '%'.$request->q.'%');
+            $query->where('articles.title', 'like', '%'.$request->q.'%');
         }
         if ($request->category_id && ($category = Category::find($request->category_id)
     )) {

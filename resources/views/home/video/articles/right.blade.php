@@ -5,17 +5,17 @@
         <input type="submit" value="Search">
     </form>
 </div>
-@if(isset($category) && !empty($category))
-    <div class="agile_author">
-        <h3>关于 {{ $category->title }}</h3>
-        <div class="agile_author_grid">
-            <p>{{ $category->description }}</p>
-            <div class="agile_author_grid_pos">
-                <img src="{{ $category->thumbnail_url }}" alt=" " class="img-responsive img-circle">
-            </div>
-        </div>
-    </div>
-@endif
+{{--@if(isset($category) && !empty($category))--}}
+{{--    <div class="agile_author">--}}
+{{--        <h3>关于 {{ $category->title }}</h3>--}}
+{{--        <div class="agile_author_grid">--}}
+{{--            <p>{{ $category->description }}</p>--}}
+{{--            <div class="agile_author_grid_pos">--}}
+{{--                <img src="{{ $category->thumbnail_url }}" alt=" " class="img-responsive img-circle">--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--@endif--}}
 
 <div class="w3ls_recent_posts">
     <h3>最新发布</h3>
