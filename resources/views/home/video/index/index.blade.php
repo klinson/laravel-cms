@@ -10,7 +10,7 @@
                 @foreach($topCategories as $key => $item)
                     <a href="{{$item->web_url}}">
                         <div class="col-md-3 agile_work_grid">
-                            <div class="agile_work_grid1 w3_agileits_work">
+                            <div class="agile_work_grid1 w3_agileits_work @if($key+1 == count($topCategories)) hidden-after @endif ">
                                 <span>{{$key+1}}</span>
                             </div>
                             <div class="agile_work_grid2 hvr-rectangle-out">
@@ -45,5 +45,12 @@
 @section('script')
 @endsection
 
-@section('header')
+@section('styles')
+    <style>
+
+        .hidden-after:after{
+            /*background: #0c0c0d;*/
+            opacity: 0;
+        }
+    </style>
 @endsection
