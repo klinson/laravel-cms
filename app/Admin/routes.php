@@ -57,4 +57,6 @@ Route::group([
 
     $router->get('testFrom', 'TestFormController@index');
     $router->post('testFrom', 'TestFormController@store');
+
+    $router->resource('comments', CommentsController::class);
 });

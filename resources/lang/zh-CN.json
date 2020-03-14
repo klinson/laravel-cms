@@ -6,5 +6,8 @@
   "Has Enabled": "启用？",
   "Created at": "创建时间",
   "Updated at": "更新时间",
-  "Deleted at": "删除时间"
+  "Deleted at": "删除时间",
+  "User id": "用户",
+  "Article id": "资讯",
+  "Content": "内容"
 }
