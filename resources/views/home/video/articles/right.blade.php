@@ -19,11 +19,18 @@
 
 <div class="w3ls_recent_posts">
     <h3>最新发布</h3>
-    <ul class="list-group w3-agile">
+    <div class="">
     @foreach($recents as $item)
-        <li class="list-group-item"><a href="{{ $item->web_url }}">{{ $item->title }}</a></li>
+        <div class="agileits_recent_posts_gridr" style="width: 90%;float: left">
+            <h4><a href="{{ $item->web_url }}">{{ $item->title }}</a></h4>
+            <ul>
+                <li><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span><a href="#">{{ $item->pv }}</a></li>
+                <li><span class="glyphicon glyphicon-time" aria-hidden="true"></span>{{ $item->publish_time }}</li>
+            </ul>
+        </div>
+        <div class="clearfix"> </div>
     @endforeach
-    </ul>
+    </div>
 </div>
 <div class="w3l_categories">
     <h3>热门栏目</h3>
