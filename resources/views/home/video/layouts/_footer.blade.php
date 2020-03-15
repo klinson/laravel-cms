@@ -4,8 +4,8 @@
         <div class="container">
             <div class="agileinfo_footer_bot_left">
                 <ul>
-                    <li><a href="index.html">视频资讯</a><span> |</span></li>
-                    <li>Power by <span>XXXX</span></li>
+                    <li><a href="index.html">今日看点</a><span> |</span></li>
+                    <li>Power by <span>Garsen</span></li>
                 </ul>
             </div>
             <div class="clearfix"> </div>

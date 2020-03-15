@@ -15,7 +15,7 @@
                             </div>
                             <div class="agile_work_grid2 hvr-rectangle-out">
                                 <div class="agile_work_grid3">
-                                    <span class="glyphicon glyphicon-random" aria-hidden="true"></span>
+                                    <span class="glyphicon glyphicon-{{$item->icon}}" aria-hidden="true"></span>
                                 </div>
                             </div>
                             <h4>{{$item->title}}</h4>
