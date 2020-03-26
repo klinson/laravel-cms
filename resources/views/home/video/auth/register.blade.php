@@ -13,32 +13,32 @@
             <form action="{{ route('register.store') }}" method="post">
                 {{ csrf_field() }}
                 <div class="input-group input-group-lg w3_w3layouts">
-                    <span class="input-group-addon" id="sizing-addon1">用户名</span>
-                    <input type="text" class="form-control" placeholder="请输入" aria-describedby="sizing-addon1" name="username" value="{{old('username')}}">
+                    <span class="input-group-addon form-required" id="sizing-addon1">用户名</span>
+                    <input type="text" class="form-control" placeholder="请输入" aria-describedby="sizing-addon1" name="username" value="{{old('username')}}" required>
                 </div>
                 <div class="input-group input-group-lg w3_w3layouts">
-                    <span class="input-group-addon" id="sizing-addon1">姓名</span>
-                    <input type="text" class="form-control" placeholder="请输入" aria-describedby="sizing-addon1" name="name" value="{{old('name')}}">
+                    <span class="input-group-addon form-required" id="sizing-addon1">姓名</span>
+                    <input type="text" class="form-control" placeholder="请输入" aria-describedby="sizing-addon1" name="name" value="{{old('name')}}" required>
                 </div>
                 <div class="input-group input-group-lg w3_w3layouts">
-                    <span class="input-group-addon" id="sizing-addon1">昵称</span>
-                    <input type="text" class="form-control" placeholder="请输入" aria-describedby="sizing-addon1" name="nickname" value="{{old('nickname')}}">
+                    <span class="input-group-addon form-required" id="sizing-addon1">昵称</span>
+                    <input type="text" class="form-control" placeholder="请输入" aria-describedby="sizing-addon1" name="nickname" value="{{old('nickname')}}" required>
                 </div>
                 <div class="input-group input-group-lg w3_w3layouts">
-                    <span class="input-group-addon" id="sizing-addon1">性别</span>
-                    <select class="form-control" name="sex">
+                    <span class="input-group-addon form-required" id="sizing-addon1">性别</span>
+                    <select class="form-control" name="sex" required>
                         <option value="1" @if(old('sex', 1) == 1) selected @endif >男</option>
                         <option value="2" @if(old('sex', 1) == 2) selected @endif >女</option>
                     </select>
                 </div>
 
                 <div class="input-group input-group-lg w3_w3layouts">
-                    <span class="input-group-addon" id="sizing-addon1">密码</span>
-                    <input type="password" class="form-control" placeholder="请输入" aria-describedby="sizing-addon1" name="password" value="{{old('password')}}">
+                    <span class="input-group-addon form-required" id="sizing-addon1">密码</span>
+                    <input type="password" class="form-control" placeholder="请输入6-10位数字加字母的密码" aria-describedby="sizing-addon1" name="password" value="{{old('password')}}" required>
                 </div>
                 <div class="input-group input-group-lg w3_w3layouts">
-                    <span class="input-group-addon" id="sizing-addon1">确认密码</span>
-                    <input type="password" class="form-control" placeholder="请输入" aria-describedby="sizing-addon1" name="password_confirmation" value="{{old('password_confirmation')}}">
+                    <span class="input-group-addon form-required" id="sizing-addon1">确认密码</span>
+                    <input type="password" class="form-control" placeholder="请输入" aria-describedby="sizing-addon1" name="password_confirmation" value="{{old('password_confirmation')}}" required>
                 </div>
                 <div class="w3_w3layouts">
                     <input type="submit" value="登录" class="btn btn-success btn-lg btn-block">
@@ -49,5 +49,11 @@
 @endsection
 
 
-@section('header')
+@section('styles')
+    <style>
+        .form-required:after {
+            content: '*';
+            color: red;
+        }
+    </style>
 @endsection
