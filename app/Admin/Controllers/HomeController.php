@@ -17,22 +17,8 @@ class HomeController extends Controller
         return Admin::content(function (Content $content) {
             $this->_setPageDefault($content);
 
-            $content->row(Dashboard::title());
+            $content->row(view('admin.dashboard.title'));
 
-            $content->row(function (Row $row) {
-
-                $row->column(4, function (Column $column) {
-                    $column->append(Dashboard::environment());
-                });
-
-                $row->column(4, function (Column $column) {
-                    $column->append(Dashboard::extensions());
-                });
-
-                $row->column(4, function (Column $column) {
-                    $column->append(Dashboard::dependencies());
-                });
-            });
         });
     }
 }
