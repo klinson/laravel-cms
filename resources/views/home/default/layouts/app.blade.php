@@ -9,7 +9,7 @@
     <title>@yield('title', $_theme_info['default_title'] ?? 'Cms') | {{ $_theme_info['system_name'] ?? 'klinson' }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="@yield('description', $_theme_info['description'] ?? 'klinson个人站')" />
-    <meta name="keyword" content="@yield('keyword', $_theme_info['keyword'] ?? 'klinson,cms')" />
+    <meta name="keywords" content="@yield('keyword', $_theme_info['keyword'] ?? 'klinson,cms')" />
     <meta name="author" content="@yield('keyword', $_theme_info['author'] ?? 'klinson')" />
 
     <!-- Facebook and Twitter integration -->
