@@ -4,7 +4,7 @@
     <!-- work -->
     <div class="work">
         <div class="container">
-            <p class="wthree_para">HOT</p>
+            <p class="wthree_para">HOT CATEGORY</p>
             <h3 class="w3ls_head">热门分类</h3>
             <div class="agile_work_grids">
                 @foreach($topCategories as $key => $item)
@@ -39,6 +39,32 @@
         </div>
     </div>
     <!-- //work-bottom -->
+    <div class="work">
+        <div class="container">
+            <p class="wthree_para">HOT NEWS</p>
+            <h3 class="w3ls_head">热门新闻</h3>
+        </div>
+    <div class="row">
+        <div class="col-sm-offset-2 col-sm-8">
+            <div class="w3l_categories">
+                <ul>
+                    @foreach($hotList as $key => $item)
+                        <li><a href="{{ $item->web_url }}">
+                                <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+                                @if($key < 3)
+                                    <span class="label label-primary" style="font-weight: bold !important;color: white;padding-right: 0.5em">{{$key+1}}</span>
+                                    @else
+                                    <span class="label label-default" style="font-weight: bold !important;color: white;padding-right: 0.5em">{{$key+1}}</span>
+                                @endif
+                                {{ $item->title }}
+                            </a></li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+
 
 @endsection
 

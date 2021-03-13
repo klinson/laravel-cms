@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers\Home;
 
+use App\Models\Article;
 use App\Models\CarouselAd;
 use App\Models\Category;
 
@@ -26,6 +27,8 @@ class IndexController extends Controller
 
         $carouselAdItems = CarouselAd::getByKeyByCache('home_page');
 
-        return $this->view()->with(compact(['topCategories', 'topArticles', 'carouselAdItems']));
+        $hotList = Article::where('has_enabled', 1)->orderBy('pv', 'desc')->limit(10)->get();
+
+        return $this->view()->with(compact(['topCategories', 'topArticles', 'carouselAdItems', 'hotList']));
     }
 }
