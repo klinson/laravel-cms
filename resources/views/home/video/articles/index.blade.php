@@ -7,8 +7,22 @@
         </div>
     </div>
 
-    <div class="blog">
+    <div class="blog" style="padding: 1em 0">
         <div class="container">
+            <div class="row" style="padding: 1em 0">
+                <div class="col-sm-8 col-sm-offset-2">
+                    <div class="agileits_search">
+                        <form action="{{ route('articles') }}" method="get">
+                            <input class="email" type="text" name="q" placeholder="搜索关键词" value="{{request('q', '')}}" required>
+                            <input type="hidden" name="category_id" value="{{request('category_id', 0)}}" required>
+                            <input type="submit" value="Search">
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+            <br>
+
             <div class="col-md-7 w3agile_blog_left">
                 @foreach($articles as $item)
                     <div class="w3agile_blog_left_grid">
@@ -18,7 +32,8 @@
                             <p>{{date('Y', strtotime($item->publish_time))}}</p>
                         </div>
                         <div class="w3agile_blog_left_grid_r">
-                            <h3><a href="{{$item->web_url}}">{{$item->title}}<span style="margin-left: 1em">{{$item->categories->pluck('title')->implode(' / ')}}</span></a></h3>
+                            <h3 class="col-sm-12"><a style="float: left;"  href="{{$item->web_url}}"><span style="margin-right: 1em">{{$item->categories->pluck('title')->implode(' / ')}}</span>{{$item->title}}</a></h3>
+                            <br>
                             <ul>
                                 <li><span class="glyphicon glyphicon-user" aria-hidden="true"></span><a href="#">{{ $item->author }}</a><i>|</i></li>
                                 <li><span class="glyphicon glyphicon-heart" aria-hidden="true"></span><a href="#">{{$item->collects_count}}</a><i>|</i></li>
@@ -27,7 +42,9 @@
                             </ul>
                         </div>
                         <div class="clearfix"> </div>
-{{--                        <div class="w3agile_blog_left_grid_sub">--}}
+                        <br>
+
+                        {{--                        <div class="w3agile_blog_left_grid_sub">--}}
 {{--                            <a href="{{$item->web_url}}"><img src="{{$item->thumbnail_url}}" alt=" " class="img-responsive"></a>--}}
 {{--                        </div>--}}
 

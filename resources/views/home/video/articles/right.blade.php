@@ -1,10 +1,3 @@
-<div class="agileits_search">
-    <form action="{{ route('articles') }}" method="get">
-        <input class="email" type="text" name="q" placeholder="搜索关键词" value="{{request('q', '')}}" required>
-        <input type="hidden" name="category_id" value="{{request('category_id', 0)}}" required>
-        <input type="submit" value="Search">
-    </form>
-</div>
 {{--@if(isset($category) && !empty($category))--}}
 {{--    <div class="agile_author">--}}
 {{--        <h3>关于 {{ $category->title }}</h3>--}}
