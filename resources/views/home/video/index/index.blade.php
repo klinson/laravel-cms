@@ -57,6 +57,7 @@
                                     <span class="label label-default" style="font-weight: bold !important;color: white;padding-right: 0.5em">{{$key+1}}</span>
                                 @endif
                                 {{ $item->title }}
+                                <span style="float: right">{{ $item->publish_time }}</span>
                             </a></li>
                     @endforeach
                 </ul>

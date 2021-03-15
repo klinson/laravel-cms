@@ -17,9 +17,9 @@
                         <p>{{date('Y', strtotime($article->publish_time))}}</p>
                     </div>
                     <div class="w3agile_blog_left_grid_r">
-                        <h3><a href="{{$article->web_url}}">
+                        <h3 style="text-align:left"><a href="{{$article->web_url}}">
+                                <span style="margin-right: 0.5em">{{$article->categories->pluck('title')->implode(' / ')}}</span>
                                 {{$article->title}}
-                                <span style="margin-left: 1em">{{$article->categories->pluck('title')->implode(' / ')}}</span>
                             </a>
                             @if (\Auth::check())
                                 @if($article->icollect->isNotEmpty())

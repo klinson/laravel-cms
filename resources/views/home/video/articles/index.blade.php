@@ -23,7 +23,7 @@
             <div class="clearfix"> </div>
             <br>
 
-            <div class="col-md-7 w3agile_blog_left">
+            <div class="col-md-8 w3agile_blog_left">
                 @foreach($articles as $item)
                     <div class="w3agile_blog_left_grid">
                         <div class="w3agile_blog_left_grid_l">
@@ -32,7 +32,7 @@
                             <p>{{date('Y', strtotime($item->publish_time))}}</p>
                         </div>
                         <div class="w3agile_blog_left_grid_r">
-                            <h3 class="col-sm-12"><a style="float: left;"  href="{{$item->web_url}}"><span style="margin-right: 1em">{{$item->categories->pluck('title')->implode(' / ')}}</span>{{$item->title}}</a></h3>
+                            <h3 class="col-sm-12" style="text-align:left"><a href="{{$item->web_url}}"><span style="margin-right: 1em">{{$item->categories->pluck('title')->implode(' / ')}}</span>{{$item->title}}</a></h3>
                             <br>
                             <ul>
                                 <li><span class="glyphicon glyphicon-user" aria-hidden="true"></span><a href="#">{{ $item->author }}</a><i>|</i></li>
@@ -62,7 +62,7 @@
                     {{$articles->appends(request()->except(['page', 's']))->links()}}
                 </nav>
             </div>
-            <div class="col-md-5 w3agile_blog_left">
+            <div class="col-md-4 w3agile_blog_left">
                 @include($_theme_info['view_root_path'].'.articles.right')
             </div>
             <div class="clearfix"> </div>
