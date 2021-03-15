@@ -9,7 +9,7 @@
 
     <div class="blog">
         <div class="container">
-            <div class="col-md-7 w3agile_blog_left">
+            <div class="col-md-8 w3agile_blog_left">
                 <div class="w3agile_blog_left_grid">
                     <div class="w3agile_blog_left_grid_l">
                         <p>{{date('M', strtotime($article->publish_time))}}</p>
@@ -97,7 +97,7 @@
                     <div class="clearfix"> </div>
                 </div>
             </div>
-            <div class="col-md-5 w3agile_blog_left">
+            <div class="col-md-4 w3agile_blog_left">
                 @include($_theme_info['view_root_path'].'.articles.right')
             </div>
             <div class="clearfix"> </div>
