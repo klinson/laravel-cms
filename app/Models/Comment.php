@@ -14,11 +14,15 @@ class Comment extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class)->withDefault([
+            '【用户不存在】'
+        ]);
     }
 
     public function article()
     {
-        return $this->belongsTo(Article::class);
+        return $this->belongsTo(Article::class)->withDefault([
+            '【文章已删除】'
+        ]);
     }
 }
