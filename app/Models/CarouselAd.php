@@ -62,4 +62,9 @@ class CarouselAd extends Model
         $cache_key = 'ads:carousel_ads:'.$this->key;
         \Cache::forget($cache_key);
     }
+
+    public function transform()
+    {
+        return $this->toArray();
+    }
 }

@@ -16,6 +16,7 @@ class Controller extends BaseController
     protected $themeInfo = [];
     protected $navs = [];
     protected $banners = [];
+    protected $ads = [];
 
     public function __construct()
     {
@@ -24,10 +25,20 @@ class Controller extends BaseController
         $this->themeInfo = config('theme.themes.'.$this->theme);
         $this->themeInfo['style_root_path'] = '/'.$this->themeInfo['style_root_path'];
 
+        $this->loadAds();
+
         if (request()->isMethod('get')) {
             $this->navs = Link::getTree('index_nav');
             $this->banners = $this->getTopBanner();
         }
+    }
+
+    public function loadAds()
+    {
+        $this->ads = [
+            'right' => CarouselAd::getByKey('right_ads'),
+            'left' => CarouselAd::getByKey('left_ads'),
+        ];
     }
 
     /**
@@ -55,6 +66,7 @@ class Controller extends BaseController
         return view($view, $data, $mergeData)
             ->with('_theme_info', $this->themeInfo)
             ->with('_navs', $this->navs)
+            ->with('_ads', $this->ads)
             ->with('_banners', $this->banners);
     }
 

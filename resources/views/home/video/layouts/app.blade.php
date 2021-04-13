@@ -25,6 +25,54 @@
 {{--    <link href='http://fonts.googleapis.com/css?family=Capriola' rel='stylesheet' type='text/css'>--}}
 {{--    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>--}}
 
+    <style>
+        .left-float-ads {
+            position: fixed;
+            bottom: 20%;
+            left: 20px;
+            display: block;
+            text-decoration: none;
+            z-index: 9999;
+        }
+        .float-ads {
+            position: fixed;
+            bottom: 20%;
+            right: 20px;
+            display: block;
+            text-decoration: none;
+            z-index: 9999;
+        }
+        .float-ads-content {
+            position: fixed;
+            bottom: 70px;
+            right: 70px;
+            display: block;
+            text-decoration: none;
+            z-index: 9999;
+        }
+        .icon-btn {
+            margin-top: 5px;
+            border: 2px solid green;
+            width: 100px;
+        }
+        .hidden-img {
+            width: 240px;
+        }
+        .float-center-ads {
+            position: fixed;
+            top: 30%;
+            right: 20px;
+            display: block;
+            text-decoration: none;
+            z-index: 9999;
+        }
+        .ad-img {
+            width: 240px;
+        }
+        .ad-info {
+            margin-top: 0.5em;
+        }
+    </style>
     @yield('styles')
 </head>
 

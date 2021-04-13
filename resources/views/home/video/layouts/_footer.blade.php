@@ -13,3 +13,23 @@
     </div>
 </div>
 <!-- //footer -->
+
+<div class="float-ads">
+    @foreach($_ads['right'] as $item)
+        <div class="show-hidden" data-target="kf">
+            <a href="{{ $item['url'] }}" title="{{ $item['title'] }}" target="_blank">
+                <img src="{{ get_admin_file_url($item['picture']) }}" class="icon-btn" alt="{{ $item['title'] }}">
+            </a>
+        </div>
+    @endforeach
+</div>
+
+<div class="left-float-ads">
+    @foreach($_ads['left'] as $item)
+        <div class="show-hidden" data-target="kf">
+            <a href="{{ $item['url'] }}" title="{{ $item['title'] }}" target="_blank">
+                <img src="{{ get_admin_file_url($item['picture']) }}" class="icon-btn" alt="{{ $item['title'] }}">
+            </a>
+        </div>
+    @endforeach
+</div>
