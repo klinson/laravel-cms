@@ -1,5 +1,18 @@
 @extends($_theme_info['view_root_path'].'.layouts.app')
 
+@section('styles')
+    <style>
+        .w3agile_blog_left_grid:nth-child(2) {
+            margin: 0
+        }
+
+        .bar_title {
+            color: red;
+            margin-bottom: 0.5em;
+        }
+    </style>
+@endsection
+
 @section('content')
     <div class="service-breadcrumb">
         <div class="container">
@@ -24,7 +37,14 @@
             <br>
 
             <div class="col-md-8 w3agile_blog_left">
-                @foreach($articles as $item)
+                @foreach($articles as $key => $item)
+                    @if($key == 0)
+                        <div><h3 class="bar_title">国内：</h3></div>
+                    @endif
+                    @if($key == 2)
+                        <div><h3 class="bar_title">国际：</h3></div>
+                    @endif
+
                     <div class="w3agile_blog_left_grid">
                         <div class="w3agile_blog_left_grid_l">
                             <p>{{date('M', strtotime($item->publish_time))}}</p>
