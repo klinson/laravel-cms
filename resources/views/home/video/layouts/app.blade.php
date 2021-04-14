@@ -67,7 +67,7 @@
             z-index: 9999;
         }
         .ad-img {
-            width: 240px;
+            width: 300px;
         }
         .ad-info {
             margin-top: 0.5em;

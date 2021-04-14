@@ -7,7 +7,7 @@
         }
 
         .bar_title {
-            color: red;
+            color: black;
             margin-bottom: 0.5em;
         }
     </style>
