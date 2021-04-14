@@ -53,7 +53,7 @@
         .icon-btn {
             margin-top: 5px;
             border: 2px solid green;
-            width: 100px;
+            width: 140px;
         }
         .hidden-img {
             width: 240px;
