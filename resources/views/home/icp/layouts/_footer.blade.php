@@ -44,7 +44,7 @@
         <div class="row">
             <div class="col-md-12 text-center">
                 <p>
-                    Copyright &copy;2018 All rights reserved | by <a href="{{ config('contact.site_link', '') }}" target="_blank" title="{{ config('contact.owner', 'klinson') }}">{{ config('contact.owner', 'klinson') }}</a> | <a href="http://www.beian.miit.gov.cn" target="_blank"> {{ config('contact.icp', '') }}</a>
+                    Copyright &copy;2018 All rights reserved | by <a href="{{ config('contact.site_link', '') }}" target="_blank" title="{{ config('contact.owner', 'klinson') }}">{{ config('contact.owner', 'klinson') }}</a> | <a href="https://beian.miit.gov.cn" target="_blank"> {{ config('contact.icp', '') }}</a>
                 </p>
             </div>
         </div>
